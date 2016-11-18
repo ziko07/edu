@@ -1,0 +1,94 @@
+#sign-up-wrapper {
+  max-width: 420px;
+  width: 100%;
+  color: #355368;
+  background: #edeff1 none repeat scroll 0 0;
+  padding: 20px;
+  margin: auto;
+  .signup-title {
+    color: #355368;
+    font-size: 24px;
+    margin: 0;
+    text-align: center;
+  }
+  .signup-footer {
+    border-top: 1px solid #d3d3d3;
+    box-shadow: 0 1px #fff inset;
+    margin-top: 20px;
+    padding-top: 16px;
+    text-align: center;
+  }
+  .secondary-text {
+   font-size: 10px;
+    margin-top: 10px;
+  }
+  input[type='text'],
+  input[type='email'],
+  input[type='password'] {
+    width: 100%;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    color: #355368;
+    font-size: 18px;
+    padding: 11px 10px 12px 40px;
+    outline: none;
+    border: 1px solid #a9a9a9;
+    &:focus {
+      border-color: #2b85c3;
+    }
+  }
+  .input-fullname {
+    position: relative;
+    &:before {
+      color: #d3d3d3;
+      font-family: 'FontAwesome';
+      left: 10px;
+      font-size: 20px;
+      line-height: 1;
+      position: absolute;
+      text-align: center;
+      top: 14px;
+      width: 20px;
+      z-index: 2;
+      content: "";
+    }
+  }
+
+  .input-email {
+    position: relative;
+    &:before {
+      color: #d3d3d3;
+      font-family: 'FontAwesome';
+      left: 10px;
+      font-size: 20px;
+      line-height: 1;
+      position: absolute;
+      text-align: center;
+      top: 14px;
+      width: 20px;
+      z-index: 2;
+      content: "";
+    }
+  }
+
+  .input-password {
+    position: relative;
+    &:before {
+      color: #d3d3d3;
+      font-family: 'FontAwesome';
+      left: 10px;
+      font-size: 20px;
+      line-height: 1;
+      position: absolute;
+      text-align: center;
+      top: 14px;
+      width: 20px;
+      z-index: 2;
+      content: "";
+    }
+  }
+  .forgot-password-wrapper {
+    margin-top: 10px;
+  }
+}

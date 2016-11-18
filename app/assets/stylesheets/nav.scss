@@ -1,0 +1,24 @@
+.common-nav {
+  background: #ffffff;
+  box-shadow: 0 0 1px #cccccc;
+}
+
+.public-nav-wrapper {
+  margin: 0;
+  padding: 0;
+  li {
+    display: inline-block;
+    list-style: none;
+    a {
+      padding: 10px;
+      color: rgb(186, 186, 186);
+      border-left: solid 1px rgb(233, 233, 233);
+      display: block;
+      font-weight: bold;
+      &:hover {
+        text-decoration: none;
+        background: rgb(244, 244, 244);
+      }
+    }
+  }
+}

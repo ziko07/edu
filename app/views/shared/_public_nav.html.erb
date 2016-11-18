@@ -1,0 +1,26 @@
+<nav class="public-nav common-nav nav clearfix">
+  <ul class="public-nav-wrapper pull-right">
+    <li>
+      <%= link_to 'Become an Instructor', 'javascript:void(0);', data: {toggle: 'modal', target: '#become-an-instructor'} %>
+    </li>
+    <li>
+      <%= link_to 'Login', 'javascript:void(0);', data: {toggle: 'modal', target: '#user-login'} %>
+    </li>
+  </ul>
+</nav>
+
+<div class="modal fade" id="become-an-instructor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" id="sign-up-wrapper">
+      <%= render 'devise/registrations/form' %>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="user-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" id="sign-up-wrapper">
+      <%= render 'devise/sessions/form' %>
+    </div>
+  </div>
+</div>
