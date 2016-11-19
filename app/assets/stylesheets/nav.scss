@@ -22,3 +22,22 @@
     }
   }
 }
+
+.nav-pills {
+  & > {
+    li {
+      border-right: solid 2px #CCCCCC;
+      &:last-child {
+        border: none;
+      }
+      & > a {
+        padding: 2px 10px !important;
+        margin-right: 2px;
+        &:hover {
+          text-decoration: underline !important;
+          background: transparent !important;
+        }
+      }
+    }
+  }
+}
