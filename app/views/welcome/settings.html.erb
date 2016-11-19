@@ -1,0 +1,46 @@
+<div id="dashboard">
+  <div class="row reset-padding">
+    <div class="col-sm-3 side-menu reset-padding">
+      <%= render 'shared/side_bar' %>
+    </div>
+    <div class="col-sm-9 content-wrapper reset-padding">
+      <div class="content">
+        <div class="content-heading content-heading-single-title">
+          <div class="heading-top">
+            <h2><i class="fa fa-cog"></i> SETTINGS </h2>
+          </div>
+        </div>
+        <div class="content-body">
+          <%= form_for '', html: {class: 'form-horizontal form-admin-edu'} do |f|%>
+              <div class="form-group">
+                <%=f.label 'Email Address', class: 'col-sm-3 control-label' %>
+                <div class="col-sm-8">
+                  <%= f.email_field 'email_address', class: 'form-control reset-border-radius' %>
+                </div>
+              </div>
+              <div class="form-group">
+                <%= f.label 'Password', class: 'col-sm-3 control-label' %>
+                <div class="col-sm-8">
+                  <%= f.password_field 'password', class: 'form-control reset-border-radius', placeholder: 'Password has been assigned' %>
+                </div>
+              </div>
+              <div class="form-group">
+                <%=f.label 'Confirm Password', class: 'col-sm-3 control-label' %>
+                <div class="col-sm-8">
+                  <%= f.password_field 'password', class: 'form-control reset-border-radius' %>
+                </div>
+              </div>
+              <div class="text-center">
+                <%= f.button type: 'submit', class: 'btn btn-info reset-border-radius' do %>
+                    <i class='fa fa-floppy-o'></i> Save
+                <% end %>
+              </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
