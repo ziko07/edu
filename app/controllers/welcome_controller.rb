@@ -17,4 +17,8 @@ class WelcomeController < ApplicationController
   def courses
 
   end
+
+  def category_view
+    
+  end
 end

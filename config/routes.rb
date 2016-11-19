@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get 'settings' => "welcome#settings", as: :settings
   get 'courses' => "welcome#courses", as: :courses
 
+  get 'category_view' => 'welcome#category_view'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
