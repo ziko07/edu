@@ -5,7 +5,7 @@ set :application, 'edu'
 set :repo_url, 'git@github.com:ziko07/edu.git'
 set :branch, 'master'
 
-set :deploy_to, '/home/root/apps/edu'
+set :deploy_to, '/root/apps/edu'
 
 set :linked_files, %w{config/database.yml config/secrets.yml}
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads}
