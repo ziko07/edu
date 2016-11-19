@@ -17,9 +17,12 @@
     margin-top: 20px;
     padding-top: 16px;
     text-align: center;
+    a {
+      font-weight: bold;
+    }
   }
   .secondary-text {
-   font-size: 10px;
+    font-size: 10px;
     margin-top: 10px;
   }
   input[type='text'],
@@ -90,5 +93,11 @@
   }
   .forgot-password-wrapper {
     margin-top: 10px;
+  }
+  .get-signup-info {
+    label {
+      font-weight: normal;
+      cursor: pointer;
+    }
   }
 }
