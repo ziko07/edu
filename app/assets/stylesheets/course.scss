@@ -1,3 +1,80 @@
 // Place all the styles related to the course controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#course-wrapper {
+  padding: 20px 10px;
+  color: #777777;
+  //background: rgb(244,244,244);
+  margin-top: 1px;
+  .course-title {
+    font-size: 30px;
+    color: #aaaaaa;
+    margin: 0 0 10px 0;
+  }
+
+  .course-subtitle {
+
+  }
+
+  .promo-video {
+    margin: 10px 0;
+    iframe {
+      width: 100%;
+      max-width: 650px;
+      min-height: 350px;
+    }
+  }
+
+  .course-content {
+    .title {
+      font-size: 24px;
+      margin: 0 0 10px 0;
+    }
+    .summary {
+      text-align: justify;
+      margin-top: 5px;
+    }
+  }
+}
+
+#courses-wrapper {
+  background: rgb(244, 244, 244);
+  padding: 20px 10px;
+  margin-top: 1px;
+  .category-title {
+    color: #999999;
+  }
+  .category-courses {
+    margin-bottom: 20px;
+    ul {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      li {
+        display: inline-block;
+      }
+    }
+  }
+  .image-container {
+    background: #fff;
+    img {
+      width: 100%;
+    }
+    .image-text {
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-bottom: 15px;
+      a {
+        color: #707070;
+        display: block;
+        font-weight: bold;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        text-decoration: none;
+      }
+      p {
+        color: #707070;
+      }
+    }
+  }
+}

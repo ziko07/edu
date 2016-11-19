@@ -7,4 +7,8 @@ class CoursesController < ApplicationController
     
   end
 
+  def show
+    
+  end
+
 end
