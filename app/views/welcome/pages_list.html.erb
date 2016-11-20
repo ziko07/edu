@@ -2,84 +2,88 @@
   <div class="page-list-container clearfix">
     <div class="page-list-column">
       <div class="page-list-left-content side-menu col-sm-3  reset-padding">
-            <%= render 'shared/side_bar' %>
+        <%= render 'shared/side_bar' %>
       </div>
 
       <div class="page-list-right-content col-sm-9">
         <h4>Pages</h4>
+
         <p>All (25)</p>
         <table class="table table-responsive table-striped custom-table">
           <tbody>
           <tr>
-            <td>Title</td>
+            <td>
+              <%= check_box_tag :page %> Title
+            </td>
           </tr>
 
           <tr>
             <td>
-              <b>Homepage</b><br>
+              <b><%= check_box_tag :page %>
+                Homepage</b><br>
               <a href="#">Edit</a>
             </td>
           </tr>
 
           <tr>
             <td>
-              <b>Courses</b><br>
+              <b><%= check_box_tag :page %>Courses</b><br>
               <a href="#">Edit</a>
             </td>
           </tr>
 
           <tr>
             <td>
-              <b>Course Category-guiter</b><br>
+              <b><%= check_box_tag :page %>Course Category-guiter</b><br>
               <a href="#">Edit</a>
             </td>
           </tr>
 
           <tr>
             <td>
-              <b>Course Category-Piano</b><br>
+              <b><%= check_box_tag :page %>Course Category-Piano</b><br>
               <a href="#">Edit</a>
             </td>
           </tr>
 
           <tr>
             <td>
-              <b>Homepage</b><br>
+              <b><%= check_box_tag :page %>Homepage</b><br>
               <a href="#">Edit</a>
             </td>
           </tr>
 
           <tr>
             <td>
-              <b>Courses</b><br>
+              <b><%= check_box_tag :page %>Courses</b><br>
               <a href="#">Edit</a>
             </td>
           </tr>
 
           <tr>
             <td>
-              <b>Course Category-guiter</b><br>
+              <b><%= check_box_tag :page %>Course Category-guiter</b><br>
               <a href="#">Edit</a>
             </td>
           </tr>
 
           <tr>
             <td>
-              <b>Course Category-Piano</b><br>
+              <b><%= check_box_tag :page %>Course Category-Piano</b><br>
               <a href="#">Edit</a>
             </td>
           </tr>
 
           <tr>
             <td>
-              <b>Homepage</b><br>
+              <b><%= check_box_tag :page %>Homepage</b><br>
               <a href="#">Edit</a>
             </td>
           </tr>
 
           <tr>
             <td>
-              <b>Homepage</b><br>
+              <b><%= check_box_tag :page %>Homepage</b><br>
               <a href="#">Edit</a>
             </td>
           </tr>
@@ -87,9 +91,7 @@
         </table>
 
 
-
       </div>
-
 
 
     </div>

@@ -3,7 +3,7 @@
     <div class="content-heading content-heading-single-title">
       <div class="heading-top">
         <h2><%= image_tag 'dashboard/courses.png', class: 'courses-icon' %> Courses </h2>
-        <%= link_to '', class: 'btn btn-success reset-border-radius  add-new-btn' do %>
+        <%= link_to course_new_instructors_path, class: 'btn btn-success reset-border-radius  add-new-btn' do %>
             <i class="fa fa-plus"></i> New Course
         <% end %>
       </div>
@@ -35,11 +35,11 @@
             <td colspan="4">
               <div class="instructors-course-name">
                 <p>Piano for Beginners in London</p>
-                <%= link_to 'Go to Course', '', class: 'btn btn-info reset-padding reset-border-radius' %>
+                <%= link_to 'Go to Course', '/course/coursename', class: 'btn btn-info reset-padding reset-border-radius' %>
               </div>
             </td>
             <td>
-              <%= link_to '', class: 'btn btn-info reset-padding reset-border-radius' do%>
+              <%= link_to course_new_instructors_path, class: 'btn btn-info reset-padding reset-border-radius' do %>
                   <i class="fa fa-pencil-square-o"></i> Edit
               <% end %>
             </td>
@@ -51,12 +51,12 @@
             <td colspan="4">
               <div class="instructors-course-name">
                 <p>Guitar For Beginners in London</p>
-                <%= link_to 'Go to Course', '', class: 'btn btn-info reset-padding reset-border-radius' %>
+                <%= link_to 'Go to Course', '/course/coursename', class: 'btn btn-info reset-padding reset-border-radius' %>
               </div>
             </td>
             <td>
-              <%= link_to '', class: 'btn btn-info reset-padding reset-border-radius' do%>
-                <i class="fa fa-pencil-square-o"></i> Edit
+              <%= link_to course_new_instructors_path, class: 'btn btn-info reset-padding reset-border-radius' do %>
+                  <i class="fa fa-pencil-square-o"></i> Edit
               <% end %>
             </td>
           </tr>
@@ -67,8 +67,18 @@
   </div>
 </div>
 <script type="text/javascript">
-    $(function(){
-        $('#instructors-courses-table')
-                .tablesorter({widthFixed: true, widgets: ['zebra']});
+    $(function () {
+        $('#instructors-courses-table').tablesorter({
+            headers: {
+                0: {
+                    sorter: false
+                },
+                2: {
+                    sorter: false
+                }
+            },
+            widthFixed: true,
+            widgets: ['zebra']
+        });
     });
 </script>

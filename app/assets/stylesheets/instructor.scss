@@ -110,7 +110,7 @@
   .new-course-wrapper {
     .left-sidebar {
       border: none;
-      min-height: auto;
+      min-height: unset;
       ul {
         li {
           display: inline-block;

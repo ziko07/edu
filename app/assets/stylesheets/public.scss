@@ -2,6 +2,11 @@
   outline: none;
 }
 
+*:focus, *:active {
+  outline: 0 !important;
+  text-decoration: none !important;
+}
+
 .white-color {
   color: #ffffff;
 }
