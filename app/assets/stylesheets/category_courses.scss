@@ -5,15 +5,13 @@ $body-bg-color: #F4F4F4;
   #music-gallary-header-wrapper {
     background: $header-bg-color;
     min-height: 130px;
-    margin-bottom: 25px;
     .container {
       a {
         text-decoration: none;
-        display: block;
+        display: inline-block;
         margin-top: 25px;
         margin-bottom: 25px;
         color: #fff;
-        i {}
       }
       h3 {
         color: #fff;
@@ -25,7 +23,8 @@ $body-bg-color: #F4F4F4;
     background: $body-bg-color;
     .container {
       .row {
-        .left-sidebar, .col-md-2 {}
+        .left-sidebar, .col-md-2 {
+        }
         .right-sidebar, .col-md-10 {
           .row {
             margin-bottom: 10px;

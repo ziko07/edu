@@ -5,7 +5,7 @@
         <div class="row">
           <ul>
             <li class="col-sm-6 col-md-4 col-lg-3">
-              <%= link_to '#' do %>
+              <%= link_to category_courses_path('guitar') do %>
                   <div class="home-course-category" style="background-image: url('<%= image_path('guitar.jpg') %>');">
                     <div class="course-category">
                       Guitar
@@ -14,28 +14,28 @@
               <% end %>
             </li>
             <li class="col-sm-6 col-md-4 col-lg-3">
-              <%= link_to '#' do %>
-                  <div class="home-course-category" style="background-image: url('<%= image_path('guitar.jpg') %>');">
+              <%= link_to category_courses_path('music-business') do %>
+                  <div class="home-course-category" style="background-image: url('<%= image_path('music_business.jpg') %>');">
                     <div class="course-category">
-                      Guitar
+                      Music Business
                     </div>
                   </div>
               <% end %>
             </li>
             <li class="col-sm-6 col-md-4 col-lg-3">
-              <%= link_to '#' do %>
-                  <div class="home-course-category" style="background-image: url('<%= image_path('song_writing.jpg') %>');">
+              <%= link_to category_courses_path('music-production') do %>
+                  <div class="home-course-category" style="background-image: url('<%= image_path('music_production.jpg') %>');">
                     <div class="course-category">
-                      Guitar
+                      Music Production
                     </div>
                   </div>
               <% end %>
             </li>
             <li class="col-sm-6 col-md-4 col-lg-3">
-              <%= link_to '#' do %>
-                  <div class="home-course-category" style="background-image: url('<%= image_path('guitar.jpg') %>');">
+              <%= link_to category_courses_path('percussion') do %>
+                  <div class="home-course-category" style="background-image: url('<%= image_path('percussion.jpg') %>');">
                     <div class="course-category">
-                      Guitar
+                      Percussion
                     </div>
                   </div>
               <% end %>
@@ -49,37 +49,37 @@
         <div class="row">
           <ul>
             <li class="col-sm-6 col-md-4 col-lg-3">
-              <%= link_to '#' do %>
-                  <div class="home-course-category" style="background-image: url('<%= image_path('song_writing.jpg') %>');">
+              <%= link_to category_courses_path('piano') do %>
+                  <div class="home-course-category" style="background-image: url('<%= image_path('piano.jpg') %>');">
                     <div class="course-category">
-                      Guitar
+                      Piano
                     </div>
                   </div>
               <% end %>
             </li>
             <li class="col-sm-6 col-md-4 col-lg-3">
-              <%= link_to '#' do %>
-                  <div class="home-course-category" style="background-image: url('<%= image_path('song_writing.jpg') %>');">
+              <%= link_to category_courses_path('play-by-ear') do %>
+                  <div class="home-course-category" style="background-image: url('<%= image_path('play_by_ear.jpg') %>');">
                     <div class="course-category">
-                      Guitar
+                      Play By Ear
                     </div>
                   </div>
               <% end %>
             </li>
             <li class="col-sm-6 col-md-4 col-lg-3">
-              <%= link_to '#' do %>
-                  <div class="home-course-category" style="background-image: url('<%= image_path('guitar.jpg') %>');">
+              <%= link_to category_courses_path('song-writing') do %>
+                  <div class="home-course-category" style="background-image: url('<%= image_path('song_writing.jpg') %>');">
                     <div class="course-category">
-                      Guitar
+                      Song Writing
                     </div>
                   </div>
               <% end %>
             </li>
             <li class="col-sm-6 col-md-4 col-lg-3">
-              <%= link_to '#' do %>
-                  <div class="home-course-category" style="background-image: url('<%= image_path('song_writing.jpg') %>');">
+              <%= link_to category_courses_path('strings') do %>
+                  <div class="home-course-category" style="background-image: url('<%= image_path('strings.jpg') %>');">
                     <div class="course-category">
-                      Guitar
+                      Strings
                     </div>
                   </div>
               <% end %>
@@ -89,7 +89,7 @@
       </div>
     </div>
     <div class="browse-all-course">
-      <%= link_to 'Browse courses', '#', class: 'btn btn-primary btn-block btn-lg' %>
+      <%= link_to 'Browse courses', courses_path, class: 'btn btn-primary btn-block btn-lg' %>
     </div>
   </div>
 </div>

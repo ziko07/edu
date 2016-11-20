@@ -3,6 +3,21 @@ class WelcomeController < ApplicationController
 
   end
 
+  def dashboard
+
+  end
+
+  def instructors
+
+  end
+
+  def settings
+
+  end
+  def courses
+
+  end
+
   def category_view
     
   end
