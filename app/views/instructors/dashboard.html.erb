@@ -1,0 +1,74 @@
+<div class="container content-wrapper">
+  <div class="content">
+    <div class="content-heading content-heading-single-title">
+      <div class="heading-top">
+        <h2><%= image_tag 'dashboard/courses.png', class: 'courses-icon' %> Courses </h2>
+        <%= link_to '', class: 'btn btn-success reset-border-radius  add-new-btn' do %>
+            <i class="fa fa-plus"></i> New Course
+        <% end %>
+      </div>
+    </div>
+    <div class="content-body">
+      <div class="content-nav">
+        <ul class="nav nav-pills">
+          <li role="presentation"><a href="#">All (68)</a></li>
+          <li role="presentation"><a href="#">Published (68)</a></li>
+          <li role="presentation"><a href="#">Pending Review (112)</a></li>
+          <li role="presentation"><a href="#">Rejected (5)</a></li>
+          <li role="presentation"><a href="#"> Unpublished (12)</a></li>
+        </ul>
+      </div>
+      <div class="content-item">
+        <table class="table tablesorter" id="instructors-courses-table">
+          <thead>
+          <tr>
+            <th></th>
+            <th colspan="4">Name</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <div style="background-image:url('<%= image_path('piano.jpg') %>');"></div>
+            </td>
+            <td colspan="4">
+              <div class="instructors-course-name">
+                <p>Piano for Beginners in London</p>
+                <%= link_to 'Go to Course', '', class: 'btn btn-info reset-padding reset-border-radius' %>
+              </div>
+            </td>
+            <td>
+              <%= link_to '', class: 'btn btn-info reset-padding reset-border-radius' do%>
+                  <i class="fa fa-pencil-square-o"></i> Edit
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div style="background-image:url('<%= image_path('guitar.jpg') %>');"></div>
+            </td>
+            <td colspan="4">
+              <div class="instructors-course-name">
+                <p>Guitar For Beginners in London</p>
+                <%= link_to 'Go to Course', '', class: 'btn btn-info reset-padding reset-border-radius' %>
+              </div>
+            </td>
+            <td>
+              <%= link_to '', class: 'btn btn-info reset-padding reset-border-radius' do%>
+                <i class="fa fa-pencil-square-o"></i> Edit
+              <% end %>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+    $(function(){
+        $('#instructors-courses-table')
+                .tablesorter({widthFixed: true, widgets: ['zebra']});
+    });
+</script>

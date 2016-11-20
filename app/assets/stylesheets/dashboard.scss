@@ -190,6 +190,9 @@ $white: #FFFFFF;
                 }
                 &:nth-child(2){
                   padding: 3px;
+                  .instructors-course-name{
+                    padding: 22px 3px;
+                  }
                   .border-right{
                     padding: 22px  3px;
                     border-right: solid 2px #d3d3d3;
