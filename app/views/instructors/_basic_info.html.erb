@@ -1,0 +1,53 @@
+<div class="tab-pane fade in active" id="basic-info">
+  <div class="header-wrapper">
+    <h3 class="reset-margin info-title">
+      <i class="fa fa-book"></i>
+      COURSES
+    </h3>
+
+    <p class="course-title">
+      <b> Piano for Beginners in London </b>
+    </p>
+
+    <h3 class="info-title text-center reset-margin">
+      Basics
+    </h3>
+
+    <div class="sub-title text-center">
+      Help students find your course.
+    </div>
+  </div>
+  <div class="input-container">
+    <div class="form-wrapper">
+      <%= form_tag do %>
+          <div class="form-group">
+            <%= label_tag :title %>
+            <div class="input-group">
+              <%= text_field_tag :title, '', class: 'form-control', placeholder: 'e.g. Piano Beginners in 4 Days in London' %>
+              <span class="input-group-addon">58</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= label_tag :sub_title %>
+            <div class="input-group">
+              <%= text_field_tag :sub_title, '', class: 'form-control', placeholder: 'e.g. A-Z guide to playing Ed Sheeran, Foo Fight songs in the piano' %>
+              <span class="input-group-addon">120</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= label_tag :category %>
+            <%= select_tag :category, options_for_select(['Guitar', 'Music business', 'Music production', 'Percussion', 'Piano', 'Play by ear', 'Songwriting', 'Strings', 'Ukulele', 'Woodwind & brass']), {class: 'form-control', prompt: '-- Select One --'} %>
+          </div>
+
+          <hr/>
+          <div class="form-group text-center">
+            <%= link_to '#', class: 'btn btn-success' do %>
+                <i class="fa fa-save"></i> Save
+            <% end %>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>
