@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get 'admin/dashboard' => "welcome#dashboard", as: :dashboard
   get 'admin/instructors' => "welcome#instructors", as: :instructors
+  get 'admin/instructors/:id' => "welcome#view_instructors", as: :edit_instructors
   get 'admin/settings' => "welcome#settings", as: :settings
   get 'admin/courses' => "welcome#courses", as: :courses
 

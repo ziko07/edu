@@ -14,17 +14,10 @@
     <% end %>
   </li>
   <li class="list-group-item">
-    <a href="#collapse-instructors" data-toggle="collapse">
-      <i class="fa fa-users"></i>
-      <span>Instructors</span>
-    </a>
-    <ul id="collapse-instructors" class="collapse sub-list reset-padding list-group">
-      <li class="list-group-item">
-        <%= link_to instructors_path do %>
-            Austin Powers
-        <% end %>
-      </li>
-    </ul>
+    <%= link_to instructors_path do %>
+        <i class="fa fa-users"></i>
+        <span>Instructors</span>
+    <% end %>
   </li>
   <li class="list-group-item">
     <%= link_to do %>

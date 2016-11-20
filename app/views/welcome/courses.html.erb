@@ -1,4 +1,4 @@
-<div id="dashboard">
+<div id="courses">
   <div class="reset-padding">
     <div class="col-sm-3 side-menu reset-padding">
       <%= render 'shared/side_bar' %>
@@ -8,7 +8,7 @@
         <div class="content-heading content-heading-single-title">
           <div class="heading-top">
             <h2><%= image_tag 'dashboard/courses.png', class: 'courses-icon' %> Courses </h2>
-            <%= link_to '', class: 'btn btn-success reset-border-radius' do %>
+            <%= link_to '', class: 'btn btn-success reset-border-radius  add-new-btn' do %>
                 <i class="fa fa-plus"></i> New Course
             <% end %>
           </div>
@@ -18,10 +18,71 @@
             <ul class="nav nav-pills">
               <li role="presentation"><a href="#">All (68)</a></li>
               <li role="presentation"><a href="#">Published (68)</a></li>
-              <li role="presentation"><a href="#">Pending Review (2)</a></li>
+              <li role="presentation"><a href="#">Pending Review (112)</a></li>
               <li role="presentation"><a href="#">Rejected (5)</a></li>
               <li role="presentation"><a href="#"> Unpublished (12)</a></li>
             </ul>
+          </div>
+          <div class="content-item">
+            <table class="table">
+              <thead>
+              <tr>
+                <th></th>
+                <th colspan="4">Name</th>
+                <th>Status</th>
+                <th>Instructor</th>
+                <th></th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>
+                  <div style="background-image:url('<%= image_path('piano.jpg') %>');"></div>
+                </td>
+                <td colspan="4">
+                  <div class="border-right">
+                    <p>Piano for Beginners in London</p>
+                    <%= link_to 'Go to Course', '', class: 'btn btn-info reset-padding reset-border-radius' %>
+                  </div>
+                </td>
+                <td>
+                  <select>
+                    <option value="Published">Published</option>
+                    <option value="Pending Review">Pending Review</option>
+                    <option value="Rejected">Rejected</option>
+                    <option value="Unpublished">Unpublished</option>
+                  </select>
+                </td>
+                <td>John Thomas</td>
+                <td>
+                  <%= link_to 'Save', '', class: 'btn btn-danger reset-padding reset-border-radius' %>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="background-image:url('<%= image_path('guitar.jpg') %>');"></div>
+                </td>
+                <td colspan="4">
+                  <div class="border-right">
+                    <p>Guitar For Beginners in London</p>
+                    <%= link_to 'Go to Course', '', class: 'btn btn-info reset-padding reset-border-radius' %>
+                  </div>
+                </td>
+                <td>
+                  <select>
+                    <option value="Published">Published</option>
+                    <option value="Pending Review">Pending Review</option>
+                    <option value="Rejected">Rejected</option>
+                    <option value="Unpublished">Unpublished</option>
+                  </select>
+                </td>
+                <td>Marco Pietro</td>
+                <td>
+                  <%= link_to 'Save', '', class: 'btn btn-danger reset-padding reset-border-radius' %>
+                </td>
+              </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

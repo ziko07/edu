@@ -11,6 +11,10 @@ class WelcomeController < ApplicationController
 
   end
 
+  def view_instructors
+    
+  end
+
   def settings
 
   end
