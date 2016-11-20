@@ -1,0 +1,49 @@
+$page-whole-body-color: #F1F1F1;
+$text-color: #707FE7;
+
+#page-list-wrapper {
+  .page-list-container {
+    background: $page-whole-body-color;
+    .page-list-column {
+      .page-list-left-content {}
+      .page-list-right-content {
+        h4 {}
+        p {}
+        .custom-table {
+          tbody {
+            tr:first-child {
+              color: #337ab7;
+              font-size: 12px;
+              box-shadow: 0px 1px 3px #999999;
+            }
+            tr {
+              td {
+                border-top: 0 !important;
+                padding-left: 45px;
+                b {
+                  color: $text-color;
+                  font-size: 13px;
+                }
+                a {
+                  text-decoration: none;
+                  font-size: 13px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Bootstrap Custom Design */
+.table-striped > tbody > tr:nth-of-type(2n+1) {
+  background-color: #ffffff !important;
+}
+
+.table {
+  box-shadow: -20px 0 80px -85px #000000, 20px 0 80px -85px #000000;
+}
+
+

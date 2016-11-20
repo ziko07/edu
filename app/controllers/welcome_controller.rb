@@ -25,4 +25,8 @@ class WelcomeController < ApplicationController
   def category_view
     
   end
+
+  def pages_list
+
+  end
 end
