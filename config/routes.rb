@@ -10,10 +10,10 @@ Rails.application.routes.draw do
   get 'admin/instructors/:id' => "welcome#view_instructors", as: :edit_instructors
   get 'admin/settings' => "welcome#settings", as: :settings
   get 'admin/courses' => "welcome#courses", as: :courses
-
+  get 'admin/seo_pages' => 'welcome#pages_list', as: :seo_pages
 
   get 'category_view' => 'welcome#category_view'
-  get 'pages_list' => 'welcome#pages_list'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
