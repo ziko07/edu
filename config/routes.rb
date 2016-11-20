@@ -26,6 +26,17 @@ Rails.application.routes.draw do
 
   get 'course/:id', to: 'courses#show', as: :course
 
+  resources :instructors, only: [] do
+    collection do
+      get :dashboard
+      get '/course/new', to: :new_course #, as: :new_course
+      get '/course/:id/edit', to: :edit_course, as: :edit_course
+      post '/course', to: :create_course, as: :create_course
+      put '/course/:id', to: :update_course, as: :update_course
+      delete '/course/:id', to: :delete_course, as: :delete_course
+    end
+  end
+
   # Example resource route with options:
   #   resources :products do
   #     member do

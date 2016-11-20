@@ -1,3 +1,7 @@
 <div>
-  <%= render 'shared/public_nav' %>
+  <% if controller_name == 'instructors' %>
+      <%= render 'shared/instructor_nav' %>
+  <% else %>
+      <%= render 'shared/public_nav' %>
+  <% end %>
 </div>
