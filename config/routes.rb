@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
 
   get 'category_view' => 'welcome#category_view'
+  get 'pages_list' => 'welcome#pages_list'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
