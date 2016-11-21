@@ -1,0 +1,99 @@
+<div id="page-edit-wrapper">
+  <div class="reset-padding">
+    <div class="col-sm-3 side-menu reset-padding">
+      <%= render 'shared/side_bar' %>
+    </div>
+    <div class="col-sm-9 content-wrapper reset-padding">
+      <div class="content">
+        <h3 class="page-header">
+          Edit Page
+        </h3>
+
+        <div class="snippet-preview">
+          <div class="text-header"> Snippet preview</div>
+          <div class="title"> Sample Page Title</div>
+          <div class="page-link"> www.domain.com/courses</div>
+          <p class="meta-desc">
+            Sample meta description Sample meta descriptionSample meta descriptionSample meta descriptionSample meta
+            descriptionSample meta descriptionSample meta descriptionSample meta description meta description meta
+            description meta description meta description meta description
+          </p>
+          <%= link_to 'javascript:void(0);', class: 'btn btn-default edit-snippet' do %>
+              <i class="fa fa-pencil"></i> Edit snippet
+          <% end %>
+        </div>
+        <div class="page-edit-form">
+          <%= form_tag '#' do %>
+              <div class="form-group clearfix">
+                <%= label_tag :page_title, 'Page Title' %>
+                <%= text_field_tag :page_title, 'Sample Page Title Sample Page Title Sample Page Title', class: 'form-control page-title', data: {max_size: 85} %>
+                <div class="progress-wrapper">
+                  <div class="used" style="width: 75%;"></div>
+                  <div class="remaining" style="width: 25%;"></div>
+                </div>
+              </div>
+
+              <div class="form-group clearfix">
+                <%= label_tag :meta_desc, 'Meta Description' %>
+                <%= text_area_tag :meta_desc, 'Sample meta description Sample meta description Sample meta description Sample meta description Sample meta description Sample meta descriptionSample meta descriptionSample meta description meta description', class: 'form-control meta-desc', data: {max_size: 250} %>
+                <div class="progress-wrapper">
+                  <div class="used" style="width: 95%;"></div>
+                  <div class="remaining" style="width: 5%;"></div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= link_to '#', class: 'btn btn-success' do %>
+                    <i class="fa fa-save"></i> Save
+                <% end %>
+              </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        updateProgress($('#page_title'));
+        updateProgress($('#meta_desc'));
+        $('.edit-snippet').click(function () {
+            $('.page-edit-form').show();
+        });
+
+        $('#page_title, #meta_desc').keyup(function () {
+            updateProgress($(this));
+        });
+
+        function updateProgress(element, value) {
+            var maxSize = element.attr('data-max-size');
+            var used = 0, remaining = 100;
+            var length = getterSetter(element, maxSize);
+            if (length > 0) {
+                used = (length / maxSize) * 100;
+                remaining = 100 - used;
+            }
+            progressBar = element.next();
+            progressBar.find('.remaining').show().css('width', remaining + '%');
+            progressBar.find('.used').show().css('width', used + '%');
+            if (used >= 100) {
+                progressBar.find('.remaining').hide();
+            }
+            else if (used == 0) {
+                progressBar.find('.used').hide();
+            }
+        }
+
+        function getterSetter(element, maxSize) {
+            var value;
+            value = element.val();
+            console.log("Maxsize: " + maxSize + " length: " + value.length);
+            if (value.length >= maxSize) {
+                value = value.substring(0, maxSize);
+                element.val(value);
+                return maxSize;
+            }
+            return value.length;
+        }
+    });
+</script>

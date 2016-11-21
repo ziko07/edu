@@ -39,6 +39,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get :page, to: 'welcome#edit_page'
+
   # Example resource route with options:
   #   resources :products do
   #     member do

@@ -53,6 +53,7 @@
 
 #new-course {
   background: rgb(243, 243, 242);
+  border-right: 1px solid #dfdfdf;
   .header-wrapper {
     background: #FFFFFF;
     padding: 10px;
@@ -107,6 +108,9 @@
 }
 
 @media (max-width: 768px) {
+  #new-course {
+    border-right: none;
+  }
   .new-course-wrapper {
     .left-sidebar {
       border: none;
