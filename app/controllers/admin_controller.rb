@@ -20,7 +20,11 @@ class AdminController < ApplicationController
 
   end
 
-  def pages_list
+  def seo_pages
+
+  end
+
+  def edit_page
 
   end
 end

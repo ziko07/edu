@@ -19,7 +19,6 @@ $text-color: #707FE7;
               td {
                 padding: 5px 8px;
                 border-top: 0 !important;
-                //padding-left: 45px;
                 b {
                   color: $text-color;
                   font-size: 13px;
@@ -46,6 +45,71 @@ $text-color: #707FE7;
 
   .table-striped > tbody > tr:nth-of-type(even) {
     background-color: rgb(249, 249, 249) !important;
+  }
+}
+
+#page-edit-wrapper {
+  .page-header {
+    margin: 0;
+    padding: 10px 0;
+    border: none;
+  }
+
+  .snippet-preview {
+    margin-bottom: 20px;
+    .text-header {
+      color: #999999;
+      padding: 5px;
+      border-top: solid 1px #dfdfdf;
+      border-bottom: solid 1px #dfdfdf;
+      margin-bottom: 10px;
+    }
+    .title {
+      font-weight: bold;
+      font-size: 20px;
+      color: rgb(87, 46, 193);
+    }
+    .page-link {
+      color: rgb(86, 152, 51);
+    }
+    .meta-desc {
+      color: #333333;
+      text-align: justify;
+    }
+  }
+
+  .page-edit-form {
+    display: none;
+    .form-control {
+      -webkit-border-radius: 0;
+      -moz-border-radius: 0;
+      border-radius: 0;
+    }
+    .form-group {
+      margin-bottom: 30px;
+    }
+    label {
+      color: #999999;
+      font-weight: normal;
+      font-size: 16px;
+    }
+    .progress-wrapper {
+      clear: both;
+      margin-top: 5px;
+      .used {
+        float: left;
+        padding: 3px;
+        border: solid 1px rgb(97, 239, 0);
+        background: rgb(97, 239, 0);
+        border-right: none;
+      }
+      .remaining {
+        float: left;
+        padding: 3px;
+        border: solid 1px #CCCCCC;
+        border-left: none;
+      }
+    }
   }
 }
 

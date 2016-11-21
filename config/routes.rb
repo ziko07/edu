@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       get '/settings'=>'admin#settings', as: :admin_settings
       get '/courses'=>'admin#courses', as: :admin_courses
       get '/seo_pages'=>'admin#seo_pages', as: :admin_seo_pages
+      get '/seo_pages/:page_id'=> 'admin#edit_page', as: :admin_edit_seo_page
       get 'instructors/:user_id'=>'admin#view_instructor', as: :admin_view_instructors
   end
 
@@ -41,6 +42,8 @@ Rails.application.routes.draw do
       delete '/course/:id', to: :delete_course, as: :delete_course
     end
   end
+
+  get :page, to: 'welcome#edit_page'
 
   # Example resource route with options:
   #   resources :products do

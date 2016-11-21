@@ -1,11 +1,11 @@
 <ul class="list-group">
-  <li class="list-group-item">
-    <%= link_to admin_dashboard_path do %>
+  <li class="list-group-item <%= active_tab(controller.controller_name, controller.action_name,  'admin', 'dashboard') %>">
+    <%= link_to  admin_dashboard_path do %>
         <i class="fa fa-home"></i>
         <span>Dashboard</span>
     <% end %>
   </li>
-  <li class="list-group-item">
+  <li class="list-group-item <%= active_tab(controller.controller_name, controller.action_name,  'admin', 'courses') %>">
     <%= link_to admin_courses_path do %>
         <i>
           <%= image_tag 'dashboard/courses.png', class: 'img-responsive' %>
@@ -13,13 +13,13 @@
         <span>Courses</span>
     <% end %>
   </li>
-  <li class="list-group-item">
+  <li class="list-group-item <%= active_tab(controller.controller_name, controller.action_name,  'admin', 'instructors') %>">
     <%= link_to admin_instructors_path do %>
         <i class="fa fa-users"></i>
         <span>Instructors</span>
     <% end %>
   </li>
-  <li class="list-group-item">
+  <li class="list-group-item <%= active_tab(controller.controller_name, controller.action_name,  'admin', 'seo_pages') %>">
     <%= link_to admin_seo_pages_path do %>
         <i>
           <%= image_tag 'dashboard/pages_seo.png', class: 'img-responsive' %>
@@ -27,7 +27,7 @@
         <span>PAGES SEO</span>
     <% end %>
   </li>
-  <li class="list-group-item">
+  <li class="list-group-item <%= active_tab(controller.controller_name, controller.action_name,  'admin', 'settings') %>">
     <%= link_to admin_settings_path do %>
         <i class="fa fa-cog"></i>
         <span>Settings</span>
