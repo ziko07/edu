@@ -1,84 +1,40 @@
-<div class="container content-wrapper">
-  <div class="content">
-    <div class="content-heading content-heading-single-title">
-      <div class="heading-top">
-        <h2><%= image_tag 'dashboard/courses.png', class: 'courses-icon' %> Courses </h2>
-        <%= link_to course_new_instructors_path, class: 'btn btn-success reset-border-radius  add-new-btn' do %>
-            <i class="fa fa-plus"></i> New Course
-        <% end %>
-      </div>
+<div id="courses">
+  <div class="reset-padding">
+    <div class="col-sm-3 side-menu reset-padding">
+      <%= render 'shared/instructor_side_bar' %>
     </div>
-    <div class="content-body">
-      <div class="content-nav">
-        <ul class="nav nav-pills">
-          <li role="presentation"><a href="#">All (68)</a></li>
-          <li role="presentation"><a href="#">Published (68)</a></li>
-          <li role="presentation"><a href="#">Pending Review (112)</a></li>
-          <li role="presentation"><a href="#">Rejected (5)</a></li>
-          <li role="presentation"><a href="#"> Unpublished (12)</a></li>
-        </ul>
-      </div>
-      <div class="content-item">
-        <table class="table tablesorter" id="instructors-courses-table">
-          <thead>
-          <tr>
-            <th></th>
-            <th colspan="4">Name</th>
-            <th></th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td>
-              <div style="background-image:url('<%= image_path('piano.jpg') %>');"></div>
-            </td>
-            <td colspan="4">
-              <div class="instructors-course-name">
-                <p>Piano for Beginners in London</p>
-                <%= link_to 'Go to Course', '/course/coursename', class: 'btn btn-info reset-padding reset-border-radius' %>
-              </div>
-            </td>
-            <td>
-              <%= link_to course_new_instructors_path, class: 'btn btn-info reset-padding reset-border-radius' do %>
-                  <i class="fa fa-pencil-square-o"></i> Edit
-              <% end %>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div style="background-image:url('<%= image_path('guitar.jpg') %>');"></div>
-            </td>
-            <td colspan="4">
-              <div class="instructors-course-name">
-                <p>Guitar For Beginners in London</p>
-                <%= link_to 'Go to Course', '/course/coursename', class: 'btn btn-info reset-padding reset-border-radius' %>
-              </div>
-            </td>
-            <td>
-              <%= link_to course_new_instructors_path, class: 'btn btn-info reset-padding reset-border-radius' do %>
-                  <i class="fa fa-pencil-square-o"></i> Edit
-              <% end %>
-            </td>
-          </tr>
-          </tbody>
-        </table>
+    <div class="col-sm-9 reset-padding content-wrapper">
+      <div class="content">
+        <div class="content-heading content-heading-single-title">
+          <div class="heading-top">
+            <h2><%= image_tag 'dashboard/courses.png', class: 'courses-icon' %> Courses </h2>
+            <%= link_to course_new_instructors_path, class: 'btn btn-success reset-border-radius  add-new-btn' do %>
+                <i class="fa fa-plus"></i> New Course
+            <% end %>
+          </div>
+        </div>
+        <div class="content-body">
+          <div class="content-nav">
+            <ul class="nav nav-pills">
+              <li class="active" role="presentation"><a data-toggle="tab" href="#all">All (68)</a></li>
+              <li role="presentation"><a data-toggle="tab" href="#published">Published (68)</a></li>
+              <li role="presentation"><a data-toggle="tab" href="#pending-review">Pending Review (112)</a></li>
+              <li role="presentation"><a data-toggle="tab" href="#rejected">Rejected (5)</a></li>
+              <li role="presentation"><a data-toggle="tab" href="#unpublished"> Unpublished (12)</a></li>
+            </ul>
+          </div>
+          <div class="content-item">
+            <div class="tab-content">
+              <%= render 'instructors/all_courses' %>
+              <%= render 'instructors/published_courses' %>
+              <%= render 'instructors/pending_review_courses' %>
+              <%= render 'instructors/rejected_courses' %>
+              <%= render 'instructors/unpublished_courses' %>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
-<script type="text/javascript">
-    $(function () {
-        $('#instructors-courses-table').tablesorter({
-            headers: {
-                0: {
-                    sorter: false
-                },
-                2: {
-                    sorter: false
-                }
-            },
-            widthFixed: true,
-            widgets: ['zebra']
-        });
-    });
-</script>
+

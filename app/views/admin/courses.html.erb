@@ -16,73 +16,21 @@
         <div class="content-body">
           <div class="content-nav">
             <ul class="nav nav-pills">
-              <li role="presentation"><a href="#">All (68)</a></li>
-              <li role="presentation"><a href="#">Published (68)</a></li>
-              <li role="presentation"><a href="#">Pending Review (112)</a></li>
-              <li role="presentation"><a href="#">Rejected (5)</a></li>
-              <li role="presentation"><a href="#"> Unpublished (12)</a></li>
+              <li class="active" role="presentation"><a data-toggle="tab" href="#all">All (68)</a></li>
+              <li role="presentation"><a data-toggle="tab" href="#published">Published (68)</a></li>
+              <li role="presentation"><a data-toggle="tab" href="#pending-review">Pending Review (112)</a></li>
+              <li role="presentation"><a data-toggle="tab" href="#rejected">Rejected (5)</a></li>
+              <li role="presentation"><a data-toggle="tab" href="#unpublished"> Unpublished (12)</a></li>
             </ul>
           </div>
           <div class="content-item">
-            <table class="table tablesorter" id="courses-list">
-              <thead>
-              <tr>
-                <th></th>
-                <th colspan="4">Name</th>
-                <th>Status</th>
-                <th>Instructor</th>
-                <th></th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr>
-                <td>
-                  <div style="background-image:url('<%= image_path('piano.jpg') %>');"></div>
-                </td>
-                <td colspan="4">
-                  <div class="border-right">
-                    <p>Piano for Beginners in London</p>
-                    <%= link_to 'Go to Course', '/course/coursename', class: 'btn btn-info reset-padding reset-border-radius' %>
-                  </div>
-                </td>
-                <td>
-                  <select>
-                    <option value="Published">Published</option>
-                    <option value="Pending Review">Pending Review</option>
-                    <option value="Rejected">Rejected</option>
-                    <option value="Unpublished">Unpublished</option>
-                  </select>
-                </td>
-                <td>John Thomas</td>
-                <td>
-                  <%= link_to 'Save', '#', class: 'btn btn-danger reset-padding reset-border-radius' %>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div style="background-image:url('<%= image_path('guitar.jpg') %>');"></div>
-                </td>
-                <td colspan="4">
-                  <div class="border-right">
-                    <p>Guitar For Beginners in London</p>
-                    <%= link_to 'Go to Course', '/course/coursename', class: 'btn btn-info reset-padding reset-border-radius' %>
-                  </div>
-                </td>
-                <td>
-                  <select>
-                    <option value="Published">Published</option>
-                    <option value="Pending Review">Pending Review</option>
-                    <option value="Rejected">Rejected</option>
-                    <option value="Unpublished">Unpublished</option>
-                  </select>
-                </td>
-                <td>Marco Pietro</td>
-                <td>
-                  <%= link_to 'Save', '', class: 'btn btn-danger reset-padding reset-border-radius' %>
-                </td>
-              </tr>
-              </tbody>
-            </table>
+            <div class="tab-content">
+              <%= render 'admin/all_courses' %>
+              <%= render 'admin/published_courses' %>
+              <%= render 'admin/pending_review_courses' %>
+              <%= render 'admin/rejected_courses' %>
+              <%= render 'admin/unpublished_courses' %>
+            </div>
           </div>
         </div>
       </div>

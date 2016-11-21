@@ -1,0 +1,40 @@
+<div class="tab-pane fade table-responsive" id="unpublished">
+  <table class="table tablesorter">
+    <thead>
+    </thead>
+    <tbody>
+    <tr>
+      <td>
+        <div style="background-image:url('<%= image_path('piano.jpg') %>');"></div>
+      </td>
+      <td colspan="4">
+        <div class="instructors-course-name">
+          <p>Piano for Beginners in London</p>
+          <%= link_to 'Go to Course', '/course/coursename', class: 'btn btn-info reset-padding reset-border-radius' %>
+        </div>
+      </td>
+      <td>
+        <%= link_to course_new_instructors_path, class: 'btn btn-info reset-padding reset-border-radius' do %>
+            <i class="fa fa-pencil-square-o"></i> Edit
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div style="background-image:url('<%= image_path('guitar.jpg') %>');"></div>
+      </td>
+      <td colspan="4">
+        <div class="instructors-course-name">
+          <p>Guitar For Beginners in London</p>
+          <%= link_to 'Go to Course', '/course/coursename', class: 'btn btn-info reset-padding reset-border-radius' %>
+        </div>
+      </td>
+      <td>
+        <%= link_to course_new_instructors_path, class: 'btn btn-info reset-padding reset-border-radius' do %>
+            <i class="fa fa-pencil-square-o"></i> Edit
+        <% end %>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
