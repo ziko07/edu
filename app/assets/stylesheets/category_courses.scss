@@ -24,11 +24,13 @@ $body-bg-color: #F4F4F4;
     .music-gallary-content-container {
       .music-gallary-content-row {
 
-        .left-sidebar {}
+        .left-sidebar {
+        }
         .right-sidebar {
           .image-widget-row {
             margin-bottom: 10px;
             .image-widget-column {
+              margin-bottom: 10px;
               .image-container {
                 background: #fff;
                 img {
@@ -56,5 +58,14 @@ $body-bg-color: #F4F4F4;
         }
       }
     }
+  }
+}
+
+.browse-course-items {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  li {
+    margin-bottom: 10px;
   }
 }
