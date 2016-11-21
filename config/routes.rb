@@ -5,12 +5,15 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
-  get 'admin/dashboard' => "welcome#dashboard", as: :dashboard
-  get 'admin/instructors' => "welcome#instructors", as: :instructors
-  get 'admin/instructors/:id' => "welcome#view_instructors", as: :edit_instructors
-  get 'admin/settings' => "welcome#settings", as: :settings
-  get 'admin/courses' => "welcome#courses", as: :courses
-  get 'admin/seo_pages' => 'welcome#pages_list', as: :seo_pages
+  scope 'admin'  do
+      get '/dashboard'=>'admin#dashboard', as: :admin_dashboard
+      get '/instructors'=>'admin#instructors', as: :admin_instructors
+      get '/settings'=>'admin#settings', as: :admin_settings
+      get '/courses'=>'admin#courses', as: :admin_courses
+      get '/seo_pages'=>'admin#seo_pages', as: :admin_seo_pages
+      get 'instructors/:user_id'=>'admin#view_instructor', as: :admin_view_instructors
+  end
+
 
   get 'category_view' => 'welcome#category_view'
 
