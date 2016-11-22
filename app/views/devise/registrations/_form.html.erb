@@ -4,7 +4,7 @@
   <h4 class="signup-title">Sign up and start teaching!</h4>
 </div>
 <div class="modal-body">
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name, format: :json), html: {id: 'user-registration'}, remote: true) do |f| %>
       <%= devise_error_messages! %>
 
       <div class="form-group input-fullname">
@@ -50,6 +50,10 @@
             $('#become-an-instructor').modal('hide');
             $('#user-forgot-password').modal('hide');
             $('#user-login').modal('show');
+        });
+        $('#user-registration').on('ajax:success', function( event, data, status, xhr ){
+            alert("Here");
+            console.log(data);
         });
     });
 </script>
