@@ -10,7 +10,7 @@
     float: left;
     list-style: none;
     a {
-      padding: 10px;
+      padding: 10px !important;
       color: rgb(186, 186, 186);
       border-left: solid 1px rgb(233, 233, 233);
       display: block;
@@ -44,7 +44,7 @@
 
 .nav {
   .nav-user-icon {
-    padding: 2px 15px;
+    padding: 2px 15px !important;
     img {
       width: 35px;
     }
@@ -82,5 +82,18 @@
       -moz-border-radius: 0;
       border-radius: 0;
     }
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar-nav .open .dropdown-menu {
+    position: absolute !important;
+    float: left !important;
+    background: #ffffff !important;
+    box-shadow: 0 0 3px #cccccc !important;
+  }
+
+  .navbar-nav {
+    margin: 0 !important;
   }
 }
