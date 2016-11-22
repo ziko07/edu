@@ -50,11 +50,22 @@
     }
   }
   .dropdown {
+    &.open {
+      a {
+        color: #777777;
+        border-color: #CCCCCC !important;
+        &:hover, &:focus, &:active {
+          border-color: #CCCCCC !important;
+          background: #F4F4F4 !important;
+        }
+      }
+    }
     .instructor-dropdown {
       &.dashboard {
         width: 200px;
       }
       a {
+        font-weight: normal;
         border: none;
         padding-top: 7px;
         padding-bottom: 7px;
