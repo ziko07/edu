@@ -14,4 +14,3 @@
 .idea/
 lib/capistrano/
 public/*
-config/database.yml
