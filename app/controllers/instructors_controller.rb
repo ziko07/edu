@@ -18,4 +18,9 @@ class InstructorsController < ApplicationController
   def update_course
 
   end
+
+  def profile
+    
+  end
+
 end

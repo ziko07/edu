@@ -107,6 +107,16 @@
   }
 }
 
+.instructor-course-wrapper {
+  table {
+    width: 100%;
+    .edit-course-link {
+      float: right;
+      vertical-align: top;
+    }
+  }
+}
+
 @media (max-width: 768px) {
   #new-course {
     border-right: none;
@@ -125,6 +135,24 @@
             text-indent: 0;
           }
         }
+      }
+    }
+  }
+
+  .instructor-course-wrapper {
+    table {
+      tbody tr td:first-child div.course-image {
+        width: 100% !important;
+        height: 100% !important;
+        min-width: 100px;
+        max-height: 140px;
+      }
+      .instructors-course-name {
+        padding-top: 2px !important;
+      }
+      .edit-course-link, .goto-course-ling {
+        float: none;
+        margin-bottom: 10px;
       }
     }
   }

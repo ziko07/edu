@@ -8,7 +8,7 @@
         <div class="content-heading content-heading-single-title">
           <div class="heading-top">
             <h2><%= image_tag 'dashboard/courses.png', class: 'courses-icon' %> Courses </h2>
-            <%= link_to '', class: 'btn btn-success reset-border-radius  add-new-btn' do %>
+            <%= link_to course_new_instructors_path, class: 'btn btn-success reset-border-radius  add-new-btn' do %>
                 <i class="fa fa-plus"></i> New Course
             <% end %>
           </div>
@@ -48,6 +48,15 @@
                     sorter: false
                 }
             }
+        });
+
+        var url = document.location.toString();
+        if (url.match('#')) {
+            $('.nav-pills a[href="#' + url.split('#')[1] + '"]').tab('show');
+        }
+
+        $('.nav-tabs a').on('shown.bs.tab', function (e) {
+            window.location.hash = e.target.hash;
         });
     });
 </script>
