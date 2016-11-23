@@ -14,73 +14,34 @@
           </div>
         </div>
         <div class="content-body">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th></th>
-                  <th>First Name</th>
-                  <th>Last Name</th>
-                  <th>Email</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <%= link_to admin_view_instructors_path(user_id: 1), class: 'btn btn-info btn-sm reset-border-radius' do %>
-                        <i class="fa fa-pencil-square-o"></i>
-                    <% end %>
-                  </td>
-                  <td>Ling</td>
-                  <td>Ling</td>
-                  <td>test@test.com</td>
-                  <td>
-                    <%= link_to '', class: 'btn btn-danger reset-border-radius' do%>
-                        Reset Password
-                    <% end %>
-                    <%= link_to '', class: 'btn btn-danger reset-border-radius' do%>
-                        Unpublish
-                    <% end %>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <%= link_to admin_view_instructors_path(user_id: 1), class: 'btn btn-info btn-sm reset-border-radius' do %>
-                        <i class="fa fa-pencil-square-o"></i>
-                    <% end %>
-                  </td>
-                  <td>Ling</td>
-                  <td>Ling</td>
-                  <td>test@test.com</td>
-                  <td>
-                    <%= link_to '', class: 'btn btn-danger reset-border-radius' do%>
-                        Reset Password
-                    <% end %>
-                    <%= link_to '', class: 'btn btn-danger reset-border-radius' do%>
-                        Unpublish
-                    <% end %>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <%= link_to admin_view_instructors_path(user_id: 1), class: 'btn btn-info btn-sm reset-border-radius' do %>
-                        <i class="fa fa-pencil-square-o"></i>
-                    <% end %>
-                  </td>
-                  <td>Ling</td>
-                  <td>Ling</td>
-                  <td>test@test.com</td>
-                  <td>
-                    <%= link_to '', class: 'btn btn-danger reset-border-radius' do%>
-                        Reset Password
-                    <% end %>
-                    <%= link_to '', class: 'btn btn-danger reset-border-radius' do%>
-                        Unpublish
-                    <% end %>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          <table class="table">
+            <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>Ling</td>
+              <td>Ling</td>
+              <td>test@test.com</td>
+              <td class="instructor-list-action">
+                <%= link_to '', class: 'btn btn-danger reset-border-radius' do %>
+                    Reset Password
+                <% end %>
+                <%= link_to '', class: 'btn btn-danger reset-border-radius' do %>
+                    Unpublish
+                <% end %>
+                <%= link_to admin_view_instructors_path(user_id: 1), class: 'btn btn-info reset-border-radius' do %>
+                    <i class="fa fa-pencil-square-o"></i>
+                <% end %>
+              </td>
+            </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

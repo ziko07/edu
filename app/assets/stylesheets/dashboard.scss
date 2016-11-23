@@ -158,7 +158,6 @@ $white: #FFFFFF;
           margin-top: 10px;
           font-weight: bold;
           img {
-            //height: 40px;
             width: 40px;
           }
         }
@@ -310,6 +309,14 @@ $white: #FFFFFF;
   margin: auto;
   .form-control {
     height: 40px;
+  }
+}
+
+.instructor-list-action {
+  text-align: right;
+  min-width: 150px;
+  a {
+    margin-bottom: 5px;
   }
 }
 
