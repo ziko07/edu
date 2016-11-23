@@ -12,6 +12,10 @@ class AdminController < ApplicationController
 
   end
 
+  def new_instructor
+
+  end
+
   def settings
 
   end
