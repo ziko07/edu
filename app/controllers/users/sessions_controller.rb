@@ -1,5 +1,5 @@
 class Users::SessionsController < Devise::SessionsController
-before_action :configure_sign_in_params, only: [:create]
+  before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
   def new
@@ -8,16 +8,17 @@ before_action :configure_sign_in_params, only: [:create]
 
   # POST /resource/sign_in
   def create
-    self.resource = warden.authenticate!(auth_options)
-    puts "<<<<<<<<<<"
-    puts self.resource
-    set_flash_message!(:notice, :signed_in)
-    sign_in(resource_name, resource)
-    yield resource if block_given?
     respond_to do |format|
-        format.json {render json: resource, status:  :ok }
-    end
+      resource = User.find_for_database_authentication(email: params[:user][:email])
+      return invalid_login_attempt unless resource
 
+      if resource.valid_password?(params[:user][:password])
+        sign_in :user, resource
+        return render json: {success: true, redirect_path: after_sign_in_path_for(resource) }, status: :ok
+      end
+
+      invalid_login_attempt
+    end
   end
 
   # DELETE /resource/sign_out
@@ -25,10 +26,16 @@ before_action :configure_sign_in_params, only: [:create]
     super
   end
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_in_params
     devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   end
+
+  def invalid_login_attempt
+    set_flash_message(:alert, :invalid)
+    render json: { success: false, message: flash[:alert]}
+  end
+
 end

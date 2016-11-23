@@ -8,21 +8,23 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-    build_resource
-
+    build_resource(sign_up_params)
+    last_name, first_name = *params[:user][:full_name].reverse.split(/\s+/, 2).collect(&:reverse)
+    resource.first_name = first_name
+    resource.last_name = last_name
     if resource.save
       if resource.active_for_authentication?
         set_flash_message :notice, :signed_up if is_navigational_format?
         sign_up(resource_name, resource)
-        return render :json => {:success => true}
+        return render :json => {:success => true, redirect_path: after_sign_up_path_for(resource)}
       else
         set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_navigational_format?
         expire_session_data_after_sign_in!
-        return render :json => {:success => true}
+        return render :json => {:success => true, redirect_path: after_sign_up_path_for(resourse)}
       end
     else
       clean_up_passwords resource
-      render :json => {:success => false, errors: resource.errors}
+      render :json => {:success => false, message: errors_to_message_string( resource.errors )}
     end
   end
 
@@ -54,7 +56,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:full_name, :email, :password, :password_confirmation) }
   end
 
   # If you have extra params to permit, append them to the sanitizer.

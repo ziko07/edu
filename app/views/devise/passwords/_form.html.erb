@@ -4,9 +4,8 @@
   <h4 class="signup-title"> FORGOT PASSWORD </h4>
 </div>
 <div class="modal-body">
-  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: {method: :post}) do |f| %>
-      <%= devise_error_messages! %>
-
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name, format: :json), html: {method: :post, id: 'user-reset-password'}, remote: true) do |f| %>
+      <div id="message-reset-password"></div>
       <div class="form-group input-email">
         <%= f.email_field :email, autofocus: true, placeholder: 'Email' %>
       </div>
@@ -19,3 +18,17 @@
       </div>
   <% end %>
 </div>
+<script type="text/javascript">
+    $(function(){
+        $('#user-reset-password').on('ajax:success',function(event, data, status, xhr){
+            if(data.success){
+                popupMessage('Reset password instructions have sent to your email. Please check your email', 'alert-success');
+                $('#user-forgot-password').modal('hide');
+            }
+            else{
+                var messageContent = '<div class="alert alert-danger">' + data.message + '</div>';
+                $('#message-reset-password').html(messageContent);
+            }
+        });
+    });
+</script>

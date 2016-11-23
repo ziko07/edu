@@ -1,4 +1,16 @@
 class InstructorsController < ApplicationController
+
+  def new
+    @instructor = User.new
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def create
+
+  end
+
   def dashboard
 
   end
@@ -18,4 +30,6 @@ class InstructorsController < ApplicationController
   def update_course
 
   end
+
+
 end

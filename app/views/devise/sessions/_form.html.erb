@@ -4,15 +4,14 @@
   <h4 class="signup-title"> Login to your account!</h4>
 </div>
 <div class="modal-body">
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name), remote: true, format: :json) do |f| %>
-      <%= devise_error_messages! %>
-
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name, format: :json), html: {id: 'user-sign-in'}, remote: true) do |f| %>
+      <div id="message-sign-in"></div>
       <div class="form-group input-email">
-        <%= f.email_field :email, autofocus: true, placeholder: 'Email' %>
+        <%= f.email_field :email, autofocus: true, placeholder: 'Email', required: true %>
       </div>
 
       <div class="form-group input-password">
-        <%= f.password_field :password, autocomplete: 'off', placeholder: 'Password' %>
+        <%= f.password_field :password, autocomplete: 'off', placeholder: 'Password', required: true %>
       </div>
 
       <div class="actions">
@@ -39,8 +38,15 @@
             $('#user-login').modal('hide');
             $('#become-an-instructor').modal('show');
         });
-        $('#new_user').on('ajax:success', function( event, data, status, xhr ){
-            console.log('success');
+        $('#user-sign-in').on('ajax:success', function( event, data, status, xhr ){
+            if(data.success){
+                $('#message-sign-in').removeClass('alert alert-danger');
+                window.location.href = data.redirect_path;
+            }
+            else{
+                var messageContent = '<div class="alert alert-danger">' + data.message + '</div>';
+                $('#message-sign-in').html(messageContent);
+            }
         });
 
     });

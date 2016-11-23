@@ -14,6 +14,18 @@
 //= require jquery_ujs
 //= require_tree .
 
+function popupMessage(message, klass) {
+    notificationTop = "+" + ($(document).scrollTop() + 60);
+    $('#notification').html(message).addClass(klass).show().animate({
+        top: notificationTop
+    }, 200);
+    setTimeout(function () {
+        $('#notification').hide().animate({
+            top: "-60"
+        }, 500);
+    }, 4000);
+}
+
 $(function () {
     $(".dropdown").hover(
         function () {

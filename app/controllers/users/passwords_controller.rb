@@ -6,7 +6,16 @@ class Users::PasswordsController < Devise::PasswordsController
 
   # POST /resource/password
   def create
-    super
+    self.resource = resource_class.send_reset_password_instructions(resource_params)
+    yield resource if block_given?
+    respond_to do |format|
+      if successfully_sent?(resource)
+        format.json {render json: {success: true, redirect_path: root_path}}
+      else
+        format.json {render json: {success: false, message: errors_to_message_string(resource.errors)} }
+      end
+    end
+
   end
 
   # GET /resource/password/edit?reset_password_token=abcdef
