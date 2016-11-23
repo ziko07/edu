@@ -11,8 +11,7 @@
 /log/*
 !/log/.keep
 /tmp
-/config/database.yml
+config/database.yml
 .idea/
 lib/capistrano/
 public/uploads/
-app/assets/images/dashboard/coursesx.png
