@@ -17,17 +17,22 @@
           <table class="table">
             <thead>
             <tr>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Email</th>
+              <th class="hide-on-mobile">First Name</th>
+              <th class="hide-on-mobile">Last Name</th>
+              <th class="hide-on-mobile">Email</th>
+              <th class="hide-on-desktop">Instructor</th>
               <th></th>
             </tr>
             </thead>
             <tbody>
             <tr>
-              <td>Ling</td>
-              <td>Ling</td>
-              <td>test@test.com</td>
+              <td class="hide-on-desktop">
+                Ling Ling <br/>
+                test@test.com
+              </td>
+              <td class="hide-on-mobile">Ling</td>
+              <td class="hide-on-mobile">Ling</td>
+              <td class="hide-on-mobile">test@test.com</td>
               <td class="instructor-list-action">
                 <%= link_to '', class: 'btn btn-danger reset-border-radius' do %>
                     Reset Password
@@ -41,9 +46,13 @@
               </td>
             </tr>
             <tr>
-              <td>John</td>
-              <td>Dohe</td>
-              <td>john@test.com</td>
+              <td class="hide-on-desktop">
+                John Dohe <br/>
+                john@test.com
+              </td>
+              <td class="hide-on-mobile">John</td>
+              <td class="hide-on-mobile">Dohe</td>
+              <td class="hide-on-mobile">john@test.com</td>
               <td class="instructor-list-action">
                 <%= link_to '', class: 'btn btn-danger reset-border-radius' do %>
                     Reset Password
@@ -57,9 +66,13 @@
               </td>
             </tr>
             <tr>
-              <td>Mick</td>
-              <td>Qing</td>
-              <td>qing@test.com</td>
+              <td class="hide-on-desktop">
+                Mick Qing <br/>
+                qing@test.com
+              </td>
+              <td class="hide-on-mobile">Mick</td>
+              <td class="hide-on-mobile">Qing</td>
+              <td class="hide-on-mobile">qing@test.com</td>
               <td class="instructor-list-action">
                 <%= link_to '', class: 'btn btn-danger reset-border-radius' do %>
                     Reset Password

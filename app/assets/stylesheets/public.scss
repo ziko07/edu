@@ -25,6 +25,16 @@
   display: none;
 }
 
+table {
+  .hide-on-mobile {
+    display: table-cell;
+  }
+
+  .hide-on-desktop {
+    display: none;
+  }
+}
+
 @media (max-width: 768px) {
   .hide-on-desktop {
     display: block;
@@ -32,5 +42,15 @@
 
   .hide-on-mobile {
     display: none;
+  }
+
+  table {
+    .hide-on-desktop {
+      display: table-cell;
+    }
+
+    .hide-on-mobile {
+      display: none;
+    }
   }
 }

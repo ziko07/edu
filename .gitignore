@@ -14,4 +14,5 @@
 /config/database.yml
 .idea/
 lib/capistrano/
-public/*
+public/uploads/
+app/assets/images/dashboard/coursesx.png
