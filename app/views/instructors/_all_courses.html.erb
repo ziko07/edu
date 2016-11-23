@@ -10,7 +10,7 @@
       <td colspan="4">
         <div class="instructors-course-name">
           <p>Piano for Beginners in London</p>
-          <%= link_to 'Go to Course', '/course/coursename', class: 'btn btn-info reset-padding reset-border-radius goto-course-ling' %>
+          <%= link_to 'Go to Course', course_path('coursename'), class: 'btn btn-info reset-padding reset-border-radius goto-course-ling' %>
           <%= link_to edit_course_instructors_path(2), class: 'btn btn-info reset-padding reset-border-radius edit-course-link' do %>
               <i class="fa fa-pencil-square-o"></i> Edit
           <% end %>
@@ -24,7 +24,7 @@
       <td colspan="4">
         <div class="instructors-course-name">
           <p>Guitar For Beginners in London</p>
-          <%= link_to 'Go to Course', '/course/coursename', class: 'btn btn-info reset-padding reset-border-radius  goto-course-ling' %>
+          <%= link_to 'Go to Course',  course_path('coursename') , class: 'btn btn-info reset-padding reset-border-radius  goto-course-ling' %>
           <%= link_to edit_course_instructors_path(2), class: 'btn btn-info reset-padding reset-border-radius edit-course-link' do %>
               <i class="fa fa-pencil-square-o"></i> Edit
           <% end %>
