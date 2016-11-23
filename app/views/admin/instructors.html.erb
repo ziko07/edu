@@ -40,6 +40,38 @@
                 <% end %>
               </td>
             </tr>
+            <tr>
+              <td>John</td>
+              <td>Dohe</td>
+              <td>john@test.com</td>
+              <td class="instructor-list-action">
+                <%= link_to '', class: 'btn btn-danger reset-border-radius' do %>
+                    Reset Password
+                <% end %>
+                <%= link_to '', class: 'btn btn-danger reset-border-radius' do %>
+                    Unpublish
+                <% end %>
+                <%= link_to admin_view_instructors_path(user_id: 1), class: 'btn btn-info reset-border-radius' do %>
+                    <i class="fa fa-pencil-square-o"></i>
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <td>Mick</td>
+              <td>Qing</td>
+              <td>qing@test.com</td>
+              <td class="instructor-list-action">
+                <%= link_to '', class: 'btn btn-danger reset-border-radius' do %>
+                    Reset Password
+                <% end %>
+                <%= link_to '', class: 'btn btn-danger reset-border-radius' do %>
+                    Unpublish
+                <% end %>
+                <%= link_to admin_view_instructors_path(user_id: 1), class: 'btn btn-info reset-border-radius' do %>
+                    <i class="fa fa-pencil-square-o"></i>
+                <% end %>
+              </td>
+            </tr>
             </tbody>
           </table>
         </div>
