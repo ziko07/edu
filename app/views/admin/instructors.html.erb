@@ -34,10 +34,10 @@
               <td class="hide-on-mobile">Ling</td>
               <td class="hide-on-mobile">test@test.com</td>
               <td class="instructor-list-action">
-                <%= link_to '', class: 'btn btn-danger reset-border-radius' do %>
+                <%= link_to '#', class: 'btn btn-danger reset-border-radius', data: {toggle: 'modal', target: '#admin-instructor-reset-password'} do %>
                     Reset Password
                 <% end %>
-                <%= link_to '', class: 'btn btn-danger reset-border-radius' do %>
+                <%= link_to '#', class: 'btn btn-danger reset-border-radius', data: {toggle: 'modal', target: '#admin-instructor-unpublished'} do %>
                     Unpublish
                 <% end %>
                 <%= link_to admin_view_instructors_path(user_id: 1), class: 'btn btn-info reset-border-radius' do %>
@@ -54,10 +54,10 @@
               <td class="hide-on-mobile">Dohe</td>
               <td class="hide-on-mobile">john@test.com</td>
               <td class="instructor-list-action">
-                <%= link_to '', class: 'btn btn-danger reset-border-radius' do %>
+                <%= link_to '#', class: 'btn btn-danger reset-border-radius', data: {toggle: 'modal', target: '#admin-instructor-reset-password'} do %>
                     Reset Password
                 <% end %>
-                <%= link_to '', class: 'btn btn-danger reset-border-radius' do %>
+                <%= link_to '#', class: 'btn btn-danger reset-border-radius', data: {toggle: 'modal', target: '#admin-instructor-unpublished'} do %>
                     Unpublish
                 <% end %>
                 <%= link_to admin_view_instructors_path(user_id: 1), class: 'btn btn-info reset-border-radius' do %>
@@ -74,10 +74,10 @@
               <td class="hide-on-mobile">Qing</td>
               <td class="hide-on-mobile">qing@test.com</td>
               <td class="instructor-list-action">
-                <%= link_to '', class: 'btn btn-danger reset-border-radius' do %>
+                <%= link_to '', class: 'btn btn-danger reset-border-radius', data: {toggle: 'modal', target: '#admin-instructor-reset-password'} do %>
                     Reset Password
                 <% end %>
-                <%= link_to '', class: 'btn btn-danger reset-border-radius' do %>
+                <%= link_to '', class: 'btn btn-danger reset-border-radius', data: {toggle: 'modal', target: '#admin-instructor-unpublished'} do %>
                     Unpublish
                 <% end %>
                 <%= link_to admin_view_instructors_path(user_id: 1), class: 'btn btn-info reset-border-radius' do %>
@@ -93,5 +93,53 @@
   </div>
 </div>
 
+<div class="modal fade" id="admin-instructor-reset-password" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Password Already Created</h4>
+      </div>
 
+      <div class="modal-body">
+        <p>This instructor already has a login password assigned. Do you want to reset their password and email them new
+          login password?</p>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default reset-border-radius">Reset Password</button>
+        <button type="button" class="btn btn-default reset-border-radius" data-dismiss="modal">Cancel</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="admin-instructor-unpublished" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Confirm Unpublish</h4>
+      </div>
+
+      <div class="modal-body">
+        <p>
+          Are you sure wish to unpublish the selected instructor?
+          Instructor will no longer be visible on the website but archived for historical reporting.
+        </p>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger reset-border-radius">Unpublished</button>
+        <button type="button" class="btn btn-default reset-border-radius" data-dismiss="modal">Cancel</button>
+      </div>
+
+    </div>
+  </div>
+</div>
 
