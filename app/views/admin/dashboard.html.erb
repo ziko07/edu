@@ -16,12 +16,13 @@
         <div class="content-body">
           <div class="alerts-list">
             <div class="alert-item">
-              <div class="pull-left item-name">Pending Your Review</div>
-              <div class="center-item">
-                <i class="fa fa-caret-right"></i> 3 Courses
-              </div>
-              <div class="pull-right">
-              </div>
+                  <div class="pull-left item-name">Pending Your Review</div>
+                  <div class="center-item">
+                    <i class="fa fa-caret-right"></i>
+                    <%= link_to admin_courses_path() + '#pending-review', class: 'admin-alart-link' do %>
+                        3 Courses
+                    <% end %>
+                  </div>
             </div>
           </div>
         </div>

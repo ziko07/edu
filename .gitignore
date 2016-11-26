@@ -11,7 +11,7 @@
 /log/*
 !/log/.keep
 /tmp
-/config/database.yml
-.idea/*
+config/database.yml
+.idea/
 lib/capistrano/
-public/*
+public/uploads/

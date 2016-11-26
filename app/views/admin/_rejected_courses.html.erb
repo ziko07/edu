@@ -1,23 +1,25 @@
-<div class="tab-pane fade table-responsive" id="rejected">
+<div class="tab-pane fade admin-course-wrapper" id="rejected">
   <table class="table tablesorter" id="courses-list">
     <thead>
     <tr>
       <th></th>
-      <th colspan="4">Name</th>
+      <th>Name</th>
       <th>Status</th>
-      <th>Instructor</th>
-      <th></th>
+      <th class="hide-on-mobile">Instructor</th>
+      <th class="hide-on-mobile"></th>
     </tr>
     </thead>
     <tbody>
     <tr>
       <td>
-        <div style="background-image:url('<%= image_path('piano.jpg') %>');"></div>
+        <div style="background-image:url('<%= image_path('guitar.jpg') %>');" class="course-image"></div>
       </td>
-      <td colspan="4">
+      <td>
         <div class="border-right">
-          <p>Piano for Beginners in London</p>
-          <%= link_to 'Go to Course', '/course/coursename', class: 'btn btn-info reset-padding reset-border-radius' %>
+          <p> Guitar For Beginners in London
+            <span class="hide-on-desktop"> Instructed By <%= link_to 'Marco Pietro', profile_instructors_path('marco-p') %> </span>
+          </p>
+          <%= link_to 'Go to Course', new_course_path('coursename'), class: 'btn btn-info reset-padding reset-border-radius' %>
         </div>
       </td>
       <td>
@@ -27,20 +29,26 @@
           <option value="Rejected">Rejected</option>
           <option value="Unpublished">Unpublished</option>
         </select>
+
+        <div class="hide-on-desktop course-status-save">
+          <%= link_to 'Save', '#', class: 'btn btn-danger reset-padding reset-border-radius' %>
+        </div>
       </td>
-      <td>Lionel Messi</td>
-      <td>
-        <%= link_to 'Save', '#', class: 'btn btn-danger reset-padding reset-border-radius' %>
+      <td class="hide-on-mobile">Marco Pietro</td>
+      <td class="hide-on-mobile">
+        <%= link_to 'Save', '', class: 'btn btn-danger reset-padding reset-border-radius' %>
       </td>
     </tr>
     <tr>
       <td>
-        <div style="background-image:url('<%= image_path('guitar.jpg') %>');"></div>
+        <div style="background-image:url('<%= image_path('guitar.jpg') %>');" class="course-image"></div>
       </td>
-      <td colspan="4">
+      <td>
         <div class="border-right">
-          <p>Guitar For Beginners in London</p>
-          <%= link_to 'Go to Course', '/course/coursename', class: 'btn btn-info reset-padding reset-border-radius' %>
+          <p> Guitar For Beginners in London
+            <span class="hide-on-desktop"> Instruct By <%= link_to 'Marco Pietro', profile_instructors_path('marco-p') %> </span>
+          </p>
+          <%= link_to 'Go to Course', new_course_path('coursename'), class: 'btn btn-info reset-padding reset-border-radius' %>
         </div>
       </td>
       <td>
@@ -50,9 +58,13 @@
           <option value="Rejected">Rejected</option>
           <option value="Unpublished">Unpublished</option>
         </select>
+
+        <div class="hide-on-desktop course-status-save">
+          <%= link_to 'Save', '#', class: 'btn btn-danger reset-padding reset-border-radius' %>
+        </div>
       </td>
-      <td>Carlos Teves</td>
-      <td>
+      <td class="hide-on-mobile">Marco Pietro</td>
+      <td class="hide-on-mobile">
         <%= link_to 'Save', '', class: 'btn btn-danger reset-padding reset-border-radius' %>
       </td>
     </tr>

@@ -1,4 +1,5 @@
 <div class="tab-pane fade in" id="course-summary">
+
   <div class="header-wrapper">
     <h3 class="reset-margin info-title text-center">
       Course Summary
@@ -12,18 +13,22 @@
   </div>
   <div class="input-container">
     <div class="form-wrapper">
-      <%= form_tag '#' do %>
-          <div class="form-group">
-            <%= label_tag :summary %>
-            <%= text_area_tag :summary, '', class: 'course-summary-input' %>
-          </div>
+      <% if @course.new_record? %>
+          <p> Please complete course basics information and save first </p>
+      <% else %>
+          <%= form_tag '#' do %>
+              <div class="form-group">
+                <%= label_tag :summary %>
+                <%= text_area_tag :summary, '', class: 'course-summary-input' %>
+              </div>
 
-          <hr/>
-          <div class="form-group text-center">
-            <%= link_to '#', class: 'btn btn-success' do %>
-                <i class="fa fa-save"></i> Save
-            <% end %>
-          </div>
+              <hr/>
+              <div class="form-group text-center">
+                <%= link_to '#', class: 'btn btn-success' do %>
+                    <i class="fa fa-save"></i> Save
+                <% end %>
+              </div>
+          <% end %>
       <% end %>
     </div>
   </div>

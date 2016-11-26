@@ -11,7 +11,7 @@
 
         <div class="snippet-preview">
           <div class="text-header"> Snippet preview</div>
-          <div class="title"> Sample Page Title</div>
+          <div class="title snippet-preview-title"> Sample Page Title</div>
           <div class="page-link"> www.domain.com/courses</div>
           <p class="meta-desc">
             Sample meta description Sample meta descriptionSample meta descriptionSample meta descriptionSample meta
@@ -26,7 +26,7 @@
           <%= form_tag '#' do %>
               <div class="form-group clearfix">
                 <%= label_tag :page_title, 'Page Title' %>
-                <%= text_field_tag :page_title, 'Sample Page Title Sample Page Title Sample Page Title', class: 'form-control page-title', data: {max_size: 85} %>
+                <%= text_field_tag :page_title, '', class: 'form-control page-title', data: {max_size: 70, bind: '.snippet-preview-title'} %>
                 <div class="progress-wrapper">
                   <div class="used" style="width: 75%;"></div>
                   <div class="remaining" style="width: 25%;"></div>
@@ -35,7 +35,7 @@
 
               <div class="form-group clearfix">
                 <%= label_tag :meta_desc, 'Meta Description' %>
-                <%= text_area_tag :meta_desc, 'Sample meta description Sample meta description Sample meta description Sample meta description Sample meta description Sample meta descriptionSample meta descriptionSample meta description meta description', class: 'form-control meta-desc', data: {max_size: 250} %>
+                <%= text_area_tag :meta_desc, '', class: 'form-control', data: {max_size: 156, bind: '.meta-desc'} %>
                 <div class="progress-wrapper">
                   <div class="used" style="width: 95%;"></div>
                   <div class="remaining" style="width: 5%;"></div>
@@ -67,8 +67,9 @@
 
         function updateProgress(element, value) {
             var maxSize = element.attr('data-max-size');
+            var bind = element.attr('data-bind');
             var used = 0, remaining = 100;
-            var length = getterSetter(element, maxSize);
+            var length = getterSetter(element, maxSize, bind);
             if (length > 0) {
                 used = (length / maxSize) * 100;
                 remaining = 100 - used;
@@ -84,14 +85,16 @@
             }
         }
 
-        function getterSetter(element, maxSize) {
+        function getterSetter(element, maxSize, bind) {
             var value;
             value = element.val();
-            console.log("Maxsize: " + maxSize + " length: " + value.length);
             if (value.length >= maxSize) {
                 value = value.substring(0, maxSize);
                 element.val(value);
                 return maxSize;
+            }
+            if (value != '') {
+                $(bind).html(value);
             }
             return value.length;
         }

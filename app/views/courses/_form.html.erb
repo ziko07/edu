@@ -7,12 +7,16 @@
             <i class="fa fa-book"></i>
             Courses
           </h3>
+
+          <div class="hide-on-desktop text-center" style="margin: 5px 0">
+            <b> Piano for Beginners in London </b>
+          </div>
           <ul class="nav nav-tabs" id="course-create-tab">
             <li>
               <h3 class="course-info-text"> COURSE INFO </h3>
             </li>
             <li class="active">
-              <a href="#basic-info"> Basic </a>
+              <a href="#basic-info"> Basics </a>
             </li>
             <li>
               <a href="#course-summary"> Course Summary </a>
@@ -30,10 +34,10 @@
     <div class="col-sm-8">
       <div class="row">
         <div id="new-course" class="tab-content">
-          <%= render 'instructors/basic_info' %>
-          <%= render 'instructors/summary' %>
-          <%= render 'instructors/image' %>
-          <%= render 'instructors/promo_video' %>
+          <%= render 'basic_info' %>
+          <%= render 'summary' %>
+          <%= render 'image' %>
+          <%= render 'promo_video' %>
         </div>
       </div>
     </div>
