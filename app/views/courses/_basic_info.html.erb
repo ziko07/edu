@@ -6,7 +6,7 @@
     </h3>
 
     <p class="course-title hide-on-mobile">
-      <b> Piano for Beginners in London </b>
+      <b> <%= @course.title.present? ? @course.title : '' %> </b>
     </p>
 
     <h3 class="info-title text-center reset-margin">
@@ -14,16 +14,23 @@
     </h3>
 
     <div class="sub-title text-center">
-      Help students find your course.
+      <%= @course.subtitle.present? ? @course.title : '' %>
     </div>
   </div>
   <div class="input-container">
     <div class="form-wrapper">
-      <%= form_tag do %>
+      <%= form_for @course, remote: true do |f|%>
+
+          <div id="errors-in-course-form">
+            <div class="alert">
+              <button type="button" class="close" data-dismiss="alert">x</button>
+              <span></span>
+            </div>
+          </div>
           <div class="form-group">
-            <%= label_tag :title %>
+            <%= f.label :title %>
             <div class="input-group">
-              <%= text_field_tag :title, '', class: 'form-control', placeholder: 'e.g. Piano for Beginners in 4 Days in London' %>
+              <%= f.text_field :title, class: 'form-control', placeholder: 'e.g. Piano for Beginners in 4 Days in London' %>
               <span class="input-group-addon">58</span>
             </div>
           </div>
@@ -31,19 +38,19 @@
           <div class="form-group">
             <%= label_tag 'Subtitle' %>
             <div class="input-group">
-              <%= text_field_tag :sub_title, '', class: 'form-control', placeholder: 'e.g. A-Z guide to playing Ed Sheeran, Foo Fighter songs on the piano' %>
+              <%= f.text_field :subtitle, class: 'form-control', placeholder: 'e.g. A-Z guide to playing Ed Sheeran, Foo Fighter songs on the piano', required: true %>
               <span class="input-group-addon">120</span>
             </div>
           </div>
 
           <div class="form-group">
             <%= label_tag :category %>
-            <%= select_tag :category, options_for_select(['Guitar', 'Music business', 'Music production', 'Percussion', 'Piano', 'Play by ear', 'Songwriting', 'Strings', 'Ukulele', 'Woodwind & brass']), {class: 'form-control', prompt: '-- Select One --'} %>
+            <%= f.select :category_id, Category.all.collect{|category| [category.title, category.id]}, { prompt: '-- Select One --'}, {class: 'form-control', required: true} %>
           </div>
 
           <hr/>
           <div class="form-group text-center">
-            <%= link_to '#', class: 'btn btn-success' do %>
+            <%= button_tag  class: 'btn btn-success' do %>
                 <i class="fa fa-save"></i> Save
             <% end %>
           </div>

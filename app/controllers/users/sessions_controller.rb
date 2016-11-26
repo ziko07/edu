@@ -10,14 +10,13 @@ class Users::SessionsController < Devise::SessionsController
   def create
     respond_to do |format|
       resource = User.find_for_database_authentication(email: params[:user][:email])
-      return invalid_login_attempt unless resource
 
-      if resource.valid_password?(params[:user][:password])
+      if resource.present? && resource.valid_password?(params[:user][:password]) && resource.confirmed_at.present?
         sign_in :user, resource
-        return render json: {success: true, redirect_path: after_sign_in_path_for(resource) }, status: :ok
+        format.json { render json: {success: true, redirect_path: after_sign_in_path_for(resource) } }
+      else
+        format.json { render json: { success: false, message: 'Invalid Email or Password'} }
       end
-
-      invalid_login_attempt
     end
   end
 
