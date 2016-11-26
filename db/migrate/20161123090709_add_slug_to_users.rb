@@ -1,4 +1,4 @@
-class AddSlugToUsers < Activechange_column :users, :full_name, :first_name, :stringRecord::Migration
+class AddSlugToUsers < ActiveRecord::Migration
   def change
     add_column :users, :slug, :string, unique: true
   end

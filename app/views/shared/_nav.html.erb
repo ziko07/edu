@@ -1,5 +1,5 @@
 <div>
-  <% if controller_name == 'instructors' %>
+  <% if controller_name == 'instructors' || current_user.present? %>
       <%= render 'shared/instructor_nav' %>
   <% else %>
       <%= render 'shared/public_nav' %>

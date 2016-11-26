@@ -23,14 +23,14 @@
 
           <div id="errors-in-course-form">
             <div class="alert">
-              <button type="button" class="close" data-dismiss="alert">x</button>
+              <!--<button type="button" class="close" data-dismiss="alert">x</button>-->
               <span></span>
             </div>
           </div>
           <div class="form-group">
             <%= f.label :title %>
             <div class="input-group">
-              <%= f.text_field :title, class: 'form-control', placeholder: 'e.g. Piano for Beginners in 4 Days in London' %>
+              <%= f.text_field :title, class: 'form-control', placeholder: 'e.g. Piano for Beginners in 4 Days in London', required: true %>
               <span class="input-group-addon">58</span>
             </div>
           </div>
