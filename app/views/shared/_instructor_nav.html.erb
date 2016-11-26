@@ -15,7 +15,7 @@
       </a>
 
       <div class="dropdown-menu instructor-dropdown">
-        <%= link_to 'Logout', dashboard_instructors_path %>
+        <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
       </div>
     </li>
   </ul>

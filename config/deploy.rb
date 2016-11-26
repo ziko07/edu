@@ -3,7 +3,7 @@ lock '3.6.1'
 
 set :application, 'edu'
 set :repo_url, 'git@github.com:ziko07/edu.git'
-set :branch, 'master'
+set :branch, 'development'
 
 set :deploy_to, '/root/apps/edu'
 
