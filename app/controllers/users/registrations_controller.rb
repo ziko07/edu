@@ -9,9 +9,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def create
     build_resource(sign_up_params)
-    last_name, first_name = *params[:user][:full_name].reverse.split(/\s+/, 2).collect(&:reverse)
-    resource.first_name = first_name
-    resource.last_name = last_name
+    full_name = params[:user][:full_name].split(' ', 2)
+    resource.first_name = full_name.first
+    resource.last_name = full_name.last
     if resource.save
       if resource.active_for_authentication?
         sign_up(resource_name, resource)
