@@ -15,11 +15,18 @@
         <p> Please complete course basics information and save first </p>
     <% else %>
         <div class="form-wrapper">
+          <div class="alert form-alert"></div>
           <div class="form-group">
             <%= label_tag :cover_preview, 'Video Preview:*' %>
             <div class="cover-preview">
               <div class="text-center">
-                <%= image_tag 'promo_video_before_upload.jpg', class: 'preview-video' %>
+                <% if @course.promo_video.present? %>
+                    <div class="preview-video">
+                      <iframe src="<%= @course.promo_video %>" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                <% else %>
+                    <%= image_tag 'promo_video_before_upload.jpg', class: 'preview-video' %>
+                <% end %>
               </div>
               <p>
                 <b> Don't forget to add a promo video! </b>
@@ -32,16 +39,18 @@
               </p>
             </div>
           </div>
-          <div class="form-group">
-            <div class="input-group">
-              <%= text_field_tag :uploaded_image, '', placeholder: 'Enter YouTube link of video here', class: 'form-control' %>
-              <label class="input-group-btn">
-            <span class="btn btn-success">
-               <i class="fa fa-save"></i> Save
-            </span>
-              </label>
-            </div>
-          </div>
+          <%= form_for @course, remote: true do |f|%>
+              <div class="form-group">
+                <div class="input-group">
+                  <%= f.text_field :promo_video,  placeholder: 'Enter YouTube link of video here', class: 'form-control' %>
+                  <label class="input-group-btn">
+                        <button class="btn btn-success">
+                            <i class="fa fa-save"></i> Save
+                        </button>
+                  </label>
+                </div>
+              </div>
+          <% end %>
         </div>
     <% end %>
   </div>

@@ -17,4 +17,9 @@
 # Category.create!(title: 'Ukulele', image: File.open(File.join(Rails.root, '/app/assets/images/ukulele.jpg')), position: 9)
 # Category.create!(title: 'Woodwind & Brass', image: File.open(File.join(Rails.root, '/app/assets/images/woodwind.jpg')), position: 10)
 
-User.delete_all
+# User.delete_all
+
+CourseStatus.create!(name: 'pending review')
+CourseStatus.create!(name: 'published')
+CourseStatus.create!(name: 'rejected')
+CourseStatus.create!(name: 'unpublished')
