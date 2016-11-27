@@ -1,5 +1,5 @@
 <% if @course.errors.any? %>
-$('.form-alert').addClass('alert-danger').html('<%= escape_javascript(errors_to_message_string(@course.errors)).html_safe %>')
+$('.form-alert').addClass('alert-danger').removeClass('hidden').html('<%= escape_javascript(errors_to_message_string(@course.errors)).html_safe %>')
 <% else %>
-$('.form-alert').addClass('alert-success').html('<%= escape_javascript( flash[:success] ).html_safe %>')
+$('.form-alert').addClass('alert-success').removeClass('hidden').html('<%= escape_javascript( flash[:success] ).html_safe %>')
 <% end %>
