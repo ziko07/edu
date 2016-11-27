@@ -39,17 +39,12 @@ Rails.application.routes.draw do
     collection do
       get :dashboard
       get '/:id', to: :profile, as: :profile
-      get '/course/new', to: :new_course #, as: :new_course
-      get '/course/:id/edit', to: :edit_course, as: :edit_course
-      post '/course', to: :create_course, as: :create_course
-      put '/course/:id', to: :update_course, as: :update_course
-      delete '/course/:id', to: :delete_course, as: :delete_course
     end
   end
 
   get :page, to: 'welcome#edit_page'
 
-  get '/:slug', to: 'courses#show', as: :show_course
+  get '/:id', to: 'courses#show', as: :show_course
 
   # Example resource route with options:
   #   resources :products do

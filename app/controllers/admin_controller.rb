@@ -21,7 +21,7 @@ class AdminController < ApplicationController
   end
 
   def courses
-
+    @courses = Course.all
   end
 
   def seo_pages

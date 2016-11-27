@@ -20,13 +20,7 @@
   <div class="input-container">
     <div class="form-wrapper">
       <%= form_for @course, remote: true do |f|%>
-
-          <div id="errors-in-course-form">
-            <div class="alert">
-              <!--<button type="button" class="close" data-dismiss="alert">x</button>-->
-              <span></span>
-            </div>
-          </div>
+          <div class="alert form-alert"></div>
           <div class="form-group">
             <%= f.label :title %>
             <div class="input-group">

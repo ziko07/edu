@@ -23,6 +23,17 @@ ActiveRecord::Schema.define(version: 20161127122637) do
   end
 
   create_table "courses", force: :cascade do |t|
+    t.string   "title",            limit: 255
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+    t.string   "subtitle",         limit: 255
+    t.integer  "category_id",      limit: 4
+    t.integer  "user_id",          limit: 4
+    t.text     "summary",          limit: 65535
+    t.string   "image",            limit: 255
+    t.string   "promo_video",      limit: 255
+    t.string   "slug",             limit: 255
+    t.integer  "course_status_id", limit: 4,     default: 1
     t.string   "title",       limit: 255
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false

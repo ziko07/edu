@@ -3,34 +3,22 @@
     <thead>
     </thead>
     <tbody>
-    <tr>
-      <td>
-        <div style="background-image:url('<%= image_path('piano.jpg') %>');" class="course-image"></div>
-      </td>
-      <td colspan="4">
-        <div class="instructors-course-name">
-          <p>Piano for Beginners in London</p>
-          <%= link_to 'Go to Course', show_course_path('coursename'), class: 'btn btn-info reset-padding reset-border-radius goto-course-ling' %>
-          <%= link_to edit_course_instructors_path(2), class: 'btn btn-info reset-padding reset-border-radius edit-course-link' do %>
-              <i class="fa fa-pencil-square-o"></i> Edit
-          <% end %>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <div style="background-image:url('<%= image_path('guitar.jpg') %>');"></div>
-      </td>
-      <td colspan="4">
-        <div class="instructors-course-name">
-          <p>Guitar For Beginners in London</p>
-          <%= link_to 'Go to Course', show_course_path('coursename'), class: 'btn btn-info reset-padding reset-border-radius  goto-course-ling' %>
-          <%= link_to edit_course_instructors_path(2), class: 'btn btn-info reset-padding reset-border-radius edit-course-link' do %>
-              <i class="fa fa-pencil-square-o"></i> Edit
-          <% end %>
-        </div>
-      </td>
-    </tr>
+    <% @courses.rejected.each do |course| %>
+        <tr>
+          <td>
+            <div style="background-image:url('<%= image_path(course.image) %>');" class="course-image"></div>
+          </td>
+          <td colspan="4">
+            <div class="instructors-course-name">
+              <p><%= course.title %></p>
+              <%= link_to 'Go to Course', show_course_path(course), class: 'btn btn-info reset-padding reset-border-radius goto-course-ling' %>
+              <%= link_to edit_course_path(course), class: 'btn btn-info reset-padding reset-border-radius edit-course-link' do %>
+                  <i class="fa fa-pencil-square-o"></i> Edit
+              <% end %>
+            </div>
+          </td>
+        </tr>
+    <% end %>
     </tbody>
   </table>
 </div>

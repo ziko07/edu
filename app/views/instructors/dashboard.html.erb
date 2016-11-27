@@ -16,11 +16,11 @@
         <div class="content-body">
           <div class="content-nav">
             <ul class="nav nav-pills">
-              <li class="active" role="presentation"><a data-toggle="tab" href="#all">All (68)</a></li>
-              <li role="presentation"><a data-toggle="tab" href="#published">Published (68)</a></li>
-              <li role="presentation"><a data-toggle="tab" href="#pending-review">Pending Review (112)</a></li>
-              <li role="presentation"><a data-toggle="tab" href="#rejected">Rejected (5)</a></li>
-              <li role="presentation"><a data-toggle="tab" href="#unpublished"> Unpublished (12)</a></li>
+              <li class="active" role="presentation"><a data-toggle="tab" href="#all">All (<%= @courses.count %>)</a></li>
+              <li role="presentation"><a data-toggle="tab" href="#published">Published (<%= @courses.published.count %>)</a></li>
+              <li role="presentation"><a data-toggle="tab" href="#pending-review">Pending Review (<%= @courses.pending_review.count %>)</a></li>
+              <li role="presentation"><a data-toggle="tab" href="#rejected">Rejected (<%= @courses.rejected.count %>)</a></li>
+              <li role="presentation"><a data-toggle="tab" href="#unpublished"> Unpublished (<%= @courses.unpublished.count %>)</a></li>
             </ul>
           </div>
           <div class="content-item">

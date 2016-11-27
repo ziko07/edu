@@ -9,6 +9,7 @@
       <% if @course.new_record? %>
           <p> Please complete course basics information and save first </p>
       <% else %>
+          <div class="alert form-alert"></div>
           <div class="form-group">
             <%= label_tag :cover_preview, 'Cover Preview:*' %>
             <div class="cover-preview">
@@ -58,8 +59,10 @@
             readURL(this);
         });
 
-        $('#upload-course-image-form').ajaxForm(function () {
-            alert('Image uploaded');
+        $('#upload-course-image-form').ajaxForm({
+            url: $(this).attr('action'),
+            dataType: 'script',
+            method: 'put'
         });
 
         function readURL(input) {
