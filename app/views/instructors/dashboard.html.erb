@@ -16,20 +16,26 @@
         <div class="content-body">
           <div class="content-nav">
             <ul class="nav nav-pills">
-              <li class="active" role="presentation"><a data-toggle="tab" href="#all">All (<%= @courses.count %>)</a></li>
-              <li role="presentation"><a data-toggle="tab" href="#published">Published (<%= @courses.published.count %>)</a></li>
-              <li role="presentation"><a data-toggle="tab" href="#pending-review">Pending Review (<%= @courses.pending_review.count %>)</a></li>
-              <li role="presentation"><a data-toggle="tab" href="#rejected">Rejected (<%= @courses.rejected.count %>)</a></li>
-              <li role="presentation"><a data-toggle="tab" href="#unpublished"> Unpublished (<%= @courses.unpublished.count %>)</a></li>
+              <li class="active" role="presentation"><a data-toggle="tab" href="#all">All (<%= @courses.count %>)</a>
+              </li>
+              <li role="presentation">
+                <a data-toggle="tab" href="#published">Published (<%= @courses.published.count %>)</a></li>
+              <li role="presentation">
+                <a data-toggle="tab" href="#pending-review">Pending Review (<%= @courses.pending_review.count %>)</a>
+              </li>
+              <li role="presentation">
+                <a data-toggle="tab" href="#rejected">Rejected (<%= @courses.rejected.count %>)</a></li>
+              <li role="presentation">
+                <a data-toggle="tab" href="#unpublished"> Unpublished (<%= @courses.unpublished.count %>)</a></li>
             </ul>
           </div>
           <div class="content-item">
             <div class="tab-content">
-              <%= render 'instructors/all_courses' %>
-              <%= render 'instructors/published_courses' %>
-              <%= render 'instructors/pending_review_courses' %>
-              <%= render 'instructors/rejected_courses' %>
-              <%= render 'instructors/unpublished_courses' %>
+              <%= render 'instructors/course_list', tab: 'all', klass: 'active', courses: @courses %>
+              <%= render 'instructors/course_list', tab: 'published', klass: '', courses: @courses.published %>
+              <%= render 'instructors/course_list', tab: 'pending-review', klass: '', courses: @courses.pending_review %>
+              <%= render 'instructors/course_list', tab: 'rejected', klass: '', courses: @courses.rejected %>
+              <%= render 'instructors/course_list', tab: 'unpublished', klass: '', courses: @courses.unpublished %>
             </div>
           </div>
         </div>

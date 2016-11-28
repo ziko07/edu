@@ -59,10 +59,18 @@
             readURL(this);
         });
 
-        $('#upload-course-image-form').ajaxForm({
-            url: $(this).attr('action'),
-            dataType: 'script',
-            method: 'put'
+        $('#upload-course-image-form').submit(function () {
+            if ($('#course_image').val() == '') {
+                alert('No Image Selected');
+            }
+            else {
+                $(this).ajaxSubmit({
+                    url: $(this).attr('action'),
+                    dataType: 'script',
+                    method: 'put'
+                });
+            }
+            return false;
         });
 
         function readURL(input) {

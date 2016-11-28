@@ -15,14 +15,18 @@
 //= require_tree .
 
 function popupMessage(message, klass) {
-    notificationTop = "+" + ($(document).scrollTop() + 60);
-    $('#notification').html(message).addClass(klass).show().animate({
+    var notificationTop = "+" + ($(document).scrollTop() + 60);
+    var notification = $('#notification');
+    notification.find('.notification-content').html(message);
+    notification.addClass(klass).show().animate({
         top: notificationTop
     }, 200);
     setTimeout(function () {
-        $('#notification').hide().animate({
-            top: "-60"
-        }, 500);
+        if (!notification.hasClass('alert-danger')) {
+            notification.hide().animate({
+                top: "-60"
+            }, 500);
+        }
     }, 4000);
 }
 
@@ -31,11 +35,32 @@ $(function () {
         function () {
             $('.dropdown-menu', this).stop(true, true).fadeIn("fast");
             $(this).toggleClass('open');
-            //$('b', this).toggleClass("caret caret-up");
         },
         function () {
             $('.dropdown-menu', this).stop(true, true).fadeOut("fast");
             $(this).toggleClass('open');
-            //$('b', this).toggleClass("caret caret-up");
-        });
+        }
+    );
+
+    $('.force-close-notification').click(function () {
+        $(this).parent().hide().animate({
+            top: "-60"
+        }, 500);
+    });
 });
+
+$(document).ajaxStart(function () {
+    startLoader();
+});
+
+$(document).ajaxComplete(function () {
+    stopLoader();
+});
+
+function startLoader() {
+    $('body').append("<div class='loading'> <i class='fa fa-spinner fa-spin'></i> </div>");
+}
+
+function stopLoader() {
+    $(".loading").remove();
+}

@@ -7,10 +7,10 @@ class ApplicationController < ActionController::Base
 
   def errors_to_message_string(errors)
     total_errors = errors.count
-    message_first = total_errors > 1 ? 'There are errors in' : 'There is a error in'
-    message_second = " "
-    message_intermediate = total_errors > 1 ? ' and reasons are ' : ' and reason is '
-    message_third = " "
+    message_first = "There #{'is'.pluralize(total_errors)} #{'error'.pluralize(total_errors)} in"
+    message_second = ' '
+    message_intermediate = " and #{'reason'.pluralize(total_errors)} #{'is'.pluralize(total_errors)} "
+    message_third = ' '
     message_final = '. Please try again...'
     errors.each_with_index do |( key, error_message), index|
       if index == 0

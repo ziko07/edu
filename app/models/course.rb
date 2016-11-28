@@ -8,15 +8,18 @@ class Course < ActiveRecord::Base
   friendly_id :title, use: :slugged
 
   def self.published
-    where(course_status_id: 2)
+    joins(:course_status).where("course_statuses.name like '%published%'")
   end
+
   def self.unpublished
-    where(course_status_id: 4)
+    joins(:course_status).where("course_statuses.name like '%unpublished%'")
   end
+
   def self.pending_review
-    where(course_status_id: 1)
+    joins(:course_status).where("course_statuses.name like '%pending review%'")
   end
+
   def self.rejected
-    where(course_status_id: 3)
+    joins(:course_status).where("course_statuses.name like '%rejected%'")
   end
 end

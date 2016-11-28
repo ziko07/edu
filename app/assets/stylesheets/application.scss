@@ -27,3 +27,16 @@
   display: block !important;
   top: 50px !important;
 }
+
+.loading {
+  background: #ccc none repeat scroll 0 0;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  font-size: 40px;
+  left: 45%;
+  padding: 0 10px;
+  position: fixed;
+  top: 45%;
+  z-index: 9999;
+}
