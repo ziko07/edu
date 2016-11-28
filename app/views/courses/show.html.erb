@@ -10,16 +10,17 @@
       Instructed by <%= link_to @course.user.first_name + '.', profile_instructors_path(@course.user) %>
       <%= link_to @course.category.title, category_courses_path(category: @course.category.title), style: 'margin-left: 20px' %>
     </p>
-
-    <div class="promo-video">
-      <iframe src="https://www.youtube.com/embed/2xK73MucJA0" frameborder="0" allowfullscreen></iframe>
-    </div>
+    <% if @course.promo_video.present? %>
+        <div class="promo-video">
+          <iframe src="<%= @course.promo_video %>" frameborder="0" allowfullscreen></iframe>
+        </div>
+    <% end %>
     <div class="course-content">
       <h1 class="title"> About This Course </h1>
       <b> Course summary </b>
 
       <p class="summary">
-        <%= @course.summary %>
+        <%= @course.summary.html_safe %>
       </p>
     </div>
   </div>

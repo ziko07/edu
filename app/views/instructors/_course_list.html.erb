@@ -6,7 +6,7 @@
     <% courses.each do |course| %>
         <tr>
           <td>
-            <div style="background-image:url('<%= image_path(course.image) %>');" class="course-image"></div>
+            <div style="background-image:url('<%= image_path(course.image.present? ? course.image : 'default-cover-image.jpg' )  %>');" class="course-image"></div>
           </td>
           <td colspan="4">
             <div class="instructors-course-name">
@@ -20,7 +20,9 @@
         </tr>
     <% end %>
     <% unless courses.present? %>
-      No courses
+    <div class="text-center">
+      <h3>No Courses Found</h3>
+    </div>
     <% end %>
     </tbody>
   </table>

@@ -19,7 +19,7 @@
           <div class="form-group">
             <%= label_tag :cover_preview, 'Video Preview:*' %>
             <div class="cover-preview">
-              <div class="text-center">
+              <div class="text-center" id="video-container">
                 <% if @course.promo_video.present? %>
                     <div class="preview-video">
                       <iframe src="<%= @course.promo_video %>" frameborder="0" allowfullscreen></iframe>
@@ -39,7 +39,7 @@
               </p>
             </div>
           </div>
-          <%= form_for @course, remote: true do |f|%>
+          <%= form_for @course, html:{id: 'edit-course-promo-video', remote: true} do |f|%>
               <div class="form-group">
                 <div class="input-group">
                   <%= f.text_field :promo_video,  placeholder: 'Enter YouTube link of video here', class: 'form-control' %>
@@ -55,3 +55,12 @@
     <% end %>
   </div>
 </div>
+<script type="text/javascript">
+    $(function(){
+        $('#course_promo_video').change(function(){
+            var videoSourceIfrema = "<iframe src="+ $(this).val() +" frameborder='0' allowfullscreen></iframe>"
+            $('#video-container').html(videoSourceIfrema)
+        });
+
+    });
+</script>
