@@ -22,11 +22,13 @@
     $(function(){
         $('#user-reset-password').on('ajax:success',function(event, data, status, xhr){
             if(data.success){
-                popupMessage('Reset password instructions have sent to your email. Please check your email', 'alert-success');
+                popupMessage("You should now receive an email allowing you to reset your password. Please make sure to check your spam and thrash folder if you can't find the email.", 'alert-success');
+                <% flash.clear %>
                 $('#user-forgot-password').modal('hide');
             }
             else{
                 var messageContent = '<div class="alert alert-danger">' + data.message + '</div>';
+                <% flash.clear %>
                 $('#message-reset-password').html(messageContent);
             }
         });

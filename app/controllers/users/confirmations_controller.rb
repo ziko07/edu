@@ -32,6 +32,10 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
 
   # The path used after confirmation.
   def after_confirmation_path_for(resource_name, resource)
-    super(resource_name, resource)
+    if signed_in?(resource_name)
+      new_course_path
+    else
+      root_path
+    end
   end
 end

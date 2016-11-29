@@ -5,7 +5,7 @@ class Course < ActiveRecord::Base
   belongs_to :course_status
   validates_presence_of :title, :subtitle
   extend FriendlyId
-  friendly_id :title, use: :slugged
+  friendly_id :course_slug, use: :slugged
 
   def self.published
     joins(:course_status).where("course_statuses.name like '%published%'")
@@ -21,5 +21,13 @@ class Course < ActiveRecord::Base
 
   def self.rejected
     joins(:course_status).where("course_statuses.name like '%rejected%'")
+  end
+
+  private
+
+  def course_slug
+    title_count = Course.where('title = ?', title).count
+    count = (title_count > 0) ? "-" + (title_count + 1).to_s : nil
+    "#{title.gsub(' ', '-')}#{count}"
   end
 end

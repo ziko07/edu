@@ -19,7 +19,8 @@
 
 # User.delete_all
 
-CourseStatus.create!(name: 'pending review')
-CourseStatus.create!(name: 'published')
-CourseStatus.create!(name: 'rejected')
-CourseStatus.create!(name: 'unpublished')
+# CourseStatus.create!(name: 'pending review')
+# CourseStatus.create!(name: 'published')
+# CourseStatus.create!(name: 'rejected')
+# CourseStatus.create!(name: 'unpublished')
+Category.create!(title: 'Singing', image: File.open(File.join(Rails.root, '/app/assets/images/singing_lessons.jpg')), position: 11)

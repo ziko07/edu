@@ -20,7 +20,7 @@
       <b> Course summary </b>
 
       <p class="summary">
-        <%= @course.summary.html_safe %>
+        <%= @course.summary.present? ? @course.summary.html_safe : ''%>
       </p>
     </div>
   </div>

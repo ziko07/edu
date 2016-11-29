@@ -11,10 +11,8 @@ class User < ActiveRecord::Base
   private
 
   def user_slug
-    slg = self.first_name
-    if self.last_name.present?
-      slg += self.last_name.chars.first
-    end
-    slg
+    name_count = User.where('first_name = ?', first_name).count
+    count = (name_count > 0) ? "-" + (name_count + 1).to_s : nil
+    "#{first_name}#{count}"
   end
 end

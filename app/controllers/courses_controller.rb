@@ -11,8 +11,8 @@ class CoursesController < ApplicationController
     @course = current_user.courses.build(course_params)
     respond_to do |format|
       if @course.save
-        format.html { redirect_to edit_course_path(@course), success: "Successfully new course created" }
-        format.js { flash[:success] = "Successfully new course created" }
+        format.html { redirect_to edit_course_path(@course), success: "Your changes have been successfully saved" }
+        format.js { flash[:success] = "Your changes have been successfully saved" }
       else
         format.html { redirect_to new_course_path, danger: "Couldn't be created" }
         format.js { flash[:success] = "Couldn't be created" }
@@ -27,8 +27,8 @@ class CoursesController < ApplicationController
   def update
     respond_to do |format|
       if @course.update(course_params)
-        format.html { redirect_to edit_course_path(@course), success: 'Course updated successfully' }
-        format.js { flash[:success] = 'Course updated successfully' }
+        format.html { redirect_to edit_course_path(@course), success: 'Your changes have been successfully saved' }
+        format.js { flash[:success] = 'Your changes have been successfully saved' }
       else
         format.html { redirect_to edit_course_path(@course), danger: "Couldn't be updated" }
         format.js { flash[:success] = "Couldn't be updated" }
