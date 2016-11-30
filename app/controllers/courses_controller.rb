@@ -55,7 +55,11 @@ class CoursesController < ApplicationController
   private
 
   def set_course
-    @course = Course.friendly.find(params[:id])
+    begin
+      @course = Course.friendly.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      redirect_to :back, danger: 'Course Not Found'
+    end
   end
 
   def course_params

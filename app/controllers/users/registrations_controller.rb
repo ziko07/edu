@@ -17,7 +17,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         sign_up(resource_name, resource)
         return render :json => {success: true, redirect_path: after_sign_up_path_for(resource)}
       else
-        flash[:success] = t('devise.registrations.signed_up_but_unconfirmed')
+        flash[:completed] = t('devise.registrations.signed_up_but_unconfirmed')
         return render :json => {success: true, confirmation_sent: true, redirect_path: after_sign_up_path_for(resource)}
       end
     else

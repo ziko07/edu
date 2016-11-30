@@ -22,12 +22,13 @@ function popupMessage(message, klass) {
         top: notificationTop
     }, 200);
     setTimeout(function () {
-        if (!notification.hasClass('alert-danger')) {
+        if (notification.hasClass('alert-info')) {
             notification.hide().animate({
                 top: "-60"
             }, 500);
         }
-    }, 4000);
+
+    }, 10000);
 }
 
 $(function () {

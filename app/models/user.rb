@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   has_many :courses
   extend FriendlyId
   friendly_id :user_slug, use: :slugged
-  validate :email_uniqueness
+  validate :email_uniqueness, on: :create
 
   def email_uniqueness
     self.errors.delete(:email)

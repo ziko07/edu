@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  add_flash_types :success, :warning, :danger, :info, :none_closeable, :close_ten_seconds
+  add_flash_types :success, :warning, :danger, :info, :completed
   helper_method :errors_to_message_string
 
   def errors_to_message_string(errors)
@@ -33,8 +33,6 @@ class ApplicationController < ActionController::Base
       super
     else
       redirect_to root_path, warning: 'You need to sign in before access'
-      ## if you want render 404 page
-      ## render :file => File.join(Rails.root, 'public/404'), :formats => [:html], :status => 404, :layout => false
     end
   end
 end

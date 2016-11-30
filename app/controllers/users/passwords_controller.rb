@@ -9,7 +9,7 @@ class Users::PasswordsController < Devise::PasswordsController
     self.resource = resource_class.send_reset_password_instructions(resource_params)
     yield resource if block_given?
     respond_to do |format|
-      if successfully_sent?(resource)
+      if instructions_sent?(resource)
         format.json {render json: {success: true, redirect_path: root_path}}
       else
         format.json {render json: {success: false, message: errors_to_message_string(resource.errors)} }
@@ -40,11 +40,12 @@ class Users::PasswordsController < Devise::PasswordsController
       respond_with resource, location: after_resetting_password_path_for(resource)
     else
       set_minimum_password_length
+      set_flash_message!(:danger, errors_to_message_string(resource.errors))
       respond_with resource
     end
   end
 
-  # protected
+  protected
 
   def after_resetting_password_path_for(resource)
     super(resource)
@@ -53,5 +54,20 @@ class Users::PasswordsController < Devise::PasswordsController
   # The path used after sending reset password instructions
   def after_sending_reset_password_instructions_path_for(resource_name)
     super(resource_name)
+  end
+
+  private
+  def instructions_sent?(resource)
+    notice = if Devise.paranoid
+               resource.errors.clear
+               :send_paranoid_instructions
+             elsif resource.errors.empty?
+               :send_instructions
+             end
+
+    if notice
+      set_flash_message! :success, notice
+      true
+    end
   end
 end

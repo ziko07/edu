@@ -1,8 +1,5 @@
 <% if @course.errors.any? %>
 $('#errors-in-course-form').find('.alert').addClass('alert-danger').find('span').html('<%= escape_javascript(errors_to_message_string(@course.errors)).html_safe %>')
 <% else %>
-popupMessage('Successfully new Course created', 'alert-success');
-setTimeout(function(){
     window.location.href = '<%= edit_course_path(@course) %>';
-},2000);
 <% end %>

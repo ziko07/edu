@@ -12,16 +12,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= render 'shared/flash' %>
-<%= render 'shared/nav' %>
-<%= yield %>
-</body>
 <script type="text/javascript">
     $(function () {
         <% @klass = 'alert-' %>
         <% flash.each do |name, msg| -%>
-        popupMessage("<%= msg %>", "<%= @klass + name %>");
+        popupMessage("<%= msg %>", "<%= @klass + AlertSatatus::AletType[name.to_sym] %>");
         <% end -%>
     });
 </script>
+<%= render 'shared/flash' %>
+<%= render 'shared/nav' %>
+<%= yield %>
+</body>
 </html>
