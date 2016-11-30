@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   # Check instructor before all action except index.
-  before_filter :authenticate_user!, except: [:show]
+  before_filter :authenticate_user!, except: [:show, :category_courses]
   before_action :set_course, only: [:edit, :update, :show]
 
   def new
