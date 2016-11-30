@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
 
   def email_uniqueness
     self.errors.delete(:email)
-    self.errors.add(:email, 'Sorry, another user has registered with this email address. Please use another email to register.') if User.where(:email => self.email).exists?
+    self.errors.add(:email, 'Sorry, another user has registered with this email address. Please use another email to register') if User.where(:email => self.email).exists?
   end
 
 

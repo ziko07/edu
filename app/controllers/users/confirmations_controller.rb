@@ -27,7 +27,11 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
 
   # The path used after resending confirmation instructions.
   def after_resending_confirmation_instructions_path_for(resource_name)
-    super(resource_name)
+    if signed_in?(resource_name)
+      new_course_path
+    else
+      root_path
+    end
   end
 
   # The path used after confirmation.
