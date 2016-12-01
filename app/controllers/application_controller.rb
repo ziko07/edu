@@ -6,25 +6,13 @@ class ApplicationController < ActionController::Base
   helper_method :errors_to_message_string
 
   def errors_to_message_string(errors)
-    total_errors = errors.count
-    message_first = "There #{'is'.pluralize(total_errors)} #{'error'.pluralize(total_errors)} in"
-    message_second = ' '
-    message_intermediate = " and #{'reason'.pluralize(total_errors)} #{'is'.pluralize(total_errors)} "
-    message_third = ' '
-    message_final = '. Please try again...'
-    errors.each_with_index do |( key, error_message), index|
-      if index == 0
-        message_second += key.to_s.upcase
-        message_third += key.to_s.upcase + ' ' + "'#{ error_message.to_s }'"
-      elsif index != 0 && total_errors - 1 == index
-        message_second += " and #{key.to_s.upcase}"
-        message_third += " and '#{key.to_s.upcase}' '#{error_message.to_s}'"
-      else
-        message_second += ", #{key.to_s.upcase}"
-        message_third += ", #{key.to_s.upcase} '#{error_message.to_s}'"
-      end
+    message_wrapper = "<ul class='devise-error-message'>"
+    message = ''
+    errors.each_with_index do |(key, error_message), index|
+      field = (key.to_s == 'custom' || key.to_s == 'password_confirmation') ? '' : key.to_s
+      message += "<li> #{field} #{error_message} </li>"
     end
-    message_first + message_second + message_intermediate + message_third + message_final
+    message_wrapper + message + '</ul>'
   end
 
   protected
@@ -35,4 +23,13 @@ class ApplicationController < ActionController::Base
       redirect_to root_path, warning: 'You need to sign in before access'
     end
   end
+
+  def redirect_url
+    if warden_message == :unconfirmed
+      redirect root_path
+    else
+      super
+    end
+  end
+
 end

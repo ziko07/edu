@@ -1,11 +1,12 @@
 <div id="password-edit">
   <div class="password-wrapper">
     <div class="password-header text-center">
-        <h2>Reset Password</h2>
+      <h2>Reset Password</h2>
     </div>
     <div class="password-note">
       <p>
-        Enter your desired password in the spaces below. We recommend a password of eight or more characters with a combination of letters and numbers.
+        Enter your desired password in the spaces below. We recommend a password of eight or more characters with a
+        combination of letters and numbers.
       </p>
     </div>
     <div class="password-content">
@@ -13,7 +14,7 @@
           <%= f.hidden_field :reset_password_token %>
 
           <div class="form-group">
-            <%= f.label :password, "Enter your new password ( min #{@minimum_password_length} characters))" %>
+            <%= f.label :password, "Enter your new password (min 6 characters)" %>
             <%= f.password_field :password, autofocus: true, autocomplete: "off", class: 'form-control reset-border-radius' %>
           </div>
 
@@ -23,7 +24,7 @@
           </div>
 
           <div class="form-group submit-action text-center">
-            <%= f.submit "submit", class: 'btn btn-success' %>
+            <%= f.submit "Submit", class: 'btn btn-success' %>
           </div>
       <% end %>
     </div>

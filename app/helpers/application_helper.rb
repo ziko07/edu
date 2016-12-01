@@ -12,8 +12,8 @@ module ApplicationHelper
   end
 
   def active_tab(current_controller, current_action, cntlr_name, acn_name)
-      if current_controller == cntlr_name && acn_name.include?(current_action)
-        return 'active_admin_side_bar'
-      end
+    if current_controller == cntlr_name && acn_name.include?(current_action)
+      'active_admin_side_bar'
+    end
   end
 end

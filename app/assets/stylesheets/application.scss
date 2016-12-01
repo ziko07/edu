@@ -23,7 +23,8 @@
   text-align: center;
   z-index: 99999;
 }
-.flash-display{
+
+.flash-display {
   display: block !important;
   top: 50px !important;
 }
@@ -39,4 +40,13 @@
   position: fixed;
   top: 45%;
   z-index: 9999;
+}
+
+.devise-error-message {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  li {
+    padding: 2px 0;
+  }
 }

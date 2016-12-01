@@ -24,7 +24,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       end
     else
       clean_up_passwords resource
-      render :json => {:success => false, message: errors_to_message_string( resource.errors )}
+      render :json => {:success => false, message: errors_to_message_string(resource.errors)}
     end
   end
 

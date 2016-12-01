@@ -23,4 +23,5 @@ en:
   hello: "Hello world"
   errors:
     messages:
+      confirmation: "Passwords do not match"
       extension_whitelist_error: "This type of image is not supported"

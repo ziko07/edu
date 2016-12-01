@@ -10,9 +10,9 @@ class Users::PasswordsController < Devise::PasswordsController
     yield resource if block_given?
     respond_to do |format|
       if instructions_sent?(resource)
-        format.json {render json: {success: true, redirect_path: root_path}}
+        format.json { render json: {success: true, redirect_path: root_path} }
       else
-        format.json {render json: {success: false, message: errors_to_message_string(resource.errors)} }
+        format.json { render json: {success: false, message: errors_to_message_string(resource.errors)} }
       end
     end
 
@@ -40,7 +40,7 @@ class Users::PasswordsController < Devise::PasswordsController
       respond_with resource, location: after_resetting_password_path_for(resource)
     else
       set_minimum_password_length
-      set_flash_message!(:danger, errors_to_message_string(resource.errors))
+      flash[:danger] = errors_to_message_string(resource.errors)
       respond_with resource
     end
   end

@@ -22,13 +22,13 @@ function popupMessage(message, klass) {
         top: notificationTop
     }, 200);
     setTimeout(function () {
-        if (notification.hasClass('alert-info')) {
+        if (!notification.hasClass('alert-danger')) {
             notification.hide().animate({
                 top: "-60"
             }, 500);
         }
 
-    }, 10000);
+    }, 5000);
 }
 
 $(function () {
@@ -69,7 +69,7 @@ function stopLoader() {
 
 function matchYoutubeUrl(url) {
     var p = /^(?:https?:\/\/)?(?:m\.|www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
-    if(url.match(p)){
+    if (url.match(p)) {
         return url.match(p)[1];
     }
     return false;

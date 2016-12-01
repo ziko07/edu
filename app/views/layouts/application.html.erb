@@ -16,7 +16,7 @@
     $(function () {
         <% @klass = 'alert-' %>
         <% flash.each do |name, msg| -%>
-        popupMessage("<%= msg %>", "<%= @klass + AlertSatatus::get_alart_type(name.to_sym) %>");
+        popupMessage("<%= raw msg %>", "<%= @klass + AlertSatatus::get_alart_type(name.to_sym) %>");
         <% end -%>
     });
 </script>
