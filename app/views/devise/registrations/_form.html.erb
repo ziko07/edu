@@ -56,11 +56,16 @@
         $('#user-registration').on('ajax:success', function( event, data, status, xhr ){
             if(data.success){
                 window.location.href = data.redirect_path;
-
             }
             else{
-                var messageContent = '<div class="alert alert-danger">' + data.message + '</div>';
-                $('#message-sign-up').html(messageContent);
+                if(typeof data.message == 'undefined') {
+                    alert('You already signin');
+                    window.location.href = '<%= root_path %>';
+                }
+                else {
+                    var messageContent = '<div class="alert alert-danger">' + data.message + '</div>';
+                    $('#message-sign-up').html(messageContent);
+                }
             }
         });
     });
