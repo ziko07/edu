@@ -32,8 +32,12 @@ class Users::PasswordsController < Devise::PasswordsController
       resource.unlock_access! if unlockable?(resource)
       if Devise.sign_in_after_reset_password
         flash_message = resource.active_for_authentication? ? :updated : :updated_not_active
-        set_flash_message!(:success, flash_message)
-        sign_in(resource_name, resource)
+        if resource.confirmed?
+          sign_in(resource_name, resource)
+          set_flash_message!(:success, flash_message)
+        else
+          return redirect_to root_path, success: "Your password has been changed successfully. Please confirm your email before signin."
+        end
       else
         set_flash_message!(:warning, :updated_not_active)
       end
