@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     get '/seo_pages/:page_id' => 'admin#edit_page', as: :admin_edit_seo_page
     get '/instructors/new' => 'admin#new_instructor', as: :admin_new_instructors
     get '/instructors/:user_id' => 'admin#view_instructor', as: :admin_view_instructors
+    put '/course/:id' => 'admin#update_course', as: :update_course_status
   end
 
 

@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   # Check instructor before all action except index.
-  before_filter :authenticate_user!, except: [:show, :category_courses]
+  before_filter :authenticate_user!, except: [:show, :category_courses, :index]
   before_action :set_course, only: [:edit, :update, :show]
 
   def new
@@ -41,11 +41,12 @@ class CoursesController < ApplicationController
   end
 
   def index
-
+    @group_courses = Course.category_courses
   end
 
   def category_courses
-
+    @category = Category.friendly.find(params[:category])
+    @courses = @category.published_courses
   end
 
   def show
@@ -57,6 +58,9 @@ class CoursesController < ApplicationController
   def set_course
     begin
       @course = Course.friendly.find(params[:id])
+      unless @course.user == current_user || current_user.is_admin?
+        redirect_to root_path, danger: 'You have not access to this course'
+      end
     rescue ActiveRecord::RecordNotFound
       redirect_to :back, danger: 'Course Not Found'
     end

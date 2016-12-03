@@ -27,7 +27,17 @@ class Course < ActiveRecord::Base
 
   def course_slug
     title_count = Course.where('title = ?', title).count
-    count = (title_count > 0) ? "-" + (title_count + 1).to_s : nil
+    count = (title_count > 0) ? '-' + (title_count + 1).to_s : nil
     "#{title.gsub(' ', '-')}#{count}"
   end
+
+  def self.category_courses
+    published_status = CourseStatus.find_by_name(AppData::COURSE_STATUS[:published])
+    if published_status.present?
+      @group_courses = Category.joins(:courses).where("courses.course_status_id = #{published_status.id}")
+    else
+      @group_courses = Category.joins(:courses)
+    end
+  end
+
 end

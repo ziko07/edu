@@ -16,20 +16,42 @@
         <div class="content-body">
           <div class="content-nav">
             <ul class="nav nav-pills">
-              <li class="active" role="presentation"><a data-toggle="tab" href="#all">All (68)</a></li>
-              <li role="presentation"><a data-toggle="tab" href="#published">Published (68)</a></li>
-              <li role="presentation"><a data-toggle="tab" href="#pending-review">Pending Review (112)</a></li>
-              <li role="presentation"><a data-toggle="tab" href="#rejected">Rejected (5)</a></li>
-              <li role="presentation"><a data-toggle="tab" href="#unpublished"> Unpublished (12)</a></li>
+              <li class="active" role="presentation">
+                <a data-toggle="tab" href="#all">All (<%= @courses.count %>)</a>
+              </li>
+              <li role="presentation">
+                <a data-toggle="tab" href="#published">
+                  Published
+                  (<span class="<%= AppData::COURSE_STATUS[:published] %>-count"><%= @group_course[AppData::COURSE_STATUS[:published]] || 0 %></span>)
+                </a>
+              </li>
+              <li role="presentation">
+                <a data-toggle="tab" href="#pending-review">
+                  Pending Review
+                  (<span class="<%= AppData::COURSE_STATUS[:pending_review].gsub(' ', '_') %>-count"><%= @group_course[AppData::COURSE_STATUS[:pending_review]] || 0 %></span>)
+                </a>
+              </li>
+              <li role="presentation">
+                <a data-toggle="tab" href="#rejected">
+                  Rejected
+                  (<span class="<%= AppData::COURSE_STATUS[:rejected] %>-count"><%= @group_course[AppData::COURSE_STATUS[:rejected]] || 0 %></span>)
+                </a>
+              </li>
+              <li role="presentation">
+                <a data-toggle="tab" href="#unpublished">
+                  Unpublished
+                  (<span class="<%= AppData::COURSE_STATUS[:unpublished] %>-count"><%= @group_course[AppData::COURSE_STATUS[:unpublished]] || 0 %></span>)
+                </a>
+              </li>
             </ul>
           </div>
           <div class="content-item">
             <div class="tab-content">
-              <%= render 'admin/all_courses' %>
-              <%= render 'admin/published_courses' %>
-              <%= render 'admin/pending_review_courses' %>
-              <%= render 'admin/rejected_courses' %>
-              <%= render 'admin/unpublished_courses' %>
+              <%= render 'admin/admin_courses', tab: 'all', klass: 'active', courses: @courses %>
+              <%= render 'admin/admin_courses', tab: 'published', klass: '', courses: admin.published_course %>
+              <%= render 'admin/admin_courses', tab: 'pending-review', klass: '', courses: admin.pending_course %>
+              <%= render 'admin/admin_courses', tab: 'rejected', klass: '', courses: admin.rejected_course %>
+              <%= render 'admin/admin_courses', tab: 'unpublished', klass: '', courses: admin.unpublished_course %>
             </div>
           </div>
         </div>

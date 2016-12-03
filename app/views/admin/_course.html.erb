@@ -1,0 +1,23 @@
+<tr id="course-item-<%= course.id %>">
+  <td>
+    <div style="background-image:url('<%= image_path(course.image) %>');" class="course-image"></div>
+  </td>
+  <td>
+    <div class="border-right">
+      <p> <%= course.title %>
+        <span class="hide-on-desktop"> Instructed By <%= link_to course.user.first_name, profile_instructors_path(course.user) %> </span>
+      </p>
+      <%= link_to 'Go to Course', edit_course_path(course), class: 'btn btn-info reset-padding reset-border-radius' %>
+    </div>
+  </td>
+  <td>
+    <%= select_tag :course_status, options_for_select(CourseStatus.all.collect { |p| [p.name, p.id] }, course.course_status.id), {class: 'select-course-status'} %>
+    <div class="hide-on-desktop course-status-save">
+      <%= link_to 'Save', update_course_status_path(course.id), class: 'update-course-status btn btn-danger reset-padding reset-border-radius' %>
+    </div>
+  </td>
+  <td class="hide-on-mobile"> <%= course.user.full_name %> </td>
+  <td class="hide-on-mobile">
+    <%= link_to 'Save', update_course_status_path(course.id), class: 'update-course-status btn btn-danger reset-padding reset-border-radius' %>
+  </td>
+</tr>

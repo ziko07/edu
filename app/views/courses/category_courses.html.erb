@@ -4,9 +4,9 @@
       <%= link_to root_path do %>
           <i class="fa fa-home"></i>
       <% end %>
-      <span class="white-color"> / <%= params[:category].underscore.gsub('_', ' ').humanize %> </span>
+      <span class="white-color"> / <%= @category.title %> </span>
 
-      <h3><%= params[:category].underscore.gsub('_', ' ').humanize %></h3>
+      <h3><%= @category.title %></h3>
     </div>
   </div>
 
@@ -17,153 +17,22 @@
         <div class="left-sidebar col-lg-2"></div>
 
         <div class="right-sidebar col-lg-10">
-          <h3><%= params[:category].underscore.gsub('_', ' ').humanize %></h3>
+          <h3><%= @category.title %></h3>
 
           <div class="row image-widget-row">
-            <div class="image-widget-column col-md-3 col-sm-6">
-              <%= link_to show_course_path('coursename') do %>
-                  <div class="image-container">
-                    <%= image_tag("img1.png") %>
-                    <div class="image-text">
-                      Introduction to Piano-By PGN Piano!
-                      <p>PGN Piano</p>
-                    </div>
-                  </div>
-              <% end %>
-            </div>
-
-            <div class="image-widget-column col-md-3 col-sm-6">
-              <%= link_to show_course_path('coursename') do %>
-                  <div class="image-container">
-                    <%= image_tag("img2.png") %>
-                    <div class="image-text">
-                      Introduction to Piano-By PGN Piano!
-                      <p>PGN Piano</p>
-                    </div>
-                  </div>
-              <% end %>
-            </div>
-
-            <div class="image-widget-column col-md-3 col-sm-6">
-              <%= link_to show_course_path('coursename') do %>
-                  <div class="image-container">
-                    <%= image_tag("img3.png") %>
-                    <div class="image-text">
-                      Introduction to Piano-By PGN Piano!
-                      <p>PGN Piano</p>
-                    </div>
-                  </div>
-              <% end %>
-            </div>
-
-            <div class="image-widget-column col-md-3 col-sm-6">
-              <%= link_to show_course_path('coursename') do %>
-                  <div class="image-container">
-                    <%= image_tag("img4.png") %>
-                    <div class="image-text">
-                      Introduction to Piano-By PGN Piano!
-                      <p>PGN Piano</p>
-                    </div>
-                  </div>
-              <% end %>
-            </div>
-
-            <div class="image-widget-column col-md-3 col-sm-6">
-              <%= link_to show_course_path('coursename') do %>
-                  <div class="image-container">
-                    <%= image_tag("img1.png") %>
-                    <div class="image-text">
-                      Introduction to Piano-By PGN Piano!
-                      <p>PGN Piano</p>
-                    </div>
-                  </div>
-              <% end %>
-            </div>
-
-            <div class="image-widget-column col-md-3 col-sm-6">
-              <%= link_to show_course_path('coursename') do %>
-                  <div class="image-container">
-                    <%= image_tag("img2.png") %>
-                    <div class="image-text">
-                      Introduction to Piano-By PGN Piano!
-                      <p>PGN Piano</p>
-                    </div>
-                  </div>
-              <% end %>
-            </div>
-
-            <div class="image-widget-column col-md-3 col-sm-6">
-              <%= link_to show_course_path('coursename') do %>
-                  <div class="image-container">
-                    <%= image_tag("img3.png") %>
-                    <div class="image-text">
-                      Introduction to Piano-By PGN Piano!
-                      <p>PGN Piano</p>
-                    </div>
-                  </div>
-              <% end %>
-            </div>
-
-            <div class="image-widget-column col-md-3 col-sm-6">
-              <%= link_to show_course_path('coursename') do %>
-                  <div class="image-container">
-                    <%= image_tag("img4.png") %>
-                    <div class="image-text">
-                      Introduction to Piano-By PGN Piano!
-                      <p>PGN Piano</p>
-                    </div>
-                  </div>
-              <% end %>
-            </div>
-
-            <div class="image-widget-column col-md-3 col-sm-6">
-              <%= link_to show_course_path('coursename') do %>
-                  <div class="image-container">
-                    <%= image_tag("img1.png") %>
-                    <div class="image-text">
-                      Introduction to Piano-By PGN Piano!
-                      <p>PGN Piano</p>
-                    </div>
-                  </div>
-              <% end %>
-            </div>
-
-            <div class="image-widget-column col-md-3 col-sm-6">
-              <%= link_to show_course_path('coursename') do %>
-                  <div class="image-container">
-                    <%= image_tag("img2.png") %>
-                    <div class="image-text">
-                      Introduction to Piano-By PGN Piano!
-                      <p>PGN Piano</p>
-                    </div>
-                  </div>
-              <% end %>
-            </div>
-
-            <div class="image-widget-column col-md-3 col-sm-6">
-              <%= link_to show_course_path('coursename') do %>
-                  <div class="image-container">
-                    <%= image_tag("img1.png") %>
-                    <div class="image-text">
-                      Introduction to Piano-By PGN Piano!
-                      <p>PGN Piano</p>
-                    </div>
-                  </div>
-              <% end %>
-            </div>
-
-            <div class="image-widget-column col-md-3 col-sm-6">
-              <%= link_to show_course_path('coursename') do %>
-                  <div class="image-container">
-                    <%= image_tag("img4.png") %>
-                    <div class="image-text">
-                      Introduction to Piano-By PGN Piano!
-                      <p>PGN Piano</p>
-                    </div>
-                  </div>
-              <% end %>
-            </div>
-
+            <% @courses.each do |course| %>
+                <div class="image-widget-column col-md-3 col-sm-6">
+                  <%= link_to show_course_path(course) do %>
+                      <div class="image-container">
+                        <%= image_tag course.image_url.present? ? course.image_url : image_url('default-cover-image.jpg') %>
+                        <div class="image-text">
+                          <%= course.title %>
+                          <p><%= truncate(course.subtitle, length: 25, omission: '...') %></p>
+                        </div>
+                      </div>
+                  <% end %>
+                </div>
+            <% end %>
           </div>
         </div>
       </div>

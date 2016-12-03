@@ -1,0 +1,10 @@
+<nav class="public-nav common-nav nav clearfix">
+  <ul class="public-nav-wrapper pull-right nav navbar-nav">
+    <li>
+      <%= link_to 'Admin Dashboard', admin_dashboard_path %>
+    </li>
+    <li>
+      <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+    </li>
+  </ul>
+</nav>

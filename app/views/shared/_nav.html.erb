@@ -1,6 +1,10 @@
 <div>
-  <% if controller_name == 'instructors' || current_user.present? %>
-      <%= render 'shared/instructor_nav' %>
+  <% if current_user.present? %>
+      <% if current_user.is_admin? %>
+          <%= render 'shared/admin_nav' %>
+      <% else %>
+          <%= render 'shared/instructor_nav' %>
+      <% end %>
   <% else %>
       <%= render 'shared/public_nav' %>
   <% end %>

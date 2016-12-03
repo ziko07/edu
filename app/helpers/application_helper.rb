@@ -16,4 +16,9 @@ module ApplicationHelper
       'active_admin_side_bar'
     end
   end
+
+  def admin
+    current_user
+  end
+
 end

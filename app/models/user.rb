@@ -13,6 +13,25 @@ class User < ActiveRecord::Base
     self.errors.add(:custom, 'Sorry, another user has registered with this email address. Please use another email to register') if User.where(:email => self.email).exists?
   end
 
+  def is_admin?
+    ['nazrulku07@gmail.com', 'admin@example.com'].include?(self.email)
+  end
+
+  def pending_course
+    Course.joins(:course_status).where("course_statuses.name = '#{AppData::COURSE_STATUS[:pending_review]}'")
+  end
+
+  def published_course
+    Course.joins(:course_status).where("course_statuses.name = '#{AppData::COURSE_STATUS[:published]}'")
+  end
+
+  def unpublished_course
+    Course.joins(:course_status).where("course_statuses.name = '#{AppData::COURSE_STATUS[:unpublished]}'")
+  end
+
+  def rejected_course
+    Course.joins(:course_status).where("course_statuses.name = '#{AppData::COURSE_STATUS[:rejected]}'")
+  end
 
   private
 

@@ -1,10 +1,7 @@
 <div id="courses-wrapper">
   <div class="container clearfix">
-    <%= render 'courses/category_courses', category: 'Guitar' %>
-    <%= render 'courses/category_courses', category: 'Music Business' %>
-    <%= render 'courses/category_courses', category: 'Music Production' %>
-    <%= render 'courses/category_courses', category: 'Percussion' %>
-    <%= render 'courses/category_courses', category: 'Song Writing' %>
+    <% @group_courses.each do |category| %>
+        <%= render partial: 'courses/category_courses', locals: {category: category} %>
+    <% end %>
   </div>
 </div>
-

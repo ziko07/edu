@@ -1,0 +1,21 @@
+<% if @course.present? %>
+<% if @course.errors.any? %>
+popupMessage('Something wrong, Please try again!', 'alert-danger');
+<%else%>
+popupMessage('Course status has been updated successfully', 'alert-success');
+dest_selector = '#<%= @course.course_status.name.gsub(' ', '-') %>';
+dest = $(dest_selector);
+source_selector = '#<%= @prev_status.gsub(' ', '-') %>';
+source = $(source_selector);
+element = source.find('#course-item-<%= @course.id %>');
+if (element.length > 0) {
+    element = element.detach();
+    dest.find('table tbody').append(element);
+    <% AppData::COURSE_STATUS.each do |key, val| %>
+    $('.<%= key.to_s.gsub(' ', '-') %>-count').html("<%= @group_course[val] || 0 %>");
+    <%end%>
+}
+<%end%>
+<%else%>
+popupMessage('Course not found', 'alert-danger');
+<%end%>
