@@ -36,7 +36,7 @@ class Users::PasswordsController < Devise::PasswordsController
           sign_in(resource_name, resource)
           set_flash_message!(:success, flash_message)
         else
-          return redirect_to root_path, success: "Your password has been changed successfully. Please confirm your email before signin."
+          return redirect_to root_path, success: t(:reset_password_email_not_confirmed)
         end
       else
         set_flash_message!(:warning, :updated_not_active)
