@@ -8,9 +8,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-    puts "Here"
     build_resource(sign_up_params)
-    puts "Here"
     full_name = params[:user][:full_name].split(' ', 2)
     resource.first_name = full_name.first
     resource.last_name = full_name.last

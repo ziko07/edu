@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
     message = ''
     errors.each_with_index do |(key, error_message), index|
       field = (key.to_s == 'custom' || key.to_s == 'password_confirmation') ? '' : key.to_s
-      message += "<li> #{field} #{error_message} </li>"
+      message += "<li> #{field.camelize} #{error_message} </li>"
     end
     message_wrapper + message + '</ul>'
   end
