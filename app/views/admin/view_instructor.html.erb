@@ -8,33 +8,33 @@
         <div class="content-heading content-heading-single-title">
           <div class="heading-top">
             <h2><i class="fa fa-users"></i> INSTRUCTORS </h2>
-            <h4 class="sub-title">Austin Power</h4>
+            <h4 class="sub-title"> <%= @instructor.full_name %> </h4>
           </div>
         </div>
         <div class="content-body">
-          <%= form_for '', html: {class: 'form-horizontal form-admin-edu'} do |f|%>
+          <%= form_for @instructor, url: admin_update_instructors_path, html: {class: 'form-horizontal form-admin-edu'} do |f| %>
               <div class="form-group">
-                <%=f.label 'First Name', class: 'col-sm-3 control-label' %>
+                <%= f.label :first_name, class: 'col-sm-3 control-label' %>
                 <div class="col-sm-8">
-                  <%= f.text_field 'first_name', class: 'form-control reset-border-radius' %>
+                  <%= f.text_field :first_name, class: 'form-control reset-border-radius' %>
                 </div>
               </div>
               <div class="form-group">
-                <%=f.label 'Last Name', class: 'col-sm-3 control-label' %>
+                <%= f.label :last_name, class: 'col-sm-3 control-label' %>
                 <div class="col-sm-8">
                   <%= f.text_field 'last_name', class: 'form-control reset-border-radius' %>
                 </div>
               </div>
               <div class="form-group">
-                <%=f.label 'Email Address', class: 'col-sm-3 control-label' %>
+                <%= f.label :email, 'Email Address', class: 'col-sm-3 control-label' %>
                 <div class="col-sm-8">
-                  <%= f.email_field 'email_address', class: 'form-control reset-border-radius' %>
+                  <%= f.email_field :email, class: 'form-control reset-border-radius' %>
                 </div>
               </div>
               <div class="form-group">
                 <%= f.label 'Password', class: 'col-sm-3 control-label' %>
                 <div class="col-sm-8">
-                  <%= link_to '', class: 'btn btn-danger reset-border-radius' do  %>
+                  <%= link_to '', class: 'btn btn-danger reset-border-radius' do %>
                       Reset Password
                   <% end %>
                 </div>

@@ -12,35 +12,45 @@
         </div>
         <div class="content-body ">
           <div class="new-instructors-form">
-            <%= form_for '', html: {class: 'form-horizontal form-admin-edu'} do |f|%>
+            <%= form_for @instructor, url: admin_create_instructors_path, html: {class: 'form-horizontal form-admin-edu'} do |f| %>
+                <% if @instructor.errors.any? %>
+                    <div class="form-group">
+                      <div class="col-sm-3 control-label"></div>
+                      <div class="col-sm-8">
+                        <div class="alert alert-danger">
+                          <%= raw errors_to_message_string(@instructor.errors) %>
+                        </div>
+                      </div>
+                    </div>
+                <% end %>
                 <div class="form-group">
-                  <%=f.label 'First Name', class: 'col-sm-3 control-label' %>
+                  <%= f.label :first_name, class: 'col-sm-3 control-label' %>
                   <div class="col-sm-8">
-                    <%= f.text_field 'first_name', class: 'form-control reset-border-radius' %>
+                    <%= f.text_field :first_name, class: 'form-control reset-border-radius', data: {errormessage_value_missing: 'first name not filled in'}, required: true %>
                   </div>
                 </div>
                 <div class="form-group">
-                  <%=f.label 'Last Name', class: 'col-sm-3 control-label' %>
+                  <%= f.label :last_name, class: 'col-sm-3 control-label' %>
                   <div class="col-sm-8">
-                    <%= f.text_field 'last_name', class: 'form-control reset-border-radius' %>
+                    <%= f.text_field :last_name, class: 'form-control reset-border-radius', data: {errormessage_value_missing: 'last name not filled in'}, required: true %>
                   </div>
                 </div>
                 <div class="form-group">
-                  <%=f.label 'Email Address', class: 'col-sm-3 control-label' %>
+                  <%= f.label :email, 'Email Address', class: 'col-sm-3 control-label' %>
                   <div class="col-sm-8">
-                    <%= f.email_field 'email_address', class: 'form-control reset-border-radius' %>
+                    <%= f.email_field :email, class: 'form-control reset-border-radius', data: {errormessage_value_missing: 'email not filled in'}, required: true %>
                   </div>
                 </div>
                 <div class="form-group">
-                  <%= f.label 'Password', class: 'col-sm-3 control-label' %>
+                  <%= f.label :password, class: 'col-sm-3 control-label' %>
                   <div class="col-sm-8">
-                    <%= f.password_field 'password', class:'form-control reset-border-radius' %>
+                    <%= f.password_field :password, class: 'form-control reset-border-radius', data: {errormessage_value_missing: 'password not filled in'}, required: true %>
                   </div>
                 </div>
                 <div class="form-group">
-                  <%= f.label 'Confirm Password', class: 'col-sm-3 control-label' %>
+                  <%= f.label :confirm_password, 'Confirm Password', class: 'col-sm-3 control-label' %>
                   <div class="col-sm-8">
-                    <%= f.password_field 'password_confirmation', class:'form-control reset-border-radius' %>
+                    <%= f.password_field :password_confirmation, class: 'form-control reset-border-radius', data: {errormessage_value_missing: 'confirm password not filled in'}, required: true %>
                   </div>
                 </div>
                 <div class="form-group">

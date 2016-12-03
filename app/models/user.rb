@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  ADMIN_EMAILS = ['nazrulku07@gmail.com', 'admin@example.com']
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :courses
@@ -14,7 +15,7 @@ class User < ActiveRecord::Base
   end
 
   def is_admin?
-    ['nazrulku07@gmail.com', 'admin@example.com'].include?(self.email)
+    ADMIN_EMAILS.include?(self.email)
   end
 
   def pending_course

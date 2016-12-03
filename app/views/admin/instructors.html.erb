@@ -3,6 +3,7 @@
     <div class="col-sm-3 side-menu reset-padding">
       <%= render 'shared/side_bar' %>
     </div>
+
     <div class="col-sm-9 content-wrapper reset-padding">
       <div class="content">
         <div class="content-heading content-heading-single-title">
@@ -25,66 +26,28 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-              <td class="hide-on-desktop">
-                Ling Ling <br/>
-                test@test.com
-              </td>
-              <td class="hide-on-mobile">Ling</td>
-              <td class="hide-on-mobile">Ling</td>
-              <td class="hide-on-mobile">test@test.com</td>
-              <td class="instructor-list-action">
-                <%= link_to '#', class: 'btn btn-danger reset-border-radius', data: {toggle: 'modal', target: '#admin-instructor-reset-password'} do %>
-                    Reset Password
-                <% end %>
-                <%= link_to '#', class: 'btn btn-danger reset-border-radius', data: {toggle: 'modal', target: '#admin-instructor-unpublished'} do %>
-                    Unpublish
-                <% end %>
-                <%= link_to admin_view_instructors_path(user_id: 1), class: 'btn btn-info reset-border-radius' do %>
-                    <i class="fa fa-pencil-square-o"></i>
-                <% end %>
-              </td>
-            </tr>
-            <tr>
-              <td class="hide-on-desktop">
-                John Dohe <br/>
-                john@test.com
-              </td>
-              <td class="hide-on-mobile">John</td>
-              <td class="hide-on-mobile">Dohe</td>
-              <td class="hide-on-mobile">john@test.com</td>
-              <td class="instructor-list-action">
-                <%= link_to '#', class: 'btn btn-danger reset-border-radius', data: {toggle: 'modal', target: '#admin-instructor-reset-password'} do %>
-                    Reset Password
-                <% end %>
-                <%= link_to '#', class: 'btn btn-danger reset-border-radius', data: {toggle: 'modal', target: '#admin-instructor-unpublished'} do %>
-                    Unpublish
-                <% end %>
-                <%= link_to admin_view_instructors_path(user_id: 1), class: 'btn btn-info reset-border-radius' do %>
-                    <i class="fa fa-pencil-square-o"></i>
-                <% end %>
-              </td>
-            </tr>
-            <tr>
-              <td class="hide-on-desktop">
-                Mick Qing <br/>
-                qing@test.com
-              </td>
-              <td class="hide-on-mobile">Mick</td>
-              <td class="hide-on-mobile">Qing</td>
-              <td class="hide-on-mobile">qing@test.com</td>
-              <td class="instructor-list-action">
-                <%= link_to '', class: 'btn btn-danger reset-border-radius', data: {toggle: 'modal', target: '#admin-instructor-reset-password'} do %>
-                    Reset Password
-                <% end %>
-                <%= link_to '', class: 'btn btn-danger reset-border-radius', data: {toggle: 'modal', target: '#admin-instructor-unpublished'} do %>
-                    Unpublish
-                <% end %>
-                <%= link_to admin_view_instructors_path(user_id: 1), class: 'btn btn-info reset-border-radius' do %>
-                    <i class="fa fa-pencil-square-o"></i>
-                <% end %>
-              </td>
-            </tr>
+            <% @instructors.each do |instructor| %>
+                <tr>
+                  <td class="hide-on-desktop">
+                    <%= instructor.full_name %> <br/>
+                    <%= instructor.email %>
+                  </td>
+                  <td class="hide-on-mobile"><%= instructor.first_name %></td>
+                  <td class="hide-on-mobile"><%= instructor.last_name %></td>
+                  <td class="hide-on-mobile"><%= instructor.email %></td>
+                  <td class="instructor-list-action">
+                    <%= link_to '#', class: 'btn btn-danger reset-border-radius', data: {toggle: 'modal', target: '#admin-instructor-reset-password'} do %>
+                        Reset Password
+                    <% end %>
+                    <%= link_to '#', class: 'btn btn-danger reset-border-radius', data: {toggle: 'modal', target: '#admin-instructor-unpublished'} do %>
+                        Unpublish
+                    <% end %>
+                    <%= link_to admin_view_instructors_path(instructor.id), class: 'btn btn-info reset-border-radius' do %>
+                        <i class="fa fa-pencil-square-o"></i>
+                    <% end %>
+                  </td>
+                </tr>
+            <% end %>
             </tbody>
           </table>
         </div>
