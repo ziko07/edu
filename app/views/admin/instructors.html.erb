@@ -42,7 +42,7 @@
                     <%= link_to '#', class: 'btn btn-danger reset-border-radius', data: {toggle: 'modal', target: '#admin-instructor-unpublished'} do %>
                         Unpublish
                     <% end %>
-                    <%= link_to admin_view_instructors_path(instructor.id), class: 'btn btn-info reset-border-radius' do %>
+                    <%= link_to admin_edit_instructors_path(instructor.id), class: 'btn btn-info reset-border-radius' do %>
                         <i class="fa fa-pencil-square-o"></i>
                     <% end %>
                   </td>

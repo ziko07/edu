@@ -96,17 +96,18 @@ $text-color: #707FE7;
     .progress-wrapper {
       clear: both;
       margin-top: 5px;
+      border: solid 1px #CCCCCC;
       .used {
         float: left;
-        padding: 3px;
-        border: solid 1px rgb(97, 239, 0);
+        padding: 4px 3px;
+        //border: solid 1px rgb(97, 239, 0);
         background: rgb(97, 239, 0);
         border-right: none;
       }
       .remaining {
         float: left;
-        padding: 3px;
-        border: solid 1px #CCCCCC;
+        padding: 4px 3px;
+        //border: solid 1px #CCCCCC;
         border-left: none;
       }
     }

@@ -7,11 +7,13 @@ class User < ActiveRecord::Base
   has_many :courses
   extend FriendlyId
   friendly_id :user_slug, use: :slugged
-  validate :email_uniqueness, on: :create
+  validate :email_uniqueness
 
   def email_uniqueness
-    self.errors.delete(:email)
-    self.errors.add(:custom, 'Sorry, another user has registered with this email address. Please use another email to register') if User.where(:email => self.email).exists?
+    if self.errors.key?(:email) && User.where(:email => self.email).exists?
+      self.errors.delete(:email)
+      self.errors.add(:custom, 'Sorry, another user has registered with this email address. Please use another email to register')
+    end
   end
 
   def is_admin?

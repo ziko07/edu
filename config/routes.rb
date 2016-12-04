@@ -9,18 +9,19 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
+  get '/admin' => redirect('/admin/dashboard')
   scope 'admin' do
     get '/dashboard' => 'admin#dashboard', as: :admin_dashboard
     get '/instructors' => 'admin#instructors', as: :admin_instructors
     get '/settings' => 'admin#settings', as: :admin_settings
     get '/courses' => 'admin#courses', as: :admin_courses
-    get '/seo_pages' => 'admin#seo_pages', as: :admin_seo_pages
-    get '/seo_pages/:page_id' => 'admin#edit_page', as: :admin_edit_seo_page
     get '/instructors/new' => 'admin#new_instructor', as: :admin_new_instructors
     post '/instructors/create' => 'admin#create_instructor', as: :admin_create_instructors
-    post '/instructors/update' => 'admin#update_instructor', as: :admin_update_instructors
-    get '/instructors/:user_id' => 'admin#view_instructor', as: :admin_view_instructors
+    patch '/instructors/:id/update' => 'admin#update_instructor', as: :admin_update_instructors
+    patch '/update' => 'admin#update', as: :admin_update
+    get '/instructors/:id' => 'admin#edit_instructor', as: :admin_edit_instructors
     put '/course/:id' => 'admin#update_course', as: :update_course_status
+    resources :pages, only: [:index, :edit, :update]
   end
 
 

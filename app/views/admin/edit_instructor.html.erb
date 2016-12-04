@@ -12,7 +12,17 @@
           </div>
         </div>
         <div class="content-body">
-          <%= form_for @instructor, url: admin_update_instructors_path, html: {class: 'form-horizontal form-admin-edu'} do |f| %>
+          <%= form_for @instructor, url: admin_update_instructors_path(@instructor.id), html: {class: 'form-horizontal form-admin-edu'} do |f| %>
+              <% if @instructor.errors.any? %>
+                  <div class="form-group">
+                    <div class="col-sm-3 control-label"></div>
+                    <div class="col-sm-8">
+                      <div class="alert alert-danger">
+                        <%= raw errors_to_message_string(@instructor.errors) %>
+                      </div>
+                    </div>
+                  </div>
+              <% end %>
               <div class="form-group">
                 <%= f.label :first_name, class: 'col-sm-3 control-label' %>
                 <div class="col-sm-8">

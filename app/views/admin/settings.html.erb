@@ -11,23 +11,33 @@
           </div>
         </div>
         <div class="content-body">
-          <%= form_for '', html: {class: 'form-horizontal form-admin-edu'} do |f|%>
+          <%= form_for @user, url: admin_update_path, html: {class: 'form-horizontal form-admin-edu'} do |f| %>
+              <% if @user.errors.any? %>
+                  <div class="form-group">
+                    <div class="col-sm-3 control-label"></div>
+                    <div class="col-sm-8">
+                      <div class="alert alert-danger">
+                        <%= raw errors_to_message_string(@user.errors) %>
+                      </div>
+                    </div>
+                  </div>
+              <% end %>
               <div class="form-group">
-                <%=f.label 'Email Address', class: 'col-sm-3 control-label' %>
+                <%= f.label :email, 'Email Address', class: 'col-sm-3 control-label' %>
                 <div class="col-sm-8">
-                  <%= f.email_field 'email_address', class: 'form-control reset-border-radius' %>
+                  <%= f.email_field :email, class: 'form-control reset-border-radius' %>
                 </div>
               </div>
               <div class="form-group">
-                <%= f.label 'Password', class: 'col-sm-3 control-label' %>
+                <%= f.label :password, 'Password', class: 'col-sm-3 control-label' %>
                 <div class="col-sm-8">
-                  <%= f.password_field 'password', class: 'form-control reset-border-radius', placeholder: 'Password has been assigned' %>
+                  <%= f.password_field :password, class: 'form-control reset-border-radius', placeholder: 'Password has been assigned' %>
                 </div>
               </div>
               <div class="form-group">
-                <%=f.label 'Confirm Password', class: 'col-sm-3 control-label' %>
+                <%= f.label :confirm_password, 'Confirm Password', class: 'col-sm-3 control-label' %>
                 <div class="col-sm-8">
-                  <%= f.password_field 'password', class: 'form-control reset-border-radius' %>
+                  <%= f.password_field :password_confirmation, class: 'form-control reset-border-radius' %>
                 </div>
               </div>
               <div class="text-center">

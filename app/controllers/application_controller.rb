@@ -24,6 +24,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def authenticate_admin!
+    if current_user.is_admin?
+      true
+    else
+      redirect_to root_path, danger: 'Access denied, Only admin can access this page.'
+    end
+  end
+
   def redirect_url
     if warden_message == :unconfirmed
       redirect root_path

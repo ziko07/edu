@@ -11,8 +11,8 @@ module ApplicationHelper
     @devise_mapping ||= Devise.mappings[:user]
   end
 
-  def active_tab(current_controller, current_action, cntlr_name, acn_name)
-    if current_controller == cntlr_name && acn_name.include?(current_action)
+  def active_tab(con_name, ac_name)
+    if con_name == controller_name && ac_name.include?(action_name)
       'active_admin_side_bar'
     end
   end
