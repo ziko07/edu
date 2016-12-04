@@ -2,5 +2,6 @@
 popupMessage('<%= escape_javascript(errors_to_message_string(@course.errors)).html_safe %>', 'alert-danger');
 <% else %>
 popupMessage('<%= escape_javascript( flash[:success] ).html_safe %>', 'alert-success');
+$('.course-submit-wrapper').html("<%= escape_javascript(course_status(@course)).html_safe %>");
 <% end %>
 <% flash.clear %>

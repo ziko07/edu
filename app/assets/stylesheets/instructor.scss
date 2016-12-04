@@ -54,6 +54,11 @@
 #new-course {
   background: rgb(243, 243, 242);
   border-right: 1px solid #dfdfdf;
+  .course-submit-wrapper {
+    padding: 5px;
+    background: #FFFFFF;
+    margin-top: 1px;
+  }
   .header-wrapper {
     background: #FFFFFF;
     padding: 10px;
