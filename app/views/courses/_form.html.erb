@@ -28,13 +28,15 @@
               <a href="#promo-video"> Promo Video </a>
             </li>
           </ul>
+          <div class="course-submit-wrapper">
+            <%= course_status(@course) unless @course.new_record? %>
+          </div>
         </div>
       </div>
     </div>
     <div class="col-sm-8">
       <div class="row">
         <div id="new-course" class="tab-content">
-          <div class="course-submit-wrapper clearfix"> <%= course_status(@course) unless @course.new_record? %> </div>
           <%= render 'basic_info' %>
           <%= render 'summary' %>
           <%= render 'image' %>

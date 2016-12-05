@@ -30,12 +30,12 @@ module ApplicationHelper
       end
 
       if message.present?
-        raw "<span style='color: #A62C39;' class='pull-right'> #{message} required to course submit </span>"
+        raw link_to 'Submit for Review', 'javascript:void(0);', title: message + ' required to course submission', class: 'btn btn-default btn-lg disabled reset-border-radius'
       else
-        raw link_to 'Submit For Review', '#', class: 'btn btn-success pull-right'
+        raw link_to 'Submit for Review', review_submit_instructors_path(course), class: 'btn btn-lg btn-success reset-border-radius'
       end
     else
-      "Course status: #{course.course_status.name}"
+      raw "<div class='alert alert-info'> Course #{course.course_status.name.humanize} </div>"
     end
   end
 

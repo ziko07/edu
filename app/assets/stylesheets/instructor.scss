@@ -48,17 +48,20 @@
       margin: 3px 0;
       font-size: 16px;
     }
+    .course-submit-wrapper {
+      padding: 5px;
+      text-align: center;
+      margin: 10px 0;
+      a.btn.disabled {
+        pointer-events: unset;
+      }
+    }
   }
 }
 
 #new-course {
   background: rgb(243, 243, 242);
   border-right: 1px solid #dfdfdf;
-  .course-submit-wrapper {
-    padding: 5px;
-    background: #FFFFFF;
-    margin-top: 1px;
-  }
   .header-wrapper {
     background: #FFFFFF;
     padding: 10px;

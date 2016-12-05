@@ -39,15 +39,15 @@
               </p>
             </div>
           </div>
-          <%= form_for @course, html:{id: 'edit-course-promo-video', remote: true} do |f|%>
+          <%= form_for @course, html: {id: 'edit-course-promo-video', remote: true} do |f| %>
               <div class="form-group">
                 <div class="input-group">
-                  <%= text_field_tag 'course_test_promo_video','',  placeholder: 'Enter YouTube link of video here', class: 'form-control' %>
+                  <%= text_field_tag 'course_test_promo_video', '', placeholder: 'Enter YouTube link of video here', class: 'form-control' %>
                   <%= f.hidden_field :promo_video %>
                   <label class="input-group-btn">
-                        <button class="btn btn-success">
-                            <i class="fa fa-save"></i> Save
-                        </button>
+                    <button class="btn btn-success">
+                      <i class="fa fa-save"></i> Save
+                    </button>
                   </label>
                 </div>
               </div>
@@ -57,32 +57,32 @@
   </div>
 </div>
 <script type="text/javascript">
-    $(function(){
-        $('#course_test_promo_video').change(function(){
+    $(function () {
+        $('#course_test_promo_video').change(function () {
             var youtubeUrl = $(this).val();
-            if(!youtubeUrl.match(/^[a-zA-Z]+:\/\//)){
-                youtubeUrl = "https://"+ youtubeUrl;
+            if (!youtubeUrl.match(/^[a-zA-Z]+:\/\//)) {
+                youtubeUrl = "https://" + youtubeUrl;
             }
-            if(matchYoutubeUrl(youtubeUrl)){
+            if (matchYoutubeUrl(youtubeUrl)) {
                 var youtubeVideoId = matchYoutubeUrl(youtubeUrl);
                 var validYoutubeLink = "https://www.youtube.com/embed/" + youtubeVideoId;
-                $('#video-container').html("<iframe src="+ validYoutubeLink +" frameborder='0' allowfullscreen></iframe>");
+                $('#video-container').html("<iframe src=" + validYoutubeLink + " frameborder='0' allowfullscreen></iframe>");
                 $('#course_promo_video').val(validYoutubeLink);
             }
-            else{
+            else {
                 $('#video-container').html('<%= image_tag 'promo_video_before_upload.jpg', class: 'preview-video' %>');
                 popupMessage('Invalid Youtube link', 'alert-warning');
                 $('#course_promo_video').val(null);
             }
 
         });
-        $('#edit-course-promo-video').submit(function(e){
+        $('#edit-course-promo-video').submit(function (e) {
             e.preventDefault();
-            if ($(this).find('#course_promo_video').val()){
+            if ($(this).find('#course_promo_video').val()) {
                 $(this).submit();
             }
-            else{
-                alert('No youtube link provided');
+            else {
+                popupMessage('Please provide youtube url', 'alert-info');
             }
             return false;
         });
