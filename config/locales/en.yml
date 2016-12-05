@@ -21,6 +21,7 @@
 
 en:
   hello: "Hello world"
+  reset_password_email_not_confirmed: 'Your password has been changed successfully. Please check your email (look in inbox, spam and thrash folder) to click on account confirmation link before signing in'
   activerecord:
     errors:
       models:

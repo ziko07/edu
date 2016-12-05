@@ -43,6 +43,7 @@ Rails.application.routes.draw do
     collection do
       get :dashboard
       get '/:id', to: :profile, as: :profile
+      get '/course/:id/submit_for_review', to: :review_submit, as: :review_submit
     end
   end
 

@@ -48,6 +48,14 @@
       margin: 3px 0;
       font-size: 16px;
     }
+    .course-submit-wrapper {
+      padding: 5px;
+      text-align: center;
+      margin: 10px 0;
+      a.btn.disabled {
+        pointer-events: unset;
+      }
+    }
   }
 }
 

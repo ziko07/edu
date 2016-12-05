@@ -28,6 +28,9 @@
               <a href="#promo-video"> Promo Video </a>
             </li>
           </ul>
+          <div class="course-submit-wrapper">
+            <%= course_status(@course) unless @course.new_record? %>
+          </div>
         </div>
       </div>
     </div>

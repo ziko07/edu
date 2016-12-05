@@ -61,7 +61,7 @@
 
         $('#upload-course-image-form').submit(function () {
             if ($('#course_image').val() == '') {
-                alert('No Image Selected');
+                popupMessage('Please upload a file', 'alert-info');
             }
             else {
                 $(this).ajaxSubmit({
