@@ -36,6 +36,22 @@ class User < ActiveRecord::Base
     Course.joins(:course_status).where("course_statuses.name = '#{AppData::COURSE_STATUS[:rejected]}'")
   end
 
+  def self.admin_course_status
+    CourseStatus.where("name != '#{AppData::COURSE_STATUS[:pending_review]}'")
+  end
+
+  def name
+    if full_name.present?
+      full_name
+    else
+      ins_name = first_name
+      if last_name.present?
+        ins_name += ' ' + last_name
+      end
+      ins_name
+    end
+  end
+
   private
 
   def user_slug

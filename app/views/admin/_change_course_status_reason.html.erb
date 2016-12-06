@@ -1,0 +1,21 @@
+<div id="status-change-reason" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel"> What is the reason for <b> ? </b></h4>
+      </div>
+      <div class="modal-body edit-content">
+        <div class="form-group">
+          <%= label_tag :change_reason, style: 'width: 100%;' do %>
+              Provide a reason <span> <i class="fa fa-question-circle pull-right question-mark"></i> </span>
+          <% end %>
+          <%= text_area_tag :change_reason, '', placeholder: 'Please give a short description. This will be emailed to instructor.', class: 'form-control' %>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="send-change-reason" data-url=''> Send</button>
+      </div>
+    </div>
+  </div>
+</div>

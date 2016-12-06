@@ -1,0 +1,21 @@
+Oops <%= @instructor.name %>!
+
+<p>
+  Your course <%= @course.title %> did not pass our moderation review, for the following reason(s):
+</p>
+
+<p>
+  <%= @course.status_reason %>
+</p>
+<p>
+  Just hang in there though! Simply click link below to edit the course before resubmitting for approval.
+</p>
+<p>
+  <%= link_to 'Course edit', edit_course_url(@course) %>
+</p>
+<p>
+  We look forward to hearing from you soon!
+</p>
+
+Regards, <br/>
+&#60;domain name>

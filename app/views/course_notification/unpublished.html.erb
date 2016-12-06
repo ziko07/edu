@@ -1,0 +1,21 @@
+Hello <%= @instructor.name %>!
+
+<p>
+  Your course "<%= @course.title %>" has been unpublished for the following reason(s):
+</p>
+
+<p>
+  <%= @course.status_reason %>
+</p>
+<p>
+  To republish your course at anytime, simply click link below to make any changes you may have, before resubmitting for approval!
+</p>
+<p>
+  <%= link_to 'Course edit', edit_course_url(@course) %>
+</p>
+<p>
+  We look forward to hearing from you soon!
+</p>
+
+Regards, <br/>
+&#60;domain name>

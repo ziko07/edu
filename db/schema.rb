@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161204184219) do
+ActiveRecord::Schema.define(version: 20161206064348) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "title",      limit: 255
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20161204184219) do
     t.string   "promo_video",      limit: 255
     t.string   "slug",             limit: 255
     t.integer  "course_status_id", limit: 4
+    t.text     "status_reason",    limit: 65535
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|

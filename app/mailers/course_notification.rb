@@ -3,4 +3,23 @@ class CourseNotification < ApplicationMailer
     @course = course
     mail(to: User::ADMIN_EMAILS, subject: 'Review the course')
   end
+
+  def rejected(course)
+    @course = course
+    @instructor = course.user
+    mail(to: User::ADMIN_EMAILS, subject: 'Course rejected notification!')
+  end
+
+  def unpublished(course)
+    @course = course
+    @instructor = course.user
+    mail(to: User::ADMIN_EMAILS, subject: 'Course unpublished notification!')
+  end
+
+  def published(course)
+    @course = course
+    @instructor = course.user
+    mail(to: User::ADMIN_EMAILS, subject: 'Course published notification')
+  end
+
 end

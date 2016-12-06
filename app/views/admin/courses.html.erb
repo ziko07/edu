@@ -61,7 +61,7 @@
 </div>
 <script type="text/javascript">
     $(function () {
-        $('#courses-list').tablesorter({
+        $('.courses-table').tablesorter({
             headers: {
                 0: {
                     sorter: false
@@ -81,4 +81,67 @@
             window.location.hash = e.target.hash;
         });
     });
+
+    $(function () {
+
+        $('.update-course-status').click(function (e) {
+            e.preventDefault();
+            var data = {};
+            var reasonElement = $('#change_reason');
+            var select = $(this).parents('tr').find('select');
+            var url = $(this).attr('href');
+            if (select.length > 0) {
+                var status = select.find('option:selected').text();
+                var reason = reasonElement.val();
+                data['status'] = select.val();
+                if (status == 'rejected' || status == 'unpublished') {
+                    reasonModal(status, url, data['status']);
+                }
+                else {
+                    updateStatus(url, data)
+                }
+            }
+            else {
+                popupMessage('Something wrong, Please try again!', 'danger');
+            }
+        });
+
+        $('#send-change-reason').click(function () {
+            var reasonElement = $('#change_reason');
+            var data = {status: $(this).attr('data-status'), reason: reasonElement.val()};
+            var url = $(this).attr('data-url');
+            if (reasonElement.val() == '') {
+                popupMessage('Please provide a reason', 'alert-info');
+                reasonElement.focus();
+            }
+            else {
+                updateStatus(url, data);
+                $('#status-change-reason').modal('hide');
+            }
+        });
+    });
+
+    function reasonModal(status, url, status_id) {
+        var modalElement = $('#status-change-reason');
+        if (status == 'rejected') {
+            modalElement.find('.modal-title b').html('rejecting?');
+        }
+        else if (status == 'unpublished') {
+            modalElement.find('.modal-title b').html('unpublishing?');
+        }
+        modalElement.find('#send-change-reason').attr('data-url', url).attr('data-status', status_id);
+        modalElement.modal('show');
+    }
+
+    function updateStatus(url, data) {
+        $.ajax({
+            url: url,
+            type: 'put',
+            dataType: 'script',
+            data: data,
+            error: function () {
+                popupMessage('Something wrong, Please try again!', 'danger');
+            }
+        });
+    }
 </script>

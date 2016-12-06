@@ -42,6 +42,8 @@
             <%= f.select :category_id, Category.all.collect { |category| [category.title, category.id] }, {prompt: '-- Select One --'}, {class: 'form-control', data: {errormessage_value_missing: 'category not filled in'}, required: true} %>
           </div>
 
+          <%= render '/admin/course_action', builder: f if current_user.is_admin? %>
+
           <hr/>
           <div class="form-group text-center">
             <%= button_tag class: 'btn btn-success' do %>

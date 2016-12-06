@@ -7,6 +7,8 @@ class Course < ActiveRecord::Base
   extend FriendlyId
   friendly_id :course_slug, use: :slugged
 
+  after_save :send_email_notification
+
   def self.published
     joins(:course_status).where("course_statuses.name like '%published%'")
   end
@@ -21,6 +23,21 @@ class Course < ActiveRecord::Base
 
   def self.rejected
     joins(:course_status).where("course_statuses.name like '%rejected%'")
+  end
+
+
+  def send_email_notification
+    if course_status_id_changed? && course_status.present?
+      case (course_status.name)
+        when AppData::COURSE_STATUS[:rejected]
+          CourseNotification.rejected(self).deliver
+        when AppData::COURSE_STATUS[:unpublished]
+          CourseNotification.unpublished(self).deliver
+        when AppData::COURSE_STATUS[:published]
+          CourseNotification.published(self).deliver
+        else
+      end
+    end
   end
 
   private

@@ -1,5 +1,5 @@
 <div class="tab-pane fade in <%= klass %> admin-course-wrapper table-responsivexx" id="<%= tab %>">
-  <table class="table tablesorter" id="courses-list">
+  <table class="table tablesorter courses-table">
     <thead>
     <tr>
       <th></th>
@@ -17,26 +17,4 @@
   </table>
 </div>
 
-<script type="text/javascript">
-    $(function () {
-        $('.update-course-status').click(function (e) {
-            e.preventDefault();
-            var select = $(this).parents('tr').find('select');
-            var url = $(this).attr('href');
-            if (select.length > 0) {
-                $.ajax({
-                    url: url,
-                    type: 'put',
-                    dataType: 'script',
-                    data: {status: select.val()},
-                    error: function () {
-                        popupMessage('Something wrong, Please try again!', 'danger');
-                    }
-                })
-            }
-            else {
-                popupMessage('Something wrong, Please try again!', 'danger');
-            }
-        });
-    });
-</script>
+<%= render 'admin/change_course_status_reason' %>

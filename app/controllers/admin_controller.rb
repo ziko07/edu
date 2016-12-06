@@ -61,28 +61,21 @@ class AdminController < ApplicationController
   end
 
   def courses
-    @courses = Course.all
+    @courses = Course.where('course_status_id IS NOT NULL')
     @group_course = CourseStatus.joins(:courses).group('name').count
   end
 
   def update_course
     @course = Course.find_by_id(params[:id])
+    @status = false
     if @course.present?
       @prev_status = @course.course_status.name
-      @course.update_attribute('course_status_id', params[:status])
+      @status = @course.update_attributes(course_status_id: params[:status], status_reason: params[:reason])
       @group_course = CourseStatus.joins(:courses).group('name').count
     end
     respond_to do |format|
       format.js {}
     end
-  end
-
-  def seo_pages
-
-  end
-
-  def edit_page
-
   end
 
   protected

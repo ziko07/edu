@@ -1,0 +1,18 @@
+Hello <%= @instructor.name %>!
+
+<p>
+  Congratulations! Your course "<%= @course.title %>" is now approved. You can view the course
+  at <%= link_to 'Course', show_course_url(@course) %> and make future edits to the course at
+  <%= link_to 'Course edit', edit_course_url(@course) %>.
+</p>
+
+<p>
+  Any future edits will be resubmitted to admin for approval.
+</p>
+
+<p>
+  We wish you and your course success!
+</p>
+
+Thanks and regards, <br/>
+&#60;domain name>
