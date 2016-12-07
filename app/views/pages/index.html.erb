@@ -8,7 +8,7 @@
       <div class="page-list-right-content col-sm-9">
         <h4>Pages</h4>
 
-        <p>All (25)</p>
+        <p>All (<%= @pages.count %>)</p>
         <table class="table table-responsive table-striped custom-table">
           <tbody>
           <tr>
@@ -16,63 +16,17 @@
               <%= check_box_tag :page %> Title
             </td>
           </tr>
-
-          <tr>
-            <td>
-              <b><%= check_box_tag :page %>
-                Homepage</b><br>
-              <%= link_to 'Edit', edit_page_path(1) %>
-            </td>
-          </tr>
-
-          <tr>
-            <td>
-              <b><%= check_box_tag :page %>Courses</b><br>
-              <%= link_to 'Edit', edit_page_path(1) %>
-            </td>
-          </tr>
-
-          <tr>
-            <td>
-              <b><%= check_box_tag :page %>Course Category-guiter</b><br>
-              <%= link_to 'Edit', edit_page_path(1) %>
-            </td>
-          </tr>
-
-          <tr>
-            <td>
-              <b><%= check_box_tag :page %>Course Category-Piano</b><br>
-              <%= link_to 'Edit', edit_page_path(1) %>
-            </td>
-          </tr>
-
-          <tr>
-            <td>
-              <b><%= check_box_tag :page %>Course- Learn Guiter in London</b><br>
-              <%= link_to 'Edit', edit_page_path(1) %>
-            </td>
-          </tr>
-
-          <tr>
-            <td>
-              <b><%= check_box_tag :page %>Course- Learn Piano in London</b><br>
-              <%= link_to 'Edit', edit_page_path(1) %>
-            </td>
-          </tr>
-
-          <tr>
-            <td>
-              <b><%= check_box_tag :page %>Course- Learn Banjo in London</b><br>
-              <%= link_to 'Edit', edit_page_path(1) %>
-            </td>
-          </tr>
+          <% @pages.each do |page| %>
+              <tr>
+                <td>
+                  <b> <%= page.meta_title %> </b> <br/>
+                  <%= link_to 'Edit', edit_page_path(page) %>
+                </td>
+              </tr>
+          <% end %>
           </tbody>
         </table>
-
-
       </div>
-
-
     </div>
     <div class=""></div>
     <div class=""></div>

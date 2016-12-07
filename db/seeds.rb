@@ -23,7 +23,3 @@
 # CourseStatus.create!(name: 'published')
 # CourseStatus.create!(name: 'rejected')
 # CourseStatus.create!(name: 'unpublished')
-
-Course.all.each do |course|
-  course.update_attribute(:course_status_id, nil)
-end

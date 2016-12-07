@@ -4,6 +4,7 @@ class AdminController < ApplicationController
 
   def dashboard
     @courses = Course.all
+    @pending_course = current_user.pending_course
   end
 
   def instructors
