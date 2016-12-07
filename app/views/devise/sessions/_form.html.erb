@@ -18,6 +18,11 @@
         <%= f.submit "Login", class: 'btn btn-success btn-lg btn-block' %>
         <div class="text-center forgot-password-wrapper">
           or <%= link_to 'Forgot Password', 'javascript:void(0);', class: 'user-forgot-password-link' %>
+          <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+              <br/>
+              or
+              <%= link_to 'resend confirmation?', new_confirmation_path(resource_name) %>
+          <% end -%>
         </div>
       </div>
   <% end %>
@@ -38,12 +43,12 @@
             $('#user-login').modal('hide');
             $('#become-an-instructor').modal('show');
         });
-        $('#user-sign-in').on('ajax:success', function( event, data, status, xhr ){
-            if(data.success){
+        $('#user-sign-in').on('ajax:success', function (event, data, status, xhr) {
+            if (data.success) {
                 $('#message-sign-in').removeClass('alert alert-danger');
                 window.location.href = data.redirect_path;
             }
-            else{
+            else {
                 var messageContent = '<div class="alert alert-danger">' + data.message + '</div>';
                 $('#message-sign-in').html(messageContent);
             }
