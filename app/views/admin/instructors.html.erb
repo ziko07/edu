@@ -36,10 +36,10 @@
                   <td class="hide-on-mobile"><%= instructor.last_name %></td>
                   <td class="hide-on-mobile"><%= instructor.email %></td>
                   <td class="instructor-list-action">
-                    <%= link_to '#', class: 'btn btn-danger reset-border-radius', data: {toggle: 'modal', target: '#admin-instructor-reset-password'} do %>
+                    <%= link_to admin_instructor_reset_password_path(instructor.id), class: 'btn btn-danger reset-border-radius reset-instructor-password' do %>
                         Reset Password
                     <% end %>
-                    <%= link_to '#', class: 'btn btn-danger reset-border-radius', data: {toggle: 'modal', target: '#admin-instructor-unpublished'} do %>
+                    <%= link_to admin_instructor_unpublish_path(instructor.id), class: 'btn btn-danger reset-border-radius unpublish-instructor' do %>
                         Unpublish
                     <% end %>
                     <%= link_to admin_edit_instructors_path(instructor.id), class: 'btn btn-info reset-border-radius' do %>
@@ -56,7 +56,7 @@
   </div>
 </div>
 
-<div class="modal fade" id="admin-instructor-reset-password" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="instructor-reset-password-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -72,7 +72,7 @@
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-default reset-border-radius">Reset Password</button>
+        <a href="#" class="btn btn-default reset-border-radius"> Reset Password </a>
         <button type="button" class="btn btn-default reset-border-radius" data-dismiss="modal">Cancel</button>
       </div>
 
@@ -98,7 +98,7 @@
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger reset-border-radius">Unpublish</button>
+        <a href="#" class="btn btn-danger reset-border-radius"> Unpublish </a>
         <button type="button" class="btn btn-default reset-border-radius" data-dismiss="modal">Cancel</button>
       </div>
 
@@ -106,3 +106,20 @@
   </div>
 </div>
 
+<script type="text/javascript">
+    $(function () {
+        $('.reset-instructor-password').click(function (e) {
+            var modalElement = $('#instructor-reset-password-modal');
+            e.preventDefault();
+            modalElement.find('.modal-footer a').attr('href', $(this).attr('href'));
+            modalElement.modal('show');
+        });
+
+        $('.unpublish-instructor').click(function (e) {
+            var modalElement = $('#admin-instructor-unpublished');
+            e.preventDefault();
+            modalElement.find('.modal-footer a').attr('href', $(this).attr('href'));
+            modalElement.modal('show');
+        });
+    });
+</script>

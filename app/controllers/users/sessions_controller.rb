@@ -12,7 +12,11 @@ class Users::SessionsController < Devise::SessionsController
     respond_to do |format|
       resource = User.find_for_database_authentication(email: params[:user][:email])
 
-      if resource.present? && resource.valid_password?(params[:user][:password]) && resource.confirmed_at.present?
+      if resource.present? && !resource.confirmed_at.present?
+        format.json { render json: {success: false, message: 'Please check your email and click on confirm account link, before signing in.'} }
+      elsif resource.present? && !resource.published
+        format.json { render json: {success: false, message: 'Your profile is unpublished. Kindly reach out to us at contact@lessonroll.com if you need any further assistance'} }
+      elsif resource.present? && resource.valid_password?(params[:user][:password])
         sign_in :user, resource
         format.json { render json: {success: true, redirect_path: after_sign_in_path_for(resource)} }
       else

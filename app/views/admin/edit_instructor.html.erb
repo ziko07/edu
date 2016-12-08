@@ -44,7 +44,7 @@
               <div class="form-group">
                 <%= f.label 'Password', class: 'col-sm-3 control-label' %>
                 <div class="col-sm-8">
-                  <%= link_to '', class: 'btn btn-danger reset-border-radius' do %>
+                  <%= link_to admin_instructor_reset_password_path(@instructor.id), class: 'btn btn-danger reset-border-radius' do %>
                       Reset Password
                   <% end %>
                 </div>

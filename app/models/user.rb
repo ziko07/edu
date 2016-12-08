@@ -21,23 +21,52 @@ class User < ActiveRecord::Base
   end
 
   def pending_course
-    Course.joins(:course_status).where("course_statuses.name = '#{AppData::COURSE_STATUS[:pending_review]}'")
+    pending_status = CourseStatus.find_by_name(AppData::COURSE_STATUS[:pending_review])
+    if pending_status.present?
+      Course.joins(:user).where('course_status_id = ? and users.published = true', pending_status.id)
+    else
+      []
+    end
   end
 
   def published_course
-    Course.joins(:course_status).where("course_statuses.name = '#{AppData::COURSE_STATUS[:published]}'")
+    published_status = CourseStatus.find_by_name(AppData::COURSE_STATUS[:published])
+    if published_status.present?
+      Course.joins(:user).where('course_status_id = ? and users.published = true', published_status.id)
+    else
+      []
+    end
   end
 
   def unpublished_course
-    Course.joins(:course_status).where("course_statuses.name = '#{AppData::COURSE_STATUS[:unpublished]}'")
+    unpublished_status = CourseStatus.find_by_name(AppData::COURSE_STATUS[:unpublished])
+    if unpublished_status.present?
+      Course.joins(:user).where('course_status_id = ? and users.published = true', unpublished_status.id)
+    else
+      []
+    end
   end
 
   def rejected_course
-    Course.joins(:course_status).where("course_statuses.name = '#{AppData::COURSE_STATUS[:rejected]}'")
+    rejected_status = CourseStatus.find_by_name(AppData::COURSE_STATUS[:rejected])
+    if rejected_status.present?
+      Course.joins(:user).where('course_status_id = ? and users.published = true', rejected_status.id)
+    else
+      []
+    end
   end
 
   def self.admin_course_status
     CourseStatus.where("name != '#{AppData::COURSE_STATUS[:pending_review]}'")
+  end
+
+  # Unpublished courses after an instructor unpublished
+  def unpublish_courses
+    unpublish_status = CourseStatus.find_by_name(AppData::COURSE_STATUS[:unpublished])
+    user_courses = courses.joins(:course_status).where('course_statuses.name = ?', AppData::COURSE_STATUS[:published])
+    user_courses.each do |course|
+      course.update_attribute(:course_status_id, unpublish_status.id)
+    end
   end
 
   def name

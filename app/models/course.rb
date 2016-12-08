@@ -27,7 +27,7 @@ class Course < ActiveRecord::Base
 
 
   def send_email_notification
-    if course_status_id_changed? && course_status.present?
+    if course_status_id_changed? && course_status.present? && user.published
       case (course_status.name)
         when AppData::COURSE_STATUS[:rejected]
           CourseNotification.rejected(self).deliver
