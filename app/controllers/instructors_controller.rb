@@ -15,7 +15,7 @@ class InstructorsController < ApplicationController
     if course.present? && status.present?
       if course.update_attribute('course_status_id', status.id)
         CourseNotification.review_course(course).deliver
-        flash[:success] = 'Course has been successfully submit for review'
+        flash[:success] = "This course is now submitted for review. You will receive email notification as soon as it's approved"
       else
         flash[:danger] = 'Something wrong please try again!'
       end

@@ -56,6 +56,18 @@
         pointer-events: unset;
       }
     }
+
+    .submit-for-review {
+      color: #dfdfdf;
+      background: #7E84AB;
+      &.disabled {
+        background: rgb(174, 174, 174);
+        color: #EEEEEE;
+      }
+      &:hover {
+        background: #aaaaaa;
+      }
+    }
   }
 }
 
