@@ -60,7 +60,7 @@ class AdminController < ApplicationController
     if instructor.update_attribute(:published, false)
       instructor.unpublish_courses
       UserNotification.unpublished(instructor).deliver
-      flash[:success] = 'Instructor has been successfully unpublished'
+      flash[:success] = 'Instructor is now unpublished. Email is now sent to instructor to inform him/her on this.'
     else
       flash[:success] = 'Unable to unpublished instructor'
     end
