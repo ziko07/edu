@@ -7,6 +7,11 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
   # POST /resource/confirmation
   def create
     super
+
+    if resource.errors.empty?
+      # set_flash_message!(:success, "We just sent an email to #{resource.email} with instructions on how to confirm that it belongs to you")
+      flash[:success] = "We just sent an email to #{resource.email} with instructions on how to confirm that it belongs to you"
+    end
   end
 
   # GET /resource/confirmation?confirmation_token=abcdef
