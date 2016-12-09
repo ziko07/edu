@@ -1,10 +1,12 @@
 <div id="password-edit">
   <div class="password-wrapper">
     <div class="password-header text-center">
-      <h2>Resend Confirmation</h2>
+      <h2>Please confirm your account</h2>
     </div>
     <div class="password-note">
-      Resend confirmation instructions
+      To login, simply confirm your email address.Check your email (including spam and thrash folder) for an account confirmation email from LessonRoll. Then, click the link within the email to verify your email address.
+      </br>
+      If you can't find the email, click button here to resend:
     </div>
     <div class="password-content">
       <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: {method: :post}) do |f| %>

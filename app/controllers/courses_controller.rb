@@ -58,8 +58,10 @@ class CoursesController < ApplicationController
   def set_course
     begin
       @course = Course.friendly.find(params[:id])
-      unless @course.user == current_user || current_user.is_admin?
-        redirect_to root_path, danger: 'You have not access to this course'
+      if current_user.present?
+        unless @course.user == current_user || current_user.is_admin?
+          redirect_to root_path, danger: 'You have not access to this course'
+        end
       end
     rescue ActiveRecord::RecordNotFound
       redirect_to :back, danger: 'Course Not Found'

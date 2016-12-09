@@ -11,7 +11,7 @@
     </div>
   </td>
   <td>
-    <%= select_tag :course_status, options_for_select(CourseStatus.all.collect { |p| [p.name, p.id] }, course.course_status.id), {class: 'select-course-status'} %>
+    <%= select_tag :course_status, options_for_select( User.admin_course_status.all.collect { |p| [p.name, p.id] }, course.course_status.id), {class: 'select-course-status', include_blank: '-- Select One --'} %>
     <div class="hide-on-desktop course-status-save">
       <%= link_to 'Save', update_course_status_path(course.id), class: 'update-course-status btn btn-danger reset-padding reset-border-radius' %>
     </div>

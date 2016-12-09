@@ -1,5 +1,9 @@
+<b>Confirm your account</b>
 <p>Welcome <%= @resource.full_name %>!</p><br/>
 
-<p>You can confirm your account email through the link below:</p>
+<p>You signed up for an account at LessonRoll with this e-mail address <%= @resource.email %>. Please follow this link to confirm that this e-mail address is yours.</p>
 
 <p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+
+<p>Thanks,</p>
+<p>LessonRoll Team</p>

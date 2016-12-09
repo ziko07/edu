@@ -4,7 +4,7 @@ en:
   devise:
     confirmations:
       confirmed: "Your account has been confirmed."
-      send_instructions: "You will receive an email with instructions for how to confirm your email address in a few minutes."
+      send_instructions: "We just sent an email to with instructions on how to confirm that it belongs to you"
       send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes."
     failure:
       already_authenticated: "You are already signed in."
@@ -18,7 +18,7 @@ en:
       unconfirmed: "You have to confirm your email address before continuing."
     mailer:
       confirmation_instructions:
-        subject: "Confirmation instructions"
+        subject: "Confirm your account"
       reset_password_instructions:
         subject: "Reset password instructions"
       unlock_instructions:

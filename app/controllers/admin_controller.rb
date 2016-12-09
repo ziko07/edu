@@ -8,7 +8,8 @@ class AdminController < ApplicationController
   end
 
   def instructors
-    @instructors = User.where('email NOT IN (?) and published = true', User::ADMIN_EMAILS)
+    # @instructors = User.where('email NOT IN (?) and published = true', User::ADMIN_EMAILS)
+    @instructors = User.where('email NOT IN (?)', User::ADMIN_EMAILS)
   end
 
   def edit_instructor
@@ -45,7 +46,7 @@ class AdminController < ApplicationController
       new_password = SecureRandom.hex(8)
       if instructor.update_attributes(password: new_password, assigned_admin_password: true)
         UserNotification.reset_password(instructor, new_password).deliver
-        flash[:success] = 'Password has been successfully reset'
+        flash[:success] = "Instructor's password has now been reset. Email is now sent to instructor to inform him/her on this."
       else
         flash[:danger] = 'Unable to reset password, Please try again!'
       end
@@ -63,6 +64,17 @@ class AdminController < ApplicationController
       flash[:success] = 'Instructor is now unpublished. Email is now sent to instructor to inform him/her on this.'
     else
       flash[:success] = 'Unable to unpublished instructor'
+    end
+    redirect_to admin_instructors_path
+  end
+
+  def publish_instructor
+    instructor = User.find_by_id(params[:user_id])
+    if instructor.update_attribute(:published, true)
+      UserNotification.published(instructor).deliver
+      flash[:success] = 'Instructor is now published. Email is now sent to instructor to inform him/her on this.'
+    else
+      flash[:success] = 'Unable to published instructor'
     end
     redirect_to admin_instructors_path
   end

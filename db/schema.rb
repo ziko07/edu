@@ -35,8 +35,8 @@ ActiveRecord::Schema.define(version: 20161208094944) do
     t.string   "subtitle",         limit: 255
     t.integer  "category_id",      limit: 4
     t.integer  "user_id",          limit: 4
-    t.string   "image",            limit: 255
     t.text     "summary",          limit: 65535
+    t.string   "image",            limit: 255
     t.string   "promo_video",      limit: 255
     t.string   "slug",             limit: 255
     t.integer  "course_status_id", limit: 4

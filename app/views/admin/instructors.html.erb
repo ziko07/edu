@@ -39,8 +39,14 @@
                     <%= link_to admin_instructor_reset_password_path(instructor.id), class: 'btn btn-danger reset-border-radius reset-instructor-password' do %>
                         Reset Password
                     <% end %>
-                    <%= link_to admin_instructor_unpublish_path(instructor.id), class: 'btn btn-danger reset-border-radius unpublish-instructor' do %>
-                        Unpublish
+                    <% if instructor.published %>
+                        <%= link_to admin_instructor_unpublish_path(instructor.id), class: 'btn btn-danger reset-border-radius unpublish-instructor' do %>
+                            Unpublish
+                        <% end %>
+                    <% else %>
+                        <%= link_to admin_instructor_publish_path(instructor.id), class: 'btn btn-success reset-border-radius publish-instructor' do %>
+                            Publish
+                        <% end %>
                     <% end %>
                     <%= link_to admin_edit_instructors_path(instructor.id), class: 'btn btn-info reset-border-radius' do %>
                         <i class="fa fa-pencil-square-o"></i>
@@ -106,6 +112,33 @@
   </div>
 </div>
 
+
+<div class="modal fade" id="admin-instructor-published" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Confirm Publish</h4>
+      </div>
+
+      <div class="modal-body">
+        <p>
+          Are you sure wish to unpublish the selected instructor?
+          Instructor will  be visible on the website.
+        </p>
+      </div>
+
+      <div class="modal-footer">
+        <a href="#" class="btn btn-success reset-border-radius"> Publish </a>
+        <button type="button" class="btn btn-default reset-border-radius" data-dismiss="modal">Cancel</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 <script type="text/javascript">
     $(function () {
         $('.reset-instructor-password').click(function (e) {
@@ -117,6 +150,13 @@
 
         $('.unpublish-instructor').click(function (e) {
             var modalElement = $('#admin-instructor-unpublished');
+            e.preventDefault();
+            modalElement.find('.modal-footer a').attr('href', $(this).attr('href'));
+            modalElement.modal('show');
+        });
+
+        $('.publish-instructor').click(function (e) {
+            var modalElement = $('#admin-instructor-published');
             e.preventDefault();
             modalElement.find('.modal-footer a').attr('href', $(this).attr('href'));
             modalElement.modal('show');

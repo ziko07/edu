@@ -9,4 +9,9 @@ class UserNotification < ApplicationMailer
     @instructor = instructor
     mail(to: @instructor.email, subject: 'Reset password by admin')
   end
+
+  def published(instructor)
+    @instructor = instructor
+    mail(to: @instructor.email, subject: 'Reset password by admin')
+  end
 end

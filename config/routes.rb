@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     get '/instructors/:id' => 'admin#edit_instructor', as: :admin_edit_instructors
     get '/instructor/:user_id/reset_password' => 'admin#reset_password', as: :admin_instructor_reset_password
     get '/instructor/:user_id/unpublish' => 'admin#unpublish_instructor', as: :admin_instructor_unpublish
+    get '/instructor/:user_id/publish' => 'admin#publish_instructor', as: :admin_instructor_publish
     put '/course/:id' => 'admin#update_course', as: :update_course_status
     resources :pages, only: [:index, :edit, :update]
   end
