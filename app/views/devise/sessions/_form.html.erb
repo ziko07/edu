@@ -17,12 +17,12 @@
       <div class="actions">
         <%= f.submit "Login", class: 'btn btn-success btn-lg btn-block' %>
         <div class="text-center forgot-password-wrapper">
-          or <%= link_to 'Forgot Password', 'javascript:void(0);', class: 'user-forgot-password-link' %>
           <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-              <br/>
-              or
-              <%= link_to 'resend confirmation?', new_confirmation_path(resource_name) %>
+
+              <%= link_to '| Resend Confirmation Email |', new_confirmation_path(resource_name) %>
           <% end -%>
+          <%= link_to ' Forgot Password |', 'javascript:void(0);', class: 'user-forgot-password-link' %>
+
         </div>
       </div>
   <% end %>

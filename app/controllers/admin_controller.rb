@@ -33,6 +33,7 @@ class AdminController < ApplicationController
   def update_instructor
     @instructor = User.find_by_id(params[:id])
     redirect_to :back, danger: 'Instructor not found' unless @instructor.present?
+    @instructor.skip_reconfirmation!
     if @instructor.update_attributes(instructor_params)
       redirect_to admin_instructors_path, success: 'Instructor has been updated successfully'
     else
@@ -71,6 +72,7 @@ class AdminController < ApplicationController
   def publish_instructor
     instructor = User.find_by_id(params[:user_id])
     if instructor.update_attribute(:published, true)
+      instructor.publish_courses
       UserNotification.published(instructor).deliver
       flash[:success] = 'Instructor is now published. Email is now sent to instructor to inform him/her on this.'
     else

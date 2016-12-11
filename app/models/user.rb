@@ -69,6 +69,15 @@ class User < ActiveRecord::Base
     end
   end
 
+  # Published courses after an instructor published
+  def publish_courses
+    publish_status = CourseStatus.find_by_name(AppData::COURSE_STATUS[:published])
+    user_courses = courses.joins(:course_status).where('course_statuses.name = ?', AppData::COURSE_STATUS[:unpublished])
+    user_courses.each do |course|
+      course.update_attribute(:course_status_id, publish_status.id)
+    end
+  end
+
   def name
     if full_name.present?
       full_name

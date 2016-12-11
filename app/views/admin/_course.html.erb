@@ -7,7 +7,10 @@
       <p> <%= course.title %>
         <span class="hide-on-desktop"> Instructed By <%= link_to course.user.first_name, profile_instructors_path(course.user) %> </span>
       </p>
-      <%= link_to 'Go to Course', edit_course_path(course), class: 'btn btn-info reset-padding reset-border-radius' %>
+      <%= link_to 'Go to Course', show_course_path(course), class: 'btn btn-info reset-padding reset-border-radius ' %>
+      <%= link_to edit_course_path(course), class: 'btn btn-info reset-padding reset-border-radius edit-course-link admin-course-edit' do %>
+          <i class="fa fa-pencil-square-o"></i> Edit
+      <% end %>
     </div>
   </td>
   <td>

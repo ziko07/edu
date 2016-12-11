@@ -2,7 +2,7 @@
 <% if @course.errors.any? %>
 popupMessage('Something wrong, Please try again!', 'alert-danger');
 <%else%>
-popupMessage('Course status has been updated successfully', 'alert-success');
+popupMessage("Course <%= @course.title %> is now <%= @course.course_status.name %>. An email has been sent to inform the instructor.", 'alert-success');
 dest_selector = '#<%= @course.course_status.name.gsub(' ', '-') %>';
 dest = $(dest_selector);
 source_selector = '#<%= @prev_status.gsub(' ', '-') %>';
