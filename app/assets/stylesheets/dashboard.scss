@@ -7,6 +7,12 @@ $boston-blue: #0B7498;
 $tomato: #E6322F;
 $white: #FFFFFF;
 
+@media (max-width: 1000px) {
+  .submit-for-review {
+    font-size: 14px !important;
+  }
+}
+
 @media (max-width: 768px) {
   .side-menu {
     border-right: none !important;
@@ -48,6 +54,9 @@ $white: #FFFFFF;
         }
       }
     }
+  }
+  .submit-for-review {
+    font-size: 18px !important;
   }
 }
 
@@ -256,6 +265,7 @@ $white: #FFFFFF;
                 &:first-child {
                   div {
                     background-size: cover;
+                    background-position: center center;
                     height: 100%;
                     width: 100%;
                   }

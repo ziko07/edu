@@ -110,7 +110,8 @@ class AdminController < ApplicationController
     if @course.present?
       @prev_status = @course.course_status.name
       @status = @course.update_attributes(course_status_id: params[:status], status_reason: params[:reason])
-      @group_course = CourseStatus.joins(:courses).group('name').count
+      courses = Course.joins(:user).where('course_status_id IS NOT NULL and users.published = true')
+      @group_course = courses.joins(:course_status).group('course_statuses.name').count
     end
     respond_to do |format|
       format.js {}

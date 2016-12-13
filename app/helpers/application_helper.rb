@@ -30,14 +30,13 @@ module ApplicationHelper
       end
 
       if message.present?
-        # raw link_to 'Submit for Review', '', title: message + ' required to course submission', class: 'btn btn-default btn-lg disabled reset-border-radius submit-for-review'
-        raw '<a title="Summary and Image required to course submission" class="btn btn-default btn-lg disabled reset-border-radius submit-for-review">Submit for Review</a>'
+        raw "<a title='#{message} required to course submission' class='btn btn-default btn-lg disabled reset-border-radius submit-for-review'>Submit for Review</a>"
       else
         raw link_to 'Submit for Review', review_submit_instructors_path(course), class: 'btn btn-lg btn-success reset-border-radius submit-for-review'
       end
-    elsif course.course_status.name == AppData::COURSE_STATUS[:rejected]
-      html = '<div> <p style="color: #EA4335;"> This course is rejected </p>'
-      html += link_to 'ReSubmit for Review', review_submit_instructors_path(course), class: 'btn btn-lg btn-success reset-border-radius submit-for-review'
+    elsif course.course_status.name == AppData::COURSE_STATUS[:rejected] || course.course_status.name == AppData::COURSE_STATUS[:unpublished]
+      html = "<div> <p style='color: #EA4335;'> This course is #{course.course_status.name} </p>"
+      html += link_to 'Resubmit for Review', review_submit_instructors_path(course), class: 'btn btn-lg btn-success reset-border-radius submit-for-review'
       raw html + '</div>'
     else
       raw "<div class='alert alert-info'> This course is #{course.course_status.name} </div>"

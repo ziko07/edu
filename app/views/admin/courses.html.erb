@@ -139,6 +139,9 @@
             type: 'put',
             dataType: 'script',
             data: data,
+            success: function () {
+                $('#change_reason').val('');
+            },
             error: function () {
                 popupMessage('Something wrong, Please try again!', 'danger');
             }

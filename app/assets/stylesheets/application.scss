@@ -15,7 +15,8 @@
  */
 #notification {
   position: absolute;
-  width: 450px;
+  width: 100%;
+  max-width: 450px;
   left: 35%;
   top: -60px;
   border-radius: 5px;
@@ -48,5 +49,17 @@
   list-style: none;
   li {
     padding: 2px 0;
+  }
+}
+
+@media (max-width: 750px) {
+  #notification {
+    left: 15%;
+  }
+}
+
+@media (max-width: 460px) {
+  #notification {
+    left: 0;
   }
 }

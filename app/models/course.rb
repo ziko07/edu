@@ -1,4 +1,5 @@
 class Course < ActiveRecord::Base
+  include Rails.application.routes.url_helpers
   mount_uploader :image, ImageUploader
   belongs_to :category
   belongs_to :user
@@ -7,22 +8,23 @@ class Course < ActiveRecord::Base
   extend FriendlyId
   friendly_id :course_slug, use: :slugged
 
-  after_save :send_email_notification
+  # after_save :send_email_notification
+  after_save :create_seo_published_course
 
   def self.published
-    joins(:course_status).where("course_statuses.name like '%published%'")
+    joins(:course_status).where('course_statuses.name = ?', AppData::COURSE_STATUS[:published])
   end
 
   def self.unpublished
-    joins(:course_status).where("course_statuses.name like '%unpublished%'")
+    joins(:course_status).where('course_statuses.name = ?', AppData::COURSE_STATUS[:unpublished])
   end
 
   def self.pending_review
-    joins(:course_status).where("course_statuses.name like '%pending review%'")
+    joins(:course_status).where('course_statuses.name = ?', AppData::COURSE_STATUS[:pending_review])
   end
 
   def self.rejected
-    joins(:course_status).where("course_statuses.name like '%rejected%'")
+    joins(:course_status).where('course_statuses.name = ?', AppData::COURSE_STATUS[:rejected])
   end
 
 
@@ -36,6 +38,16 @@ class Course < ActiveRecord::Base
         when AppData::COURSE_STATUS[:published]
           CourseNotification.published(self).deliver
         else
+      end
+    end
+  end
+
+  def create_seo_published_course
+    if course_status.present? && AppData::COURSE_STATUS[:published] == course_status.name
+      key = show_course_path(self)
+      page = SeoPage.find_by_url(key)
+      unless page.present?
+        SeoPage.create!(meta_title: "Course - #{self.title}", meta_description: self.title, controller: 'courses', action: 'show', url: show_course_path(self))
       end
     end
   end

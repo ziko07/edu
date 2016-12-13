@@ -37,6 +37,15 @@
   }
 }
 
+#video-container {
+  img {
+    max-width: 100%;
+  }
+  iframe {
+    max-width: 100%;
+  }
+}
+
 #courses-wrapper {
   background: rgb(244, 244, 244);
   padding: 20px 10px;
