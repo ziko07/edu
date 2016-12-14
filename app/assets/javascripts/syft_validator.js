@@ -1,23 +1,91 @@
+function dataRequired(scopeArea){
+    return scopeArea.val();
+}
+
+
 (function($){
     $.fn.syftValidator = function(){
-        this.submit(function(e){
-            var validToSubmit = true;
-            $(this).find('input, select').each(function(){
-                if($(this).attr('data-required') && !$(this).val()){
-                    $(this).parents('.input-validate-message-area').find('.helper-text').remove();
-                    if($(this).attr('data-message')){
-                        $(this).parents('.input-validate-message-area').append('<p class="helper-text" style="color: red">'+ $(this).attr('data-message') + '*' +'</p>')
-                    }
-                    else{
-                        $(this).parents('.input-validate-message-area').append('<p class="helper-text" style="color: red"> This field is required* </p>')
-                    }
-                    validToSubmit = false;
+
+
+
+        var validatingkeys = ['data-required'];
+        var validateCheckingKeys = {
+            'data-required': 'dataRequired'
+        }
+
+        var validationMessage = {
+            'data-required': "Can't be blank"
+        }
+
+        function attrMaker(){
+            var attrs = "";
+            $.each(validatingkeys,function(key, value){
+                if (key == 0){
+                    attrs += '['+ value + ']';
                 }
                 else{
-                    $(this).parents('.input-validate-message-area').find('.helper-text').remove();
+                    attrs += ', ['+ value + ']';
                 }
             });
-            if(!validToSubmit){
+            return attrs;
+        }
+
+        function removeExistingMessage(scopeArea){
+            scopeArea.parents('.input-validate-message-area').find('.helper-text').remove();
+            scopeArea.next('.helper-text').remove();
+        }
+
+        function dataMessageElementGenerator(message){
+            return "<p class='helper-text' style='color: red;'>"+ message +"</p>";
+        }
+
+        function dataMessage(scopeArea, rule){
+            return scopeArea.attr('data-message') ? dataMessageElementGenerator(scopeArea.attr('data-message')) : dataMessageElementGenerator( validationMessage[rule]);
+        }
+
+        function putMessage(scopeArea, message, operation){
+            if(operation){
+                scopeArea.append(message);
+            }
+            else{
+                scopeArea.after(message);
+                console.log(scopeArea);
+            }
+        }
+
+        function checkMessageArea(scopeArea){
+            return scopeArea.parents('.input-validate-message-area');
+        }
+
+        function validatingRules(scopeArea){
+            var validateFiled = false;
+            $.each(validatingkeys, function(key, value){
+                if(scopeArea.attr(value) && !window[validateCheckingKeys[value]](scopeArea)){
+                    removeExistingMessage(scopeArea);
+                    checkMessageArea(scopeArea).length > 0 ? putMessage(checkMessageArea(scopeArea), dataMessage(scopeArea, value), true) : putMessage(scopeArea, dataMessage(scopeArea, value), false);
+                    validateFiled = true;
+                }
+            });
+
+            return validateFiled;
+        }
+
+        function isValidForSubmit(scopeArea){
+            var isValid = true;
+            scopeArea.find(attrMaker()).each(function(){
+                if(validatingRules($(this))){
+                    isValid = false
+                }
+                else{
+                    removeExistingMessage($(this));
+                }
+            });
+            return isValid;
+        }
+
+        this.submit(function(e){
+
+            if(!isValidForSubmit($(this))){
                 e.preventDefault();
                 e.stopPropagation();
             };
