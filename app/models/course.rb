@@ -8,7 +8,7 @@ class Course < ActiveRecord::Base
   extend FriendlyId
   friendly_id :course_slug, use: :slugged
 
-  # after_save :send_email_notification
+  after_save :send_email_notification
   after_save :create_seo_published_course
 
   def self.published
