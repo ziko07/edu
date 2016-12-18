@@ -6,11 +6,15 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
 
   # POST /resource/confirmation
   def create
-    super
 
-    if resource.errors.empty?
-      # set_flash_message!(:success, "We just sent an email to #{resource.email} with instructions on how to confirm that it belongs to you")
-      flash[:success] = "We just sent an email to #{resource.email} with instructions on how to confirm that it belongs to you"
+    user = User.find_by_email(params[:user][:email])
+    if user.present? && user.confirmed?
+      redirect_to root_path, success: 'Email was already confirmed, please try signing in'
+    else
+      super
+      if resource.errors.empty?
+        flash[:success] = "We just sent an email to #{resource.email} with instructions on how to confirm that it belongs to you"
+      end
     end
   end
 
@@ -22,9 +26,9 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
     if resource.errors.empty?
       set_flash_message!(:success, :confirmed)
       sign_in(resource)
-      respond_with_navigational(resource){ redirect_to after_confirmation_path_for(resource_name, resource) }
+      respond_with_navigational(resource) { redirect_to after_confirmation_path_for(resource_name, resource) }
     else
-      respond_with_navigational(resource.errors, status: :unprocessable_entity){ render :new }
+      respond_with_navigational(resource.errors, status: :unprocessable_entity) { render :new }
     end
   end
 
