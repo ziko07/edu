@@ -19,27 +19,27 @@
   </div>
   <div class="input-container">
     <div class="form-wrapper">
-      <%= form_for @course, remote: true do |f| %>
+      <%= form_for @course,html:{  id: 'course-form' }, remote: true do |f| %>
           <div class="alert form-alert hidden"></div>
-          <div class="form-group">
+          <div class="form-group input-validate-message-area">
             <%= f.label :title %>
             <div class="input-group">
-              <%= f.text_field :title, class: 'form-control', placeholder: 'e.g. Piano for Beginners in 4 Days in London', required: true, data: {max_size: 82, bind: '.title-character', errormessage_value_missing: 'title not filled in'} %>
+              <%= f.text_field :title, class: 'form-control', placeholder: 'e.g. Piano for Beginners in 4 Days in London', data: {max_size: 82, bind: '.title-character', errormessage_value_missing: 'title not filled in', required: true, message: "Field can't be blank"} %>
               <span class="input-group-addon title-character">82</span>
             </div>
           </div>
 
-          <div class="form-group">
+          <div class="form-group input-validate-message-area">
             <%= label_tag 'Subtitle' %>
             <div class="input-group">
-              <%= f.text_field :subtitle, class: 'form-control', placeholder: 'e.g. A-Z guide to playing Ed Sheeran, Foo Fighter songs on the piano', data: {max_size: 156, bind: '.sub-title-character', errormessage_value_missing: 'subtitle not filled in'}, required: true %>
+              <%= f.text_field :subtitle, class: 'form-control', placeholder: 'e.g. A-Z guide to playing Ed Sheeran, Foo Fighter songs on the piano', data: {max_size: 156, bind: '.sub-title-character', errormessage_value_missing: 'subtitle not filled in', required: true} %>
               <span class="input-group-addon sub-title-character">156</span>
             </div>
           </div>
 
-          <div class="form-group">
+          <div class="form-group input-validate-message-area">
             <%= label_tag :category %>
-            <%= f.select :category_id, Category.all.collect { |category| [category.title, category.id] }, {prompt: '-- Select One --'}, {class: 'form-control', data: {errormessage_value_missing: 'category not filled in'}, required: true} %>
+            <%= f.select :category_id, Category.all.collect { |category| [category.title, category.id] }, {prompt: '-- Select One --'}, {class: 'form-control', data: {errormessage_value_missing: 'category not filled in', required: true}} %>
           </div>
 
           <%= render '/admin/course_action', builder: f if current_user.is_admin? %>
@@ -57,6 +57,7 @@
 
 <script type="text/javascript">
     $(function () {
+        $('#course-form').syftValidator();
         countRemaining($('#course_title'));
         countRemaining($('#course_subtitle'));
 
