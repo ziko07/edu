@@ -30,7 +30,7 @@ module ApplicationHelper
       end
 
       if message.present?
-        raw "<a title='#{message} required to course submission' class='btn btn-default btn-lg disabled reset-border-radius submit-for-review'>Submit for Review</a>"
+        raw "<a class='btn btn-default btn-lg disabled reset-border-radius submit-for-review'>Submit for Review</a>"
       else
         raw link_to 'Submit for Review', review_submit_instructors_path(course), class: 'btn btn-lg btn-success reset-border-radius submit-for-review'
       end
