@@ -24,7 +24,7 @@
           <div class="form-group input-validate-message-area">
             <%= f.label :title %>
             <div class="input-group">
-              <%= f.text_field :title, class: 'form-control', placeholder: 'e.g. Piano for Beginners in 4 Days in London', data: {max_size: 82, bind: '.title-character', errormessage_value_missing: 'title not filled in', required: true, message: "title not filled in"} %>
+              <%= f.text_field :title, class: 'form-control', placeholder: 'e.g. Piano for Beginners in 4 Days in London', data: {max_size: 82, bind: '.title-character', errormessage_value_missing: 'Please fill out this field', required: true, message: "Please fill out this field"} %>
               <span class="input-group-addon title-character">82</span>
             </div>
           </div>
@@ -32,14 +32,14 @@
           <div class="form-group input-validate-message-area">
             <%= label_tag 'Subtitle' %>
             <div class="input-group">
-              <%= f.text_field :subtitle, class: 'form-control', placeholder: 'e.g. A-Z guide to playing Ed Sheeran, Foo Fighter songs on the piano', data: {max_size: 156, bind: '.sub-title-character', message: 'subtitle not filled in', required: true} %>
+              <%= f.text_field :subtitle, class: 'form-control', placeholder: 'e.g. A-Z guide to playing Ed Sheeran, Foo Fighter songs on the piano', data: {max_size: 156, bind: '.sub-title-character', message: 'Please fill out this field', required: true} %>
               <span class="input-group-addon sub-title-character">156</span>
             </div>
           </div>
 
           <div class="form-group input-validate-message-area">
             <%= label_tag :category %>
-            <%= f.select :category_id, Category.all.collect { |category| [category.title, category.id] }, {prompt: '-- Select One --'}, {class: 'form-control', data: {message: 'category not filled in', required: true}} %>
+            <%= f.select :category_id, Category.all.collect { |category| [category.title, category.id] }, {prompt: '-- Select One --'}, {class: 'form-control', data: {message: 'Please select a category', required: true}} %>
           </div>
 
           <%= render '/admin/course_action', builder: f if current_user.is_admin? %>
