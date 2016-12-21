@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   end
 
   def is_admin?
-    ADMIN_EMAILS.include?(self.email)
+     self.is_admin
   end
 
   def pending_course

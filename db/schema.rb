@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161208094944) do
+ActiveRecord::Schema.define(version: 20161221092139) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "title",      limit: 255
@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(version: 20161208094944) do
     t.string   "unconfirmed_email",       limit: 255
     t.boolean  "assigned_admin_password",             default: false
     t.boolean  "published",                           default: true
+    t.boolean  "is_admin",                            default: false
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
