@@ -137,6 +137,21 @@
   }
 }
 
+@media (max-width: 400px) {
+  #course_test_promo_video::-webkit-input-placeholder {
+    font-size: 10.5px;
+  }
+  #course_test_promo_video::-moz-placeholder {
+    font-size: 10.5px;
+  }
+  #course_test_promo_video:-ms-input-placeholder {
+    font-size: 10.5px;
+  }
+  #course_test_promo_video:-moz-placeholder {
+    font-size: 10.5px;
+  }
+}
+
 @media (max-width: 768px) {
   #new-course {
     border-right: none;
