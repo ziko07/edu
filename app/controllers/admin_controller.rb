@@ -92,6 +92,7 @@ class AdminController < ApplicationController
       setting_params.delete(:password)
       setting_params.delete(:password_confirmation)
     end
+    @user.skip_reconfirmation!
     if @user.update_attributes(setting_params)
       redirect_to admin_settings_path, success: 'Settings has been updated successfully'
     else
