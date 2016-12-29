@@ -8,8 +8,7 @@ class AdminController < ApplicationController
   end
 
   def instructors
-    # @instructors = User.where('email NOT IN (?) and published = true', User::ADMIN_EMAILS)
-    @instructors = User.where('email NOT IN (?)', User::ADMIN_EMAILS)
+    @instructors = User.where(is_admin: false)
   end
 
   def edit_instructor

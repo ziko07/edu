@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   add_flash_types :success, :warning, :danger, :info, :completed
   helper_method :errors_to_message_string
-  before_action :prepare_meta_tags, if: 'request.get?'
+  before_action :prepare_meta_tags
 
   def errors_to_message_string(errors)
     message_wrapper = "<ul class='devise-error-message'>"
@@ -51,8 +51,7 @@ class ApplicationController < ActionController::Base
         site: '',
         description: description
     }
-    options.reverse_merge!(defaults)
-    set_meta_tags options
+    @meta_options = options.reverse_merge!(defaults)
   end
 
 end

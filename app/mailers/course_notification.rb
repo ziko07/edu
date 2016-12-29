@@ -1,7 +1,7 @@
 class CourseNotification < ApplicationMailer
   def review_course(course)
     @course = course
-    mail(to: User::ADMIN_EMAILS, subject: 'Review the course')
+    mail(to: User.admin_emails, subject: 'Review the course')
   end
 
   def rejected(course)
