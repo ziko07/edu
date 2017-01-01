@@ -19,7 +19,7 @@
   </div>
   <div class="input-container">
     <div class="form-wrapper">
-      <%= form_for @course,html:{  id: 'course-form' }, remote: true do |f| %>
+      <%= form_for @course, html: {id: 'course-form', class: "#{check_for_course_review(@course)}"}, remote: true do |f| %>
           <div class="alert form-alert hidden"></div>
           <div class="form-group input-validate-message-area">
             <%= f.label :title %>
@@ -83,5 +83,7 @@
                 $(bind).html(maxSize - value.length);
             }
         }
+
+        $('.disabled-course-submission *').prop('disabled', true);
     });
 </script>

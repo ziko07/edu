@@ -27,7 +27,7 @@
               </p>
             </div>
           </div>
-          <%= form_for @course, html: {id: 'upload-course-image-form'} do |f| %>
+          <%= form_for @course, html: {id: 'upload-course-image-form',class: "#{check_for_course_review(@course)}"} do |f| %>
               <div class="form-group">
                 <%= label_tag :image_upload, 'Add / Change Image:' %>
                 <div class="input-group">

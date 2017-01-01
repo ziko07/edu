@@ -39,7 +39,7 @@
               </p>
             </div>
           </div>
-          <%= form_for @course, html: {id: 'edit-course-promo-video', remote: true} do |f| %>
+          <%= form_for @course, html: {id: 'edit-course-promo-video',class: "#{check_for_course_review(@course)}", remote: true} do |f| %>
               <div class="form-group">
                 <div class="input-group">
                   <%= text_field_tag 'course_test_promo_video', '', placeholder: 'Enter YouTube link of video here', class: 'form-control' %>

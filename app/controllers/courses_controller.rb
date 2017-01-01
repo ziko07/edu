@@ -26,12 +26,17 @@ class CoursesController < ApplicationController
 
   def update
     respond_to do |format|
-      if @course.update(course_params)
-        format.html { redirect_to edit_course_path(@course), success: 'Your changes have been successfully saved.' }
-        format.js { flash[:success] = 'Your changes have been successfully saved.' }
+      if @course.course_status.present? && @course.course_status.name == AppData::COURSE_STATUS[:pending_review]
+        format.html { redirect_to edit_course_path(@course), danger: "You can not update your course during pending review" }
+        format.js { flash[:success] = "You can not update your course during pending review" }
       else
-        format.html { redirect_to edit_course_path(@course), danger: "Couldn't be updated" }
-        format.js { flash[:success] = "Couldn't be updated" }
+        if @course.update(course_params)
+          format.html { redirect_to edit_course_path(@course), success: 'Your changes have been successfully saved.' }
+          format.js { flash[:success] = 'Your changes have been successfully saved.' }
+        else
+          format.html { redirect_to edit_course_path(@course), danger: "Couldn't be updated" }
+          format.js { flash[:success] = "Couldn't be updated" }
+        end
       end
     end
   end
